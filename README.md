@@ -15,7 +15,7 @@
 <img src="https://img.shields.io/badge/-Git-111827?style=for-the-badge&logo=git&logoColor=F05032" height="28"/>
 <img src="https://img.shields.io/badge/-GitHub-111827?style=for-the-badge&logo=github&logoColor=white" height="28"/>
 <img src="https://img.shields.io/badge/-GitHub_Desktop-111827?style=for-the-badge&logo=github&logoColor=6F42C1" height="28"/>
-<img src="https://img.shields.io/badge/-Adobe_PDF-111827?style=for-the-badge&logo=adobeacrobatreader&logoColor=EC1C24" height="28"/>
+<img src="https://img.shields.io/badge/-Adobe_PDF-111827?style=for-the-badge&logo=adobe&logoColor=EC1C24" height="28"/>
 </div>
 
 <h2 align="center"> 👤👨‍🏫 Docente Responsável: </h2>

@@ -43,7 +43,7 @@ int main()
         valor_total_vendas += produtos[indice_produto].vendas.total_vendas;
     }
 
-    printf("\n\t Resumo das vendas:\n");
+    printf("\n\t Resumo das vendas: \n");
 
     for (indice_produto = 0; indice_produto < TOTAL_PRODUTOS; indice_produto++)
     {

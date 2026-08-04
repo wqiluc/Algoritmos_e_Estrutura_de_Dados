@@ -18,7 +18,7 @@ struct Produto
     float total_vendas;
 };
 
-int main()
+int main(void)
 {
     std::array<Produto, TOTAL_PRODUTOS> produtos;
     float valor_total_vendas = 0.0;

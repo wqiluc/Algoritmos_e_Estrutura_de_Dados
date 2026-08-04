@@ -20,7 +20,7 @@ typedef struct
     float media;
 } Aluno;
 
-int main() 
+int main(void) 
 {
     Aluno aluno1, aluno2, aluno3;
     int indice_aluno;

@@ -11,27 +11,28 @@
 #include <string>
 
 constexpr int TOTAL_FUNCIONARIOS = 3;
+constexpr int TOTAL_MESES = 12;
 
-const std::array<std::string, 12> meses_validos =
+const std::array<std::string, TOTAL_MESES> meses_validos =
 {
     "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
     "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
 };
 
-struct Data
+typedef struct Data
 {
     int dia;
     std::string mes;
     int ano;
-};
+} Data;
 
-struct Funcionario
+typedef struct Funcionario
 {
     std::string nome;
     int idade;
     float salario;
     Data data_nascimento;
-};
+} Funcionario;
 
 bool mes_e_valido(const std::string &mes)
 {
@@ -45,7 +46,7 @@ bool mes_e_valido(const std::string &mes)
     return false;
 }
 
-int main()
+int main(void)
 {
     std::array<Funcionario, TOTAL_FUNCIONARIOS> funcionarios;
 
@@ -62,7 +63,8 @@ int main()
         std::cout << "\n\t Digite o salário do funcionário " << indice_funcionario + 1 << ": ";
         std::cin >> funcionario.salario;
 
-        bool dia_valido = false;
+        bool dia_valido = false; // inicializa a variável de controle como falso 
+        // para o loop de validação do dia
         do
         {
             std::cout << "\n\t Digite o dia de nascimento do funcionário " << indice_funcionario + 1 << ": ";
@@ -75,9 +77,11 @@ int main()
                 std::cout << "\n\t Dia inválido! Digite um valor entre 1 e 31.\n";
             }
         }
+        
         while (!dia_valido);
 
         bool mes_valido = false;
+
         do
         {
             std::cout << "\n\t Digite o mês de nascimento do funcionário " << indice_funcionario + 1 << ": ";
@@ -90,6 +94,7 @@ int main()
                 std::cout << "\n\t Mês inválido! Digite um mês entre Janeiro e Dezembro.\n";
             }
         }
+
         while (!mes_valido);
 
         std::cout << "\n\t Digite o ano de nascimento do funcionário " << indice_funcionario + 1 << ": ";
@@ -106,6 +111,5 @@ int main()
         std::cout << "\n\t Data de Nascimento: " << funcionario.data_nascimento.dia << "/"
                    << funcionario.data_nascimento.mes << "/" << funcionario.data_nascimento.ano << "\n";
     }
-
     return 0;
 }

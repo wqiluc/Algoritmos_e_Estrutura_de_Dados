@@ -22,7 +22,7 @@
     } data_nascimento;
  } Funcionario;
 
- int main()
+ int main(void)
  {
     Funcionario funcionarios[3];
     int indice_funcionario;

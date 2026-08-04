@@ -20,7 +20,7 @@ struct Aluno
     float media;
 };
 
-int main()
+int main(void)
 {
     std::array<Aluno, TOTAL_ALUNOS> alunos;
 
