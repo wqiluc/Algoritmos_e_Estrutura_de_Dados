@@ -72,6 +72,5 @@ int main(void)
         (indice_aluno == 0) ? aluno1.media : (indice_aluno == 1) 
         ? aluno2.media : aluno3.media);
     }
-
     return 0;
 }

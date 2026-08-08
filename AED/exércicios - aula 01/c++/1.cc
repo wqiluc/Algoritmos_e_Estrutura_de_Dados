@@ -109,7 +109,7 @@ int main(void)
         std::cout << "\n\t Idade: " << funcionario.idade << "\n";
         std::cout << "\n\t Salário: " << funcionario.salario << "\n";
         std::cout << "\n\t Data de Nascimento: " << funcionario.data_nascimento.dia << "/"
-                   << funcionario.data_nascimento.mes << "/" << funcionario.data_nascimento.ano << "\n";
+        << funcionario.data_nascimento.mes << "/" << funcionario.data_nascimento.ano << "\n";
     }
     return 0;
 }

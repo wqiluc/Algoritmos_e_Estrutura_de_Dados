@@ -51,6 +51,5 @@ int main(void)
         std::cout << "\n\t Nota de Física do " << indice_aluno + 1 << "º aluno: " << aluno.nota_fisica << "\n";
         std::cout << "\n\t Média do " << indice_aluno + 1 << "º aluno: " << aluno.media << "\n";
     }
-
     return 0;
 }

@@ -23,7 +23,7 @@ typedef struct Produto
 int main()
 {
     Produto produtos[TOTAL_PRODUTOS];
-    float valor_total_vendas = 0.0;
+    double valor_total_vendas = 0.0;
     int indice_produto;
 
     for (indice_produto = 0; indice_produto < TOTAL_PRODUTOS; indice_produto++)
@@ -43,12 +43,13 @@ int main()
         valor_total_vendas += produtos[indice_produto].vendas.total_vendas;
     }
 
-    printf("\n\t Resumo das vendas: \n");
+    printf("\n\t Resumo das vendas:\n");
 
     for (indice_produto = 0; indice_produto < TOTAL_PRODUTOS; indice_produto++)
     {
         printf("\n\t Produto: %s | Preço: %.2f | Quantidade: %d | Total Vendas: R$%.2f\n",
-               produtos[indice_produto].nome, produtos[indice_produto].preco, produtos[indice_produto].quantidade, produtos[indice_produto].vendas.total_vendas);
+        produtos[indice_produto].nome, produtos[indice_produto].preco, 
+        produtos[indice_produto].quantidade, produtos[indice_produto].vendas.total_vendas);
     }
 
     printf("\n\t Valor total das vendas: R$%.2f\n", valor_total_vendas);

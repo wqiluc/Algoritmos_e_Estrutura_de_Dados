@@ -44,12 +44,13 @@ int main(void)
 
     for (const Produto &produto : produtos)
     {
-        std::cout << "\n\t Produto: " << produto.nome << " | Preço: " << produto.preco
-                   << " | Quantidade: " << produto.quantidade
-                   << " | Total Vendas: R$" << produto.total_vendas << "\n";
+        std::cout  
+            << "\n\t Produto: " << produto.nome 
+            << " | Preço: " << produto.preco
+            << " | Quantidade: " << produto.quantidade
+            << " | Total Vendas: R$" << produto.total_vendas << "\n";
     }
 
     std::cout << "\n\t Valor total das vendas: R$" << valor_total_vendas << "\n";
-
     return 0;
 }

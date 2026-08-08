@@ -10,7 +10,7 @@
 #include <string.h>
 
  typedef struct 
- {
+{
     char nome[100];
     int idade;
     float salario;
@@ -20,7 +20,8 @@
         char mes[20];
         int ano;
     } data_nascimento;
- } Funcionario;
+} Funcionario;
+
 
  int main(void)
  {
@@ -93,6 +94,5 @@
         printf("\n\t Salário: %.2f\n", funcionarios[indice_funcionario].salario);
         printf("\n\t Data de Nascimento: %d/%s/%d\n", funcionarios[indice_funcionario].data_nascimento.dia, funcionarios[indice_funcionario].data_nascimento.mes, funcionarios[indice_funcionario].data_nascimento.ano);
     }
-
     return 0;
 }
