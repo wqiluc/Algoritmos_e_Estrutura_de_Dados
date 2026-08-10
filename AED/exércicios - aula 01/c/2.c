@@ -22,55 +22,35 @@ typedef struct
 
 int main(void) 
 {
-    Aluno aluno1, aluno2, aluno3;
+    Aluno alunos[MAX_ALUNOS];
     int indice_aluno;
 
     for(indice_aluno = 0; indice_aluno < MAX_ALUNOS; indice_aluno++)
     {
         printf("\n\t Digite o nome do %dº aluno: ", indice_aluno + 1);
-        scanf("%s", (indice_aluno == 0) ? aluno1.nome : (indice_aluno == 1) 
-        ? aluno2.nome : aluno3.nome);
+        scanf("%s", alunos[indice_aluno].nome);
 
         printf("\n\t Digite a nota de Matemática do %dº aluno: ", indice_aluno + 1);
-        scanf("%f", (indice_aluno == 0) ? &aluno1.nota_Matematica : (indice_aluno == 1) 
-        ? &aluno2.nota_Matematica : &aluno3.nota_Matematica);
+        scanf("%f", &alunos[indice_aluno].nota_Matematica);
 
         printf("\n\t Digite a nota de Física do %dº aluno: ", indice_aluno + 1);
-        scanf("%f", (indice_aluno == 0) ? &aluno1.nota_Fisica : (indice_aluno == 1) 
-        ? &aluno2.nota_Fisica : &aluno3.nota_Fisica);
+        scanf("%f", &alunos[indice_aluno].nota_Fisica);
 
-        if(indice_aluno == 0) 
-        {
-            aluno1.media = (aluno1.nota_Matematica + aluno1.nota_Fisica) / 2;
-        } 
-
-        else if(indice_aluno == 1) 
-        {
-            aluno2.media = (aluno2.nota_Matematica + aluno2.nota_Fisica) / 2;
-        } 
-
-        else 
-        {
-            aluno3.media = (aluno3.nota_Matematica + aluno3.nota_Fisica) / 2;
-        }
+        alunos[indice_aluno].media = (alunos[indice_aluno].nota_Matematica + alunos[indice_aluno].nota_Fisica) / 2;
     }
 
     for(indice_aluno = 0; indice_aluno < MAX_ALUNOS; indice_aluno++)
     {
-        printf("\n\t Nome do %dº aluno: %s", indice_aluno + 1, (indice_aluno == 0) 
-        ? aluno1.nome : (indice_aluno == 1) ? aluno2.nome : aluno3.nome);
+        printf("\n\t Nome do %dº aluno: %s", indice_aluno + 1, alunos[indice_aluno].nome);
 
-        printf("\n\t Nota de Matemática do %dº aluno: %.2f", indice_aluno + 1, 
-        (indice_aluno == 0) ? aluno1.nota_Matematica : (indice_aluno == 1) 
-        ? aluno2.nota_Matematica : aluno3.nota_Matematica);
+        printf("\n\t Nota de Matemática do %dº aluno: %.2f", indice_aluno + 1,
+        alunos[indice_aluno].nota_Matematica);
 
-        printf("\n\t Nota de Física do %dº aluno: %.2f", indice_aluno + 1, 
-        (indice_aluno == 0) ? aluno1.nota_Fisica : (indice_aluno == 1) 
-        ? aluno2.nota_Fisica : aluno3.nota_Fisica);
+        printf("\n\t Nota de Física do %dº aluno: %.2f", indice_aluno + 1,
+        alunos[indice_aluno].nota_Fisica);
 
-        printf("\n\t Média do %dº aluno: %.2f\n", indice_aluno + 1, 
-        (indice_aluno == 0) ? aluno1.media : (indice_aluno == 1) 
-        ? aluno2.media : aluno3.media);
+        printf("\n\t Média do %dº aluno: %.2f\n", indice_aluno + 1,
+        alunos[indice_aluno].media);
     }
     return 0;
 }

@@ -53,6 +53,5 @@ int main()
     }
 
     printf("\n\t Valor total das vendas: R$%.2f\n", valor_total_vendas);
-
     return 0;
 }

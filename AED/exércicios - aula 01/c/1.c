@@ -9,7 +9,10 @@
 #include <stdio.h>
 #include <string.h>
 
- typedef struct 
+#define TOTAL_FUNCIONARIOS 3
+#define TOTAL_MESES 12
+
+ typedef struct
 {
     char nome[100];
     int idade;
@@ -25,10 +28,15 @@
 
  int main(void)
  {
-    Funcionario funcionarios[3];
+    Funcionario funcionarios[TOTAL_FUNCIONARIOS];
     int indice_funcionario;
+    char *meses_validos[TOTAL_MESES] =
+    {
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    };
 
-    for(indice_funcionario = 0; indice_funcionario < 3; indice_funcionario++)
+    for(indice_funcionario = 0; indice_funcionario < TOTAL_FUNCIONARIOS; indice_funcionario++)
     {
         printf("\n\t Digite o nome do funcionário %d: ", indice_funcionario + 1);
         scanf(" %[^\n]s", funcionarios[indice_funcionario].nome);
@@ -49,12 +57,7 @@
             scanf("%d", &funcionarios[indice_funcionario].data_nascimento.dia);
         }
 
-        char *meses_validos[12] = 
-        {
-            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-        };
-        int mes_valido, i;
+        int mes_valido;
 
         do
         {
@@ -64,7 +67,7 @@
 
             mes_valido = 0;
 
-            for(int indice_mes = 0; indice_mes < 12; indice_mes++)
+            for(int indice_mes = 0; indice_mes < TOTAL_MESES; indice_mes++)
             {
                 if(strcmp(funcionarios[indice_funcionario].data_nascimento.mes,
                     meses_validos[indice_mes]) == 0)
@@ -87,7 +90,7 @@
 
     printf("\n\t Dados dos funcionários: \n");
 
-    for(indice_funcionario = 0; indice_funcionario < 3; indice_funcionario++)
+    for(indice_funcionario = 0; indice_funcionario < TOTAL_FUNCIONARIOS; indice_funcionario++)
     {
         printf("\n\t Nome: %s\n", funcionarios[indice_funcionario].nome);
         printf("\n\t Idade: %d\n", funcionarios[indice_funcionario].idade);
