@@ -1,0 +1,7 @@
+# Editor
+.vscode/
+
+# Compiled C/C++ binaries and debug symbols
+*.dSYM/
+*.o
+*.out

@@ -20,7 +20,7 @@ typedef struct Produto
     } vendas;
 } Produto;
 
-int main()
+int main(void)
 {
     Produto produtos[TOTAL_PRODUTOS];
     double valor_total_vendas = 0.0;
@@ -51,7 +51,6 @@ int main()
         produtos[indice_produto].nome, produtos[indice_produto].preco, 
         produtos[indice_produto].quantidade, produtos[indice_produto].vendas.total_vendas);
     }
-
     printf("\n\t Valor total das vendas: R$%.2f\n", valor_total_vendas);
     return 0;
 }

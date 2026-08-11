@@ -11,22 +11,24 @@
 
 #define TOTAL_FUNCIONARIOS 3
 #define TOTAL_MESES 12
+#define MAX_NOME 100
+#define MAX_MES 20
 
- typedef struct
+typedef struct
 {
-    char nome[100];
+    char nome[MAX_NOME];
     int idade;
     float salario;
     struct
     {
         int dia;
-        char mes[20];
+        char mes[MAX_MES];
         int ano;
     } data_nascimento;
 } Funcionario;
 
 
- int main(void)
+int main(void)
  {
     Funcionario funcionarios[TOTAL_FUNCIONARIOS];
     int indice_funcionario;
