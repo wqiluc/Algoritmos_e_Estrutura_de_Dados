@@ -1,9 +1,9 @@
 <h1 align="center">📚 Exercícios — Aula 01: Tipos Estruturados de Dados (`struct`)</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C"/>
-  <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++"/>
-  <img src="https://img.shields.io/badge/CESAR_School-orange?style=for-the-badge" alt="CESAR"/>
+<img src="https://img.shields.io/badge/-C-111827?style=for-the-badge&logo=c&logoColor=A8B9CC" height="28"/>
+<img src="https://img.shields.io/badge/-C%2B%2B-111827?style=for-the-badge&logo=cplusplus&logoColor=00599C" height="28"/>
+<img src="https://img.shields.io/badge/CESAR_School-orange?style=for-the-badge" alt="CESAR"/>
 </p>
 
 > 🎯 **Tema:** `struct`, vetores/arrays e organização de dados compostos.
@@ -33,7 +33,7 @@
 
 > Crie um programa que leia e apresente os dados de **3 funcionários**. Crie uma `struct` que contenha o **nome, idade, salário** e a **data de nascimento**. O que se sabe é que a data de nascimento é do tipo `Data`, ou seja, uma outra `struct` que contém os seguintes membros: **dia e ano**, ambos do tipo inteiro; e **mês** do tipo `string`. Crie um **vetor de struct** para registrar os dados dos 3 funcionários.
 
-### 🧩 Modelagem dos dados
+<h3 align="center">🧩 Modelagem dos dados</h3>
 
 ```mermaid
 classDiagram

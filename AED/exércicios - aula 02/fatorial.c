@@ -13,9 +13,8 @@ int fatorial(int numero)
     else
     {
         int resultado = 1;
-        int indice_numero;
 
-        for(indice_numero = 1; indice_numero <= numero; indice_numero++)
+        for(int indice_numero = 1; indice_numero <= numero; indice_numero++)
         {
             resultado *= indice_numero;
         }

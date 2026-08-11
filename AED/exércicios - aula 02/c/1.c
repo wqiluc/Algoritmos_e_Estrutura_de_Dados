@@ -14,19 +14,21 @@ int ler_string(char *str)
     return scanf("%s", str);
 }
 
-void inverter_string_recursivo(char *str, int indice_inicio, int indice_fim)
+int inverter_string_recursivo(char *str, int indice_inicio, int indice_fim)
 {
     if(indice_inicio >= indice_fim)
     {
-        return;
+        return 1;
     }
     else
     {
         char caractere_temporario = str[indice_inicio];
         str[indice_inicio] = str[indice_fim];
         str[indice_fim] = caractere_temporario;
+        // mescla as letras da string, chamando a função recursivamente 
+        // para os próximos índices
 
-        inverter_string_recursivo(str, indice_inicio + 1, indice_fim - 1);
+        return inverter_string_recursivo(str, indice_inicio + 1, indice_fim - 1);
     }
 }
 
