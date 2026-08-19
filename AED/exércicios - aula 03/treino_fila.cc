@@ -15,7 +15,6 @@ typedef struct Fila
     No* atras_fila;
 } Fila;
 
-
 Fila* criarfila()
 {
     Fila* fila = new Fila;
@@ -40,12 +39,14 @@ void enfileirar(Fila* fila, const char nome[])
         fila->atras_fila = no_novo;
     }
 }
+
 void desenfileirar(Fila* fila)
 {
     if(!fila->frente_fila)
     {
         return;
     }
+
     No* temporaria = fila->frente_fila;
     fila->frente_fila = fila->frente_fila->proximo;
 
@@ -55,7 +56,6 @@ void desenfileirar(Fila* fila)
     }
     delete temporaria;
 }
-
 
 void imprimirFila(Fila* fila) 
 {
