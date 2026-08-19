@@ -9,7 +9,7 @@
 <div align="center">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="28"/> <br>
 <img src="https://img.shields.io/badge/-C-111827?style=for-the-badge&logo=c&logoColor=A8B9CC" height="28"/>
-<img src="https://img.shields.io/badge/-C%2B%2B-111827?style=for-the-badge&logo=cplusplus&logoColor=00599C" height="28"/>
+<img src="https://img.shields.io/badge/-C%2B%2B-111827?style=for-the-badge&logo=cplusplus&logoColor=C71585" height="28"/>
 <img src="https://img.shields.io/badge/-Markdown-111827?style=for-the-badge&logo=markdown&logoColor=white" height="28"/>
 <img src="https://img.shields.io/badge/-Mermaid-111827?style=for-the-badge&logo=mermaid&logoColor=FF3670" height="28"/> <br>
 <img src="https://img.shields.io/badge/-Git-111827?style=for-the-badge&logo=git&logoColor=F05032" height="28"/>
