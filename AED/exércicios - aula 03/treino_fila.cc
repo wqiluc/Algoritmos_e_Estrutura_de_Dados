@@ -1,41 +1,44 @@
 #include <iostream>
 #include <string.h>
-
 using namespace std;
 
-typedef struct No
+typedef struct No 
 {
     char nome[30];
     No* proximo_fila;
 } No;
 
-typedef struct Fila
+typedef struct Fila 
 {
     No* atras_fila;
     No* frente_fila;
 } Fila;
 
+
 Fila* criarfila()
 {
     Fila* fila = new Fila;
     fila->atras_fila = fila->frente_fila = NULL;
-    return (fila);  
+    return fila;
 }
 
-void enfileirar(Fila* fila, char nome[30])
+
+void enfileirar(Fila* fila, const char nome[30])
 {
     No* novo_fila = new No;
     strcpy(novo_fila->nome, nome);
     novo_fila->proximo_fila = NULL;
 
-    if (!fila->atras_fila)
+    if(!fila->atras_fila)
     {
         fila->atras_fila = fila->frente_fila = novo_fila;
         return;
     }
-    fila->atras_fila->proximo_fila = novo_fila;
-    fila->atras_fila = novo_fila;
-    
+    else
+    {
+        fila->atras_fila->proximo_fila = novo_fila;
+        fila->atras_fila = novo_fila;
+    }
 }
 
 
@@ -49,7 +52,7 @@ void desenfileirar(Fila* fila)
     No* lugar_temporario = fila->frente_fila;
     fila->frente_fila = fila->frente_fila->proximo_fila;
 
-    if(fila->frente_fila)
+    if(!fila->frente_fila)
     {
         fila->atras_fila = NULL;
     }
@@ -69,7 +72,6 @@ void imprimirfila(Fila* fila)
     cout << " <== \n";
 }
 
-
 int main()
 {
     Fila* fila = criarfila();
@@ -78,4 +80,8 @@ int main()
     enfileirar(fila, "Ruan");
 
     imprimirfila(fila);
+    desenfileirar(fila);
+
+    //return 0;
+    system("PAUSE");
 }

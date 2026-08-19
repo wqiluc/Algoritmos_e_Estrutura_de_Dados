@@ -3,81 +3,92 @@
 
 using namespace std;
 
-typedef struct No 
+typedef struct No
 {
     int dado;
-    struct No* prox;
+    No* prox;
 } No;
 
-// Inserir no início da lista
-No* inserirInicio(No* lista, int valor) 
+typedef struct Lista
 {
-    No* novo = new No; // No* novo = (No*)malloc(sizeof(No));
-    novo->dado = valor;
-    novo->prox = lista;
-    return novo;
+    No* inicio;
+} Lista;
+
+Lista* criarLista()
+{
+    Lista* l = new Lista; 
+    l->inicio = NULL;
+    return l;
 }
 
-// Inserir no final da lista
-No* inserirFim(No* lista, int valor) 
+
+void inserirInicio(Lista* lista, int valor)
 {
-    No* novo = new No; // No* novo = (No*)malloc(sizeof(No));
+    No* novo = new No;
+    novo->dado = valor;
+    novo->prox = lista->inicio;
+    lista->inicio = novo;
+}
+
+
+void inserirFim(Lista* lista, int valor)
+{
+    No* novo = new No;
     novo->dado = valor;
     novo->prox = NULL;
-    if (!lista) 
-        return novo;
-    
-    No* temp = lista;
-    while (temp->prox) 
+
+    if (!lista->inicio)
+    {
+        lista->inicio = novo;
+        return;
+    }
+
+    No* temp = lista->inicio;
+
+    while (temp->prox)
         temp = temp->prox;
     temp->prox = novo;
-    delete temp;
-    return lista;
-    
 }
 
-No* inserirMeio(No* lista, int valorNovo, int valorBusca) 
+
+void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
 {
-    No* novo = new No; // No* novo = (No*)malloc(sizeof(No));
+    No* novo = new No;
     novo->dado = valorNovo;
 
-    No* temp = lista;
-    while (temp->prox && temp->prox->dado != valorBusca) 
+    No* temp = lista->inicio;
+    while (temp->prox && temp->prox->dado != valorBusca)
     {
         temp = temp->prox;
     }
-
     novo->prox = temp->prox;
     temp->prox = novo;
-    delete temp;
-    return lista;
 }
 
-// Imprimir a lista
-void imprimirLista(No* lista) 
+void imprimirLista(Lista* lista)
 {
-    No* temp1 = lista;
-    while (temp1) 
+    No* temp = lista->inicio;
+    while (temp)
     {
-        cout << temp1->dado << " -> ";
-        temp1 = temp1->prox;
+        cout << temp->dado << " -> ";
+        temp = temp->prox;
     }
     cout << "NULL \n";
 }
 
-int main() 
+int main()
 {
-    No* lista = NULL;
-    lista = inserirInicio(lista, 10);
-    lista = inserirInicio(lista, 20);
-    lista = inserirInicio(lista, 30);
-    lista = inserirFim(lista, 40);
-    lista = inserirFim(lista, 50);
+    Lista* lista = criarLista();
+    inserirInicio(lista, 10);
+    inserirInicio(lista, 20);
+    inserirInicio(lista, 30);
+    inserirFim(lista, 40);
+    inserirFim(lista, 50);
     //imprimirLista(lista);
-    lista = inserirMeio(lista, 99, 10);
-    //lista = inserirInicio(lista, 60);
+    inserirMeio(lista, 99, 10);
+    //inserirInicio(lista, 60);
     imprimirLista(lista);
-    
+
     //return 0;
     system("PAUSE");
 }

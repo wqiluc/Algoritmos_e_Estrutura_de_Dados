@@ -1,84 +1,36 @@
 #include <iostream>
-
+// #include <stdlib.h>
 using namespace std;
 
-typedef struct No
-{
+typedef struct No 
+{ 
     int dado;
-    struct No* prox;
+    No* proximo_lista;
 } No;
 
-typedef struct Lista
+typedef struct Lista 
 {
-    No* inicio;
+  No* inicio_lista;
 } Lista;
 
-// Inserir no início da lista
-void inserirInicio(Lista* lista, int valor)
+
+Lista* criarlista()
 {
-    No* novo = new No;
-    novo->dado = valor;
-    novo->prox = lista->inicio;
-    lista->inicio = novo;
+    Lista* lista = new Lista;
+    lista->inicio_lista = NULL;
+    return lista;
 }
 
-// Inserir no final da lista
-void inserirFim(Lista* lista, int valor)
+void inseririnicio(Lista* lista, int numero)
 {
-    No* novo = new No;
-    novo->dado = valor;
-    novo->prox = NULL;
-
-    if (!lista->inicio)
-    {
-        lista->inicio = novo;
-        return;
-    }
-
-    No* temp = lista->inicio;
-    while (temp->prox)
-        temp = temp->prox;
-    temp->prox = novo;
+    No* novo_no = new No;
+    novo_no->dado = numero;
+    novo_no->proximo_lista = lista->inicio_lista;
+    lista->inicio_lista = novo_no;
 }
+void inserirfim(Lista* lista, int numero){}
+void inserirmeio(Lista* lista, int valorNovo, int valorBusca){}
 
-// Inserir no meio da lista, logo após o nó com valorBusca
-void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
-{
-    No* novo = new No;
-    novo->dado = valorNovo;
+void imprimirLista(Lista* lista){}
 
-    No* temp = lista->inicio;
-    while (temp->prox && temp->prox->dado != valorBusca)
-        temp = temp->prox;
-
-    novo->prox = temp->prox;
-    temp->prox = novo;
-}
-
-// Imprimir a lista
-void imprimirLista(Lista* lista)
-{
-    No* temp = lista->inicio;
-    while (temp)
-    {
-        cout << temp->dado << " -> ";
-        temp = temp->prox;
-    }
-    cout << "NULL \n";
-}
-
-int main()
-{
-    Lista lista;
-    lista.inicio = NULL;
-
-    inserirInicio(&lista, 10);
-    inserirInicio(&lista, 20);
-    inserirInicio(&lista, 30);
-    inserirFim(&lista, 40);
-    inserirFim(&lista, 50);
-    inserirMeio(&lista, 99, 10);
-    imprimirLista(&lista);
-
-    return 0;
-}
+int main(){}
