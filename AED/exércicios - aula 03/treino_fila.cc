@@ -6,39 +6,38 @@ using namespace std;
 typedef struct No
 {
     char nome[30];
-    No* proximo;
+    No* proximo_fila;
 } No;
 
 typedef struct Fila
 {
-    No* frente_fila;
     No* atras_fila;
+    No* frente_fila;
 } Fila;
 
 Fila* criarfila()
 {
     Fila* fila = new Fila;
-    fila->frente_fila = fila->atras_fila = NULL;
-    return fila;
+    fila->atras_fila = fila->frente_fila = NULL;
+    return (fila);  
 }
 
-void enfileirar(Fila* fila, const char nome[])
+void enfileirar(Fila* fila, char nome[30])
 {
-    No* no_novo = new No;
-    strcpy(no_novo->nome, nome);
-    no_novo->proximo = NULL;
-    
-    if(!fila->atras_fila)
+    No* novo_fila = new No;
+    strcpy(novo_fila->nome, nome);
+    novo_fila->proximo_fila = NULL;
+
+    if (!fila->atras_fila)
     {
-        fila->atras_fila = fila->frente_fila = no_novo;
+        fila->atras_fila = fila->frente_fila = novo_fila;
         return;
     }
-    else
-    {
-        fila->atras_fila->proximo = no_novo;
-        fila->atras_fila = no_novo;
-    }
+    fila->atras_fila->proximo_fila = novo_fila;
+    fila->atras_fila = novo_fila;
+    
 }
+
 
 void desenfileirar(Fila* fila)
 {
@@ -47,38 +46,36 @@ void desenfileirar(Fila* fila)
         return;
     }
 
-    No* temporaria = fila->frente_fila;
-    fila->frente_fila = fila->frente_fila->proximo;
+    No* lugar_temporario = fila->frente_fila;
+    fila->frente_fila = fila->frente_fila->proximo_fila;
 
-    if(!fila->frente_fila)
+    if(fila->frente_fila)
     {
         fila->atras_fila = NULL;
     }
-    delete temporaria;
+    delete lugar_temporario;
 }
 
-void imprimirFila(Fila* fila) 
+
+void imprimirfila(Fila* fila)
 {
-    No* temporaria = fila->frente_fila;
-    while (temporaria) 
+    No* lugar_temporario = fila->frente_fila;
+
+    while (lugar_temporario)
     {
-        cout << temporaria->nome << " <- ";
-        temporaria = temporaria->proximo;
+        cout << lugar_temporario->nome << " <== \n";
+        lugar_temporario = lugar_temporario->proximo_fila;
     }
-    cout << "NULL \n";
+    cout << " <== \n";
 }
 
-int main() 
+
+int main()
 {
     Fila* fila = criarfila();
-    enfileirar(fila, "Ana");
-    enfileirar(fila, "Bruno");
-    enfileirar(fila, "Carlos");
-    imprimirFila(fila);
+    enfileirar(fila, "Lucas");
+    enfileirar(fila, "Pedro");
+    enfileirar(fila, "Ruan");
 
-    desenfileirar(fila);
-    imprimirFila(fila);
-
-    //return 0;
-    system("PAUSE");
+    imprimirfila(fila);
 }
