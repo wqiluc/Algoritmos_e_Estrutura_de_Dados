@@ -57,10 +57,12 @@ void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
     novo->dado = valorNovo;
 
     No* temp = lista->inicio;
+
     while (temp->prox && temp->prox->dado != valorBusca)
     {
         temp = temp->prox;
     }
+    
     novo->prox = temp->prox;
     temp->prox = novo;
 }
