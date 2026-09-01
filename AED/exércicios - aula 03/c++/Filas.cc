@@ -41,11 +41,13 @@ void desenfileirar(Fila* f)
 {
     if (!f->frente) 
         return;
+
     No* temp = f->frente;
     f->frente = f->frente->prox;
+
     if (!f->frente) 
         f->atras = NULL;
-    delete temp; // free(temp);
+    delete temp;
 }
 
 void imprimirFila(Fila* f) 

@@ -21,7 +21,6 @@ Lista* criarLista()
     return l;
 }
 
-
 void inserirInicio(Lista* lista, int valor)
 {
     No* novo = new No;
@@ -42,7 +41,6 @@ void inserirFim(Lista* lista, int valor)
         lista->inicio = novo;
         return;
     }
-
     No* temp = lista->inicio;
 
     while (temp->prox)
@@ -70,6 +68,7 @@ void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
 void imprimirLista(Lista* lista)
 {
     No* temp = lista->inicio;
+
     while (temp)
     {
         cout << temp->dado << " -> ";

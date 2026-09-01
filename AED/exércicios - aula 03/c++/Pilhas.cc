@@ -7,19 +7,22 @@ using namespace std;
 typedef struct No 
 {
     char dado;
-    struct No* prox;
+    No* prox;
 } No;
 
-No* empilhar(No* topo, char valor) {
-    No* novo = new No; // No* novo = (No*)malloc(sizeof(No));
+No* empilhar(No* topo, char valor) 
+{
+    No* novo = new No;
     novo->dado = valor;
     novo->prox = topo;
     return novo;
 }
 
-No* desempilhar(No* topo, char* valor) {
+No* desempilhar(No* topo, char* valor) 
+{
     if (!topo) 
         return NULL;
+
     No* temp = topo;
     *valor = topo->dado;
     topo = topo->prox;
@@ -27,13 +30,16 @@ No* desempilhar(No* topo, char* valor) {
     return topo;
 }
 
-void inverterPalavra(char palavra[]) {
+void inverterPalavra(char palavra[]) 
+{
     No* pilha = NULL;
+
     for (int i = 0; palavra[i] != '\0'; i++)
         pilha = empilhar(pilha, palavra[i]);
 
-    cout<<"Palavra invertida: ";
+    cout<<"\n Palavra invertida: ";
     char c;
+
     while (pilha)
     {
         pilha = desempilhar(pilha, &c); 
@@ -42,9 +48,10 @@ void inverterPalavra(char palavra[]) {
     cout << "\n";
 }
 
-int main() {
+int main() 
+{
     char palavra[100];
-    cout << "Digite uma palavra: ";
+    cout << "\n Digite uma palavra: ";
     cin >> palavra;
     inverterPalavra(palavra);
     
