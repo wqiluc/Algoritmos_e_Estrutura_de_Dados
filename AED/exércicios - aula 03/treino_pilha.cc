@@ -1,54 +1,64 @@
 #include <iostream>
-#include <stdlib.h>
 #include <string.h>
 using namespace std;
 
 typedef struct No 
 {
-    char dado_pilha[30];
+    char dado[30];
     No* proximo_pilha;
 } No;
 
-No* empilhar(No* topo_pilha, char dado[30])
+No* empilhar(No* topo_pilha, char* dado) 
 {
     No* novo_pilha = new No;
-    strcpy(novo_pilha->dado_pilha, dado);
+    strcpy(novo_pilha->dado, dado);
     novo_pilha->proximo_pilha = topo_pilha;
     return novo_pilha;
 }
-No* desempilhar(No* topo_pilha, char dado[30])
+
+No* desempilhar(No* topo_pilha, char* dado) 
 {
-    if (!topo_pilha)
-    {
-        return nullptr;
-    }
+    if (!topo_pilha) 
+        return NULL;
 
     No* lugar_temporario = topo_pilha;
-    strcpy(dado, topo_pilha->dado_pilha);
+    strcpy(dado, topo_pilha->dado);
     topo_pilha = topo_pilha->proximo_pilha;
-    delete lugar_temporario;
+    delete lugar_temporario; 
     return topo_pilha;
 }
 
-void inverterPalavra(char dado[30])
+void inverterPalvra(char palavra[])
 {
-    No* topo_pilha = nullptr;
-    char letra[30];
+    No* pilha = NULL;
+    int indice;
 
-    for (int i = 0; dado[i] != '\0'; i++)
+    for (indice = 0; palavra[indice] != '\0'; indice++)
     {
-        letra[0] = dado[i];
-        letra[1] = '\0';
-        topo_pilha = empilhar(topo_pilha, letra);
+        pilha = empilhar(pilha, &palavra[indice]);
     }
 
     cout << "\n Palavra invertida: ";
+    char palavra_invertida[30];
+    int indice_invertida = 0;
 
-    char letra_desempilhada[30];
-    while (topo_pilha)
+    while (pilha) 
     {
-        topo_pilha = desempilhar(topo_pilha, letra_desempilhada);
-        cout << letra_desempilhada;
+        pilha = desempilhar(pilha, &palavra_invertida[indice_invertida]);
+        indice_invertida++;
+    }
+    palavra_invertida[indice_invertida] = '\0';
+    cout << palavra_invertida;
+}
+
+void imprimirPilha(No* topo_pilha) 
+{
+    cout << "\n Pilha: ";
+
+    while (topo_pilha) 
+    {
+        cout << topo_pilha->dado << " ";
+        topo_pilha = topo_pilha->proximo_pilha;
     }
     cout << "\n";
 }
@@ -56,7 +66,18 @@ void inverterPalavra(char dado[30])
 int main()
 {
     char palavra[30];
-    cout << "Digite uma palavra: ";
+    cout << "\n Digite uma palavra: ";
     cin >> palavra;
-    inverterPalavra(palavra);
+
+    No* pilha = NULL;
+    
+    for (int indice = 0; palavra[indice] != '\0'; indice++)
+        pilha = empilhar(pilha, &palavra[indice]);
+
+    imprimirPilha(pilha);
+
+    inverterPalvra(palavra);
+
+    //return 0;
+    system("PAUSE");
 }
