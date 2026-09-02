@@ -2,35 +2,36 @@
 #include <string.h>
 using namespace std;
 
-typedef struct No
+typedef struct No 
 {
-    char nome[30];
+    char nome[50];
     No* proximo_fila;
 } No;
 
-typedef struct Fila
+typedef struct 
 {
     No* atras_fila;
     No* frente_fila;
 } Fila;
 
-Fila* criar_fila()
+Fila* criarFila()
 {
     Fila* fila = new Fila;
-    fila->atras_fila = fila->frente_fila = NULL;
+    fila->frente_fila = fila->atras_fila = NULL;
     return fila;
 }
-void enfileirar(Fila* fila, char nome[30])
+void enfileirar(Fila* fila, char nome[])
 {
     No* novo_fila = new No;
     strcpy(novo_fila->nome, nome);
     novo_fila->proximo_fila = NULL;
 
-    if(!fila->atras_fila)
+    if (!fila->atras_fila) 
     {
-        fila->atras_fila = fila->frente_fila = novo_fila;
+        fila->frente_fila = fila->atras_fila = novo_fila;
+        return;
     }
-    else
+    else 
     {
         fila->atras_fila->proximo_fila = novo_fila;
         fila->atras_fila = novo_fila;
@@ -38,60 +39,44 @@ void enfileirar(Fila* fila, char nome[30])
 }
 void desenfileirar(Fila* fila)
 {
-    if (!fila->frente_fila)
+    if(!fila->frente_fila) 
     {
-        cout << "Fila vazia!" << endl;
         return;
     }
 
     No* lugar_temporario = fila->frente_fila;
     fila->frente_fila = fila->frente_fila->proximo_fila;
 
-    if (!fila->frente_fila)
+    if(!fila->frente_fila) 
     {
         fila->atras_fila = NULL;
     }
     delete lugar_temporario;
-    
 }
 void imprimirFila(Fila* fila)
 {
     No* lugar_temporario = fila->frente_fila;
 
-    if (!lugar_temporario)
+    while (lugar_temporario) 
     {
-        cout << "Fila vazia!" << endl;
-        return;
-    }
-
-    while (lugar_temporario)
-    {
-        cout << lugar_temporario->nome << endl;
+        cout << lugar_temporario->nome << " <- ";
         lugar_temporario = lugar_temporario->proximo_fila;
     }
-    cout << "" << endl;
+    cout << "NULL \n";
 }
 
 int main()
 {
-    Fila* fila = criar_fila();
-
-    enfileirar(fila, "Joao");
+    Fila* fila = criarFila();
+    enfileirar(fila, "João");
     enfileirar(fila, "Maria");
-    enfileirar(fila, "Jose");
-    enfileirar(fila, "Ana");
-
+    enfileirar(fila, "Pedro");
     imprimirFila(fila);
-
     desenfileirar(fila);
-    desenfileirar(fila);
-
     imprimirFila(fila);
-
     desenfileirar(fila);
+    imprimirFila(fila);
     desenfileirar(fila);
-    desenfileirar(fila);
-
-    system("pause");
+    imprimirFila(fila);
     return 0;
 }
