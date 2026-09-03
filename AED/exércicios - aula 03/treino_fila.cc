@@ -4,7 +4,7 @@ using namespace std;
 
 typedef struct No 
 {
-    char nome[50];
+    char nome[30];
     No* proximo_fila;
 } No;
 
@@ -19,64 +19,77 @@ Fila* criarFila()
     Fila* fila = new Fila;
     fila->frente_fila = fila->atras_fila = NULL;
     return fila;
-}
-void enfileirar(Fila* fila, char nome[])
+} 
+
+void enfileirar(Fila* fila, char nome[30])
 {
     No* novo_fila = new No;
     strcpy(novo_fila->nome, nome);
     novo_fila->proximo_fila = NULL;
 
-    if (!fila->atras_fila) 
+    if(!fila->atras_fila)
     {
         fila->frente_fila = fila->atras_fila = novo_fila;
         return;
     }
-    else 
+    else
     {
         fila->atras_fila->proximo_fila = novo_fila;
         fila->atras_fila = novo_fila;
     }
 }
+
 void desenfileirar(Fila* fila)
 {
-    if(!fila->frente_fila) 
+    if(!fila->frente_fila)
     {
+        cout << "Fila vazia!" << endl;
         return;
     }
 
     No* lugar_temporario = fila->frente_fila;
     fila->frente_fila = fila->frente_fila->proximo_fila;
 
-    if(!fila->frente_fila) 
+    if (!fila->frente_fila) 
     {
+        cout << "Fila vazia!" << endl;
         fila->atras_fila = NULL;
     }
     delete lugar_temporario;
 }
+
 void imprimirFila(Fila* fila)
 {
     No* lugar_temporario = fila->frente_fila;
 
-    while (lugar_temporario) 
+    while(lugar_temporario)
     {
         cout << lugar_temporario->nome << " <- ";
         lugar_temporario = lugar_temporario->proximo_fila;
     }
-    cout << "NULL \n";
+    cout << "NULL" << endl;
 }
 
 int main()
 {
     Fila* fila = criarFila();
+
     enfileirar(fila, "João");
     enfileirar(fila, "Maria");
     enfileirar(fila, "Pedro");
+
     imprimirFila(fila);
+
     desenfileirar(fila);
     imprimirFila(fila);
+
     desenfileirar(fila);
     imprimirFila(fila);
+
     desenfileirar(fila);
     imprimirFila(fila);
+
+    desenfileirar(fila); // Tentativa de desenfileirar de uma fila vazia
+
     return 0;
 }
