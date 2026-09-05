@@ -1,58 +1,63 @@
 #include <iostream>
 #include <stdlib.h>
-#include <string.h> // STRCPY
 using namespace std;
 
-typedef struct No
+typedef struct No 
 {
-    char dado[30];
+    int dado;
     No* proximo_pilha;
 } No;
 
-
-No* empilhar(No* topo_pilha, char* dado)
+No* empilhar(No* topo_pilha, int dado)
 {
     No* novo_pilha = new No;
-    strcpy(novo_pilha->dado, dado);
+    novo_pilha->dado = dado;
     novo_pilha->proximo_pilha = topo_pilha;
     return novo_pilha;
 }
-No* desempilhar(No* topo_pilha, char* dado)
+
+No* desempilhar(No* topo_pilha, int dado)
 {
-    if (!topo_pilha)
+    if(!topo_pilha)
     {
-        cout << "Topo Vazio \n";
-        return NULL;
+        cout << "\n\t Topo vazio❌ \n";
+        return;
     }
 
     No* lugar_temporario = topo_pilha;
-    *dado = topo_pilha->dado[0];
+    dado = topo_pilha->dado;
     topo_pilha = topo_pilha->proximo_pilha;
     delete lugar_temporario;
     return topo_pilha;
 }
-void inverterPalavra(const char* dado)
+void inverterPalavra(char palavra[])
 {
-    No* pilha = NULL;
+    No* pilha = nullptr;
+    int indice;
 
-    for (int i = 0; dado[i] != '\0'; i++)
+    for (indice = 0; palavra[indice] != '\0'; indice++)
     {
-        char letra[2] = { dado[i], '\0' };
-        pilha = empilhar(pilha, letra);
+        pilha = empilhar(pilha, palavra[indice]);
     }
-    cout << "\n Palavra invertida: ";
-    char c;
+
+    cout << "\n\t Palavra Invertida: ";
+    char invertida;
 
     while (pilha)
     {
-        pilha = desempilhar(pilha, &c);
-        cout << c;
+        pilha = desempilhar(pilha, invertida);
+        cout << invertida;
     }
-    cout << " \n";
+    cout << "\n"; 
 }
 
-int main()
+int main() 
 {
-    inverterPalavra("Algóritmos");
-    return 0;
+    char palavra[100];
+    cout << "\n Digite uma palavra: ";
+    cin >> palavra;
+    inverterPalavra(palavra);
+    
+    //return 0;
+    system("PAUSE");
 }

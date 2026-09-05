@@ -3,7 +3,6 @@
 
 using namespace std;
 
-// Estrutura do nó
 struct No 
 {
     int valor;
@@ -11,7 +10,6 @@ struct No
     No* direita;
 };
 
-// Criação de um novo nó
 No* novoNo(int valor) 
 {
     No* novo = new No;
@@ -21,7 +19,6 @@ No* novoNo(int valor)
     return novo;
 }
 
-// Inserção em árvore binária de busca
 No* inserir(No* raiz, int valor) 
 {
     if (raiz == NULL) 
@@ -57,8 +54,8 @@ No* buscar(No* raiz, int valor)
     return buscar(raiz->direita, valor);
 }
 
-// Encontrar o menor valor da subárvore
-No* encontrarMinimo(No* node) {
+No* encontrarMinimo(No* node) 
+{
     while (node->esquerda != NULL)
         node = node->esquerda;
     return node;
@@ -68,6 +65,7 @@ No* remover(No* raiz, int valor)
 {
     if (raiz == NULL) 
         return raiz;
+
     if (valor < raiz->valor) 
     {
         raiz->esquerda = remover(raiz->esquerda, valor);
@@ -77,6 +75,7 @@ No* remover(No* raiz, int valor)
     {
         raiz->direita = remover(raiz->direita, valor);
     }
+
     else 
     {
         if (raiz->esquerda == NULL) 
@@ -128,7 +127,6 @@ int main()
     cout << "\nArvore em ordem: ";
     emOrdem(raiz);
 
-    // Remoção
     raiz = remover(raiz, 20); // Nó sem filhos
     raiz = remover(raiz, 30); // Nó com um filho
     raiz = remover(raiz, 50); // Nó com dois filhos
@@ -137,5 +135,5 @@ int main()
     emOrdem(raiz);
 
     system("PAUSE");
-    //return 0;
+    return 0;
 }

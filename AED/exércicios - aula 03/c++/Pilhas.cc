@@ -34,8 +34,10 @@ void inverterPalavra(char palavra[])
 {
     No* pilha = NULL;
 
-    for (int i = 0; palavra[i] != '\0'; i++)
+    for (int i = 0; palavra[i] != '\0'; i++) 
+    {
         pilha = empilhar(pilha, palavra[i]);
+    }
 
     cout<<"\n Palavra invertida: ";
     char c;
