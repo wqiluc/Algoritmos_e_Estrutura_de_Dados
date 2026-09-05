@@ -15,12 +15,11 @@ No* empilhar(No* topo_pilha, int dado)
     novo_pilha->proximo_pilha = topo_pilha;
     return novo_pilha;
 }
-
 No* desempilhar(No* topo_pilha, int dado)
 {
-    if(!topo_pilha)
+    if (!topo_pilha)
     {
-        cout << "\n\t Topo vazio❌ \n";
+        cout << "\n\t Topo da Pilha Vazio❌";
         return;
     }
 
@@ -33,22 +32,22 @@ No* desempilhar(No* topo_pilha, int dado)
 void inverterPalavra(char palavra[])
 {
     No* pilha = nullptr;
-    int indice;
+    int indice_pilha;
 
-    for (indice = 0; palavra[indice] != '\0'; indice++)
+    for (indice_pilha = 0; palavra[indice_pilha] != '\0'; indice_pilha++)
     {
-        pilha = empilhar(pilha, palavra[indice]);
+        pilha = empilhar(pilha, palavra[indice_pilha]);
     }
 
     cout << "\n\t Palavra Invertida: ";
-    char invertida;
+    char palavra_invertida;
 
     while (pilha)
     {
-        pilha = desempilhar(pilha, invertida);
-        cout << invertida;
+        pilha = desempilhar(pilha, palavra_invertida);
+        cout << palavra_invertida;
     }
-    cout << "\n"; 
+    cout << "\n";
 }
 
 int main() 
@@ -58,6 +57,6 @@ int main()
     cin >> palavra;
     inverterPalavra(palavra);
     
-    //return 0;
+    return 0;
     system("PAUSE");
 }

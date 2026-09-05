@@ -41,15 +41,16 @@ void inserirFim(Lista* lista, int dado)
     }
 
     No* lugar_temporario = lista->inicio_lista;
+    lugar_temporario = lugar_temporario->proximo_lista;
 
-    while (lugar_temporario)
+    while (lugar_temporario->proximo_lista)
     {
         lugar_temporario = lugar_temporario->proximo_lista;
     }
     lugar_temporario->proximo_lista = novo_lista;
 }
 
-void inserirMeio(Lista* lista, int dadoNovo, int dadoBusca)
+No* inserirMeio(Lista* lista, int dadoNovo, int dadoBusca)
 {
     No* novo_lista = new No;
     novo_lista->dado = dadoNovo;
@@ -67,14 +68,14 @@ void inserirMeio(Lista* lista, int dadoNovo, int dadoBusca)
 
 void imprimirLista(Lista* lista)
 {
-    No* lugar_temporario = new No;
+    No* lugar_temporario = lista->inicio_lista;
 
     while (lugar_temporario)
     {
-        cout << lugar_temporario->dado << " <== \n";
+        cout << lugar_temporario->dado << " <==\n";
         lugar_temporario = lugar_temporario->proximo_lista;
     }
-    cout << " NULL\n";
+    cout << "\n";
 }
 
 int main()
@@ -90,6 +91,6 @@ int main()
     //inserirInicio(lista, 60);
     imprimirLista(lista);
 
-    //return 0;
+    return 0;
     system("PAUSE");
 }
