@@ -4,7 +4,7 @@ using namespace std;
 
 typedef struct No 
 {
-    int dado;
+    int valor;
     No* proximo_lista;
 } No;
 
@@ -19,19 +19,17 @@ Lista* criarLista()
     lista->inicio_lista = NULL;
     return lista;
 }
-
-void inserirInicio(Lista* lista, int dado)
+void inserirInicio(Lista* lista, int valor)
 {
     No* novo_lista = new No;
-    novo_lista->dado = dado;
+    novo_lista->valor = valor;
     novo_lista->proximo_lista = lista->inicio_lista;
     lista->inicio_lista = novo_lista;
 }
-
-void inserirFim(Lista* lista, int dado)
+void inserirFim(Lista* lista, int valor)
 {
     No* novo_lista = new No;
-    novo_lista->dado = dado;
+    novo_lista->valor = valor;
     novo_lista->proximo_lista = NULL;
 
     if (!lista->inicio_lista)
@@ -41,7 +39,6 @@ void inserirFim(Lista* lista, int dado)
     }
 
     No* lugar_temporario = lista->inicio_lista;
-    lugar_temporario = lugar_temporario->proximo_lista;
 
     while (lugar_temporario->proximo_lista)
     {
@@ -49,30 +46,29 @@ void inserirFim(Lista* lista, int dado)
     }
     lugar_temporario->proximo_lista = novo_lista;
 }
-
-No* inserirMeio(Lista* lista, int dadoNovo, int dadoBusca)
+void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
 {
     No* novo_lista = new No;
-    novo_lista->dado = dadoNovo;
+    novo_lista->valor = valorNovo;
     novo_lista->proximo_lista = NULL;
 
     No* lugar_temporario = lista->inicio_lista;
 
-    while (lugar_temporario->proximo_lista && lugar_temporario->proximo_lista->dado != dadoBusca)
+    while (lugar_temporario->proximo_lista && lugar_temporario->proximo_lista->valor != valorBusca)
     {
         lugar_temporario = lugar_temporario->proximo_lista;
     }
+
     lugar_temporario->proximo_lista = novo_lista->proximo_lista;
     lugar_temporario->proximo_lista = novo_lista;
 }
-
 void imprimirLista(Lista* lista)
 {
-    No* lugar_temporario = lista->inicio_lista;
+    No* lugar_temporario = new No;
 
     while (lugar_temporario)
     {
-        cout << lugar_temporario->dado << " <==\n";
+        cout << lugar_temporario->valor << " \n";
         lugar_temporario = lugar_temporario->proximo_lista;
     }
     cout << "\n";
@@ -91,6 +87,6 @@ int main()
     //inserirInicio(lista, 60);
     imprimirLista(lista);
 
-    return 0;
+    //return 0;
     system("PAUSE");
 }

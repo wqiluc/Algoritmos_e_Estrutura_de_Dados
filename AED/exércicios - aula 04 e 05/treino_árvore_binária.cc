@@ -4,58 +4,54 @@ using namespace std;
 
 typedef struct No 
 {
-    int dado;
-    No* esquerda_arvore;
+    int valor;
     No* direita_arvore;
+    No* esquerda_arvore;
 } No;
 
-No* criarNo(int dado)
+No* criarNo(int valor)
 {
     No* novo_no_arvore = new No;
-    novo_no_arvore->dado = dado;
-    novo_no_arvore->esquerda_arvore = NULL;
+    novo_no_arvore->valor = valor;
     novo_no_arvore->direita_arvore = NULL;
+    novo_no_arvore->esquerda_arvore = NULL;
     return novo_no_arvore;
 }
-
-No* inserirNo(No* raiz_arvore, int dado)
+No* inserirNo(No* raiz_arvore, int valor)
 {
-    if(!raiz_arvore)
+    if (!raiz_arvore)
     {
-        cout << "\n\t Árvore Vazia ❌\n";
-        return criarNo(dado);
+        cout << "\n\t Árvore Vazia ❌ \n";
+        return;
     }
 
-    if (dado < raiz_arvore->dado)
+    if (valor < raiz_arvore->valor)
     {
-        raiz_arvore->esquerda_arvore = inserirNo(raiz_arvore->esquerda_arvore, dado);
+        raiz_arvore->esquerda_arvore = inserirNo(raiz_arvore->esquerda_arvore, valor);
     }
 
-    else if (dado > raiz_arvore->dado)
+    else if (valor > raiz_arvore->valor)
     {
-        raiz_arvore->direita_arvore = inserirNo(raiz_arvore->direita_arvore, dado);
+        raiz_arvore->direita_arvore = inserirNo(raiz_arvore->direita_arvore, valor);
     }
 }
-
-No* buscarNo(No* raiz_arvore, int dado)
+No* buscarNo(No* raiz_arvore, int valor)
 {
-    if (!raiz_arvore || raiz_arvore->dado == dado)
+    if (!raiz_arvore || raiz_arvore->valor == valor)
     {
         return raiz_arvore;
     }
 
-    if (dado < raiz_arvore->dado)
+    if (valor < raiz_arvore->valor)
     {
-        return buscarNo(raiz_arvore->esquerda_arvore, dado);
+        return buscarNo(raiz_arvore->esquerda_arvore, valor);
     }
 
-    else if (dado > raiz_arvore->dado)
+    else if (valor > raiz_arvore->valor)
     {
-        return buscarNo(raiz_arvore->direita_arvore, dado);
+        return buscarNo(raiz_arvore->direita_arvore, valor);
     }
 }
-
-
 void preOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
@@ -64,12 +60,10 @@ void preOrdem(No* raiz_arvore)
         return;
     }
 
-    cout << raiz_arvore->dado << " ";
+    cout << raiz_arvore->valor << " ";
     preOrdem(raiz_arvore->esquerda_arvore);
-    preOrdem(raiz_arvore->direita_arvore);
+    preOrdem(raiz_arvore->esquerda_arvore);
 }
-
-
 void emOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
@@ -79,11 +73,9 @@ void emOrdem(No* raiz_arvore)
     }
 
     emOrdem(raiz_arvore->esquerda_arvore);
-    cout << raiz_arvore->dado << " ";
+    cout << raiz_arvore->valor << " ";
     emOrdem(raiz_arvore->direita_arvore);
 }
-
-
 void posOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
@@ -94,12 +86,12 @@ void posOrdem(No* raiz_arvore)
 
     posOrdem(raiz_arvore->esquerda_arvore);
     posOrdem(raiz_arvore->direita_arvore);
-    cout << raiz_arvore->dado << " ";
+    cout << raiz_arvore->valor << " ";
 }
 
 int main()
 {
-    No* raiz_arvore = nullptr;
+    No* raiz_arvore = NULL;
 
     raiz_arvore = inserirNo(raiz_arvore, 50);
     raiz_arvore = inserirNo(raiz_arvore, 30);
@@ -124,7 +116,7 @@ int main()
     if (encontrado_arvore != NULL)
         cout << "\n\nValor " << alvo << " encontrado na árvore. ✅";
     else
-        cout << "\n\nValor " << alvo << " não encontrado na árvore. ✅";
+        cout << "\n\nValor " << alvo << " não encontrado na árvore. ❌";
 
     cout << endl;
     system("PAUSE");

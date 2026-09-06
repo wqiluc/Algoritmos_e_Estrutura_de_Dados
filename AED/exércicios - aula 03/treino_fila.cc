@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <stdlib.h>
 using namespace std;
 
 typedef struct No 
@@ -14,13 +15,15 @@ typedef struct Fila
     No* frente_fila;
 } Fila;
 
+
 Fila* criarFila()
 {
     Fila* fila = new Fila;
     fila->atras_fila = fila->frente_fila = NULL;
     return fila;
 }
-void enfileirar(Fila* fila, char nome[30])
+
+void enfileirar(Fila* fila, char nome[])
 {
     No* novo_fila = new No;
     strcpy(novo_fila->nome, nome);
@@ -30,7 +33,6 @@ void enfileirar(Fila* fila, char nome[30])
     {
         fila->atras_fila = fila->frente_fila = novo_fila;
     }
-
     else
     {
         fila->atras_fila->proximo_fila = novo_fila;
@@ -40,8 +42,8 @@ void enfileirar(Fila* fila, char nome[30])
 void desenfileirar(Fila* fila)
 {
     if (!fila->frente_fila)
-    {
-        cout << "\n\t Fila Vazia ❌";
+    {  
+        cout << "\n\t Fila Vazia \n";
         return;
     }
 
@@ -52,23 +54,21 @@ void desenfileirar(Fila* fila)
     {
         fila->atras_fila = NULL;
     }
-    
     delete lugar_temporario;
 }
 void imprimirFila(Fila* fila)
 {
     No* lugar_temporario = fila->frente_fila;
 
-    while (lugar_temporario)
+    while(lugar_temporario)
     {
-        cout << lugar_temporario->nome << " <== \n";
+        cout << lugar_temporario->nome << " <==\n";
         lugar_temporario = lugar_temporario->proximo_fila;
     }
-    cout << "\n\t NULL";
+    cout << "\n ";
 }
 
-
-int main() 
+int main()
 {
     Fila* fila = criarFila();
     enfileirar(fila, "Ana");
@@ -79,6 +79,6 @@ int main()
     desenfileirar(fila);
     imprimirFila(fila);
 
-    //return 0;
+    return 0;
     system("PAUSE");
 }

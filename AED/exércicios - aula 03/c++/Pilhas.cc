@@ -21,7 +21,9 @@ No* empilhar(No* topo, char valor)
 No* desempilhar(No* topo, char* valor) 
 {
     if (!topo) 
+    {
         return NULL;
+    }
 
     No* temp = topo;
     *valor = topo->dado;
