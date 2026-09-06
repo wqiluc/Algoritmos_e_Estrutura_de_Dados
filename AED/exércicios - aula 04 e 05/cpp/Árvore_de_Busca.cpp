@@ -20,7 +20,7 @@ No* criarNo(int valor)
 
 No* inserir(No* raiz_arvore, int valor)
 {
-    if (raiz_arvore == NULL)
+    if (raiz_arvore == NULL) // ou if(!raiz_arvore) = MESMA COISA
     {  
         cout << "Árvore Vazia❌ \n";
         return criarNo(valor);
@@ -41,7 +41,8 @@ No* inserir(No* raiz_arvore, int valor)
 
 No* buscar(No* raiz_arvore, int valor)
 {
-    if (raiz_arvore == NULL || raiz_arvore->valor == valor)
+    if (raiz_arvore == NULL || raiz_arvore->valor == valor) // =
+    // if (!raiz_arvore || raiz_arvore->valor == valor)
     {
         return raiz_arvore;
     }
@@ -88,7 +89,6 @@ int main()
 {
     No* raiz_arvore = NULL;
 
-    // Insercoes
     raiz_arvore = inserir(raiz_arvore, 50);
     raiz_arvore = inserir(raiz_arvore, 30);
     raiz_arvore = inserir(raiz_arvore, 70);
