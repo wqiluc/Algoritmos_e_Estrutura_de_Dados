@@ -56,6 +56,55 @@ No* buscarNo(No* raiz_arvore, int valor)
     }
 }
 
+No* encontrarMinimoNo(No* raiz_arvore)
+{
+    while (raiz_arvore->esquerda_arvore != NULL)
+    {
+        raiz_arvore = raiz_arvore->esquerda_arvore;
+    }
+    return raiz_arvore;
+}
+
+No* removerNo(No* raiz_arvore, int valor)
+{
+    if (!raiz_arvore)
+    {
+        return raiz_arvore;
+    }
+
+    if (valor < raiz_arvore->valor)
+    {
+        raiz_arvore->esquerda_arvore = removerNo(raiz_arvore->esquerda_arvore, valor);
+    }
+
+    else if (valor > raiz_arvore->valor)
+    {
+        raiz_arvore->direita_arvore = removerNo(raiz_arvore->direita_arvore, valor);
+    }
+
+    else
+    {
+        if (!raiz_arvore->esquerda_arvore)
+        {
+            No* filho_direito = raiz_arvore->direita_arvore;
+            delete raiz_arvore;
+            return filho_direito;
+        }
+
+        else if (!raiz_arvore->direita_arvore)
+        {
+            No* filho_esquerdo = raiz_arvore->esquerda_arvore;
+            delete raiz_arvore;
+            return filho_esquerdo;
+        }
+
+        No* sucessor = encontrarMinimoNo(raiz_arvore->direita_arvore);
+        raiz_arvore->valor = sucessor->valor;
+        raiz_arvore->direita_arvore = removerNo(raiz_arvore->direita_arvore, sucessor->valor);
+    }
+
+    return raiz_arvore;
+}
 
 void preOrdem(No* raiz_arvore)
 {
@@ -127,6 +176,13 @@ int main()
         cout << "\n\nValor " << alvo << " encontrado na árvore. ✅";
     else
         cout << "\n\nValor " << alvo << " não encontrado na árvore. ❌";
+
+    raiz_arvore = removerNo(raiz_arvore, 20); // Nó sem filhos
+    raiz_arvore = removerNo(raiz_arvore, 30); // Nó com um filho
+    raiz_arvore = removerNo(raiz_arvore, 50); // Nó com dois filhos
+
+    cout << "\n\nÁrvore em ordem após remoções: ";
+    emOrdem(raiz_arvore);
 
     cout << endl;
     system("PAUSE");

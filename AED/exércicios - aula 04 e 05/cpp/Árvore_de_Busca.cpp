@@ -2,12 +2,12 @@
 #include <stdlib.h>
 using namespace std;
 
-struct No
+typedef struct No
 {
     int valor;
     No* esquerda_arvore;
     No* direita_arvore;
-};
+} No;
 
 No* criarNo(int valor)
 {
@@ -20,9 +20,8 @@ No* criarNo(int valor)
 
 No* inserir(No* raiz_arvore, int valor)
 {
-    if (raiz_arvore == NULL) // ou if(!raiz_arvore) = MESMA COISA
-    {  
-        cout << "Árvore Vazia❌ \n";
+    if (!raiz_arvore)
+    {
         return criarNo(valor);
     }
 
@@ -41,8 +40,7 @@ No* inserir(No* raiz_arvore, int valor)
 
 No* buscar(No* raiz_arvore, int valor)
 {
-    if (raiz_arvore == NULL || raiz_arvore->valor == valor) // =
-    // if (!raiz_arvore || raiz_arvore->valor == valor)
+    if (!raiz_arvore || raiz_arvore->valor == valor)
     {
         return raiz_arvore;
     }
@@ -52,37 +50,49 @@ No* buscar(No* raiz_arvore, int valor)
         return buscar(raiz_arvore->esquerda_arvore, valor);
     }
 
-    return buscar(raiz_arvore->direita_arvore, valor);
+    else if (valor > raiz_arvore->valor)
+    {
+        return buscar(raiz_arvore->direita_arvore, valor);
+    }
 }
 
 void preOrdem(No* raiz_arvore)
 {
-    if (raiz_arvore != NULL)
+    if (!raiz_arvore)
     {
-        cout << raiz_arvore->valor << " ";
-        preOrdem(raiz_arvore->esquerda_arvore);
-        preOrdem(raiz_arvore->direita_arvore);
+        cout << "[Pré-Ordem] Ramo esgotado: nó nulo, nada a visitar aqui." << endl;
+        return;
     }
+
+    cout << raiz_arvore->valor << " ";
+    preOrdem(raiz_arvore->esquerda_arvore);
+    preOrdem(raiz_arvore->direita_arvore);
 }
 
 void emOrdem(No* raiz_arvore)
 {
-    if (raiz_arvore != NULL)
+    if (!raiz_arvore)
     {
-        emOrdem(raiz_arvore->esquerda_arvore);
-        cout << raiz_arvore->valor << " ";
-        emOrdem(raiz_arvore->direita_arvore);
+        cout << "[Em-Ordem] Ramo esgotado: nó nulo, nada a visitar aqui." << endl;
+        return;
     }
+
+    emOrdem(raiz_arvore->esquerda_arvore);
+    cout << raiz_arvore->valor << " ";
+    emOrdem(raiz_arvore->direita_arvore);
 }
 
 void posOrdem(No* raiz_arvore)
 {
-    if (raiz_arvore != NULL)
+    if (!raiz_arvore)
     {
-        posOrdem(raiz_arvore->esquerda_arvore);
-        posOrdem(raiz_arvore->direita_arvore);
-        cout << raiz_arvore->valor << " ";
+        cout << "[Pós-Ordem] Ramo esgotado: nó nulo, nada a visitar aqui." << endl;
+        return;
     }
+
+    posOrdem(raiz_arvore->esquerda_arvore);
+    posOrdem(raiz_arvore->direita_arvore);
+    cout << raiz_arvore->valor << " ";
 }
 
 int main()
@@ -97,22 +107,22 @@ int main()
     raiz_arvore = inserir(raiz_arvore, 60);
     raiz_arvore = inserir(raiz_arvore, 80);
 
-    cout << "Pre-Ordem: ";
+    cout << "Pré-Ordem: ";
     preOrdem(raiz_arvore);
 
     cout << "\nEm-Ordem: ";
     emOrdem(raiz_arvore);
 
-    cout << "\nPos-Ordem: ";
+    cout << "\nPós-Ordem: ";
     posOrdem(raiz_arvore);
 
     int alvo = 40;
     No* encontrado_arvore = buscar(raiz_arvore, alvo);
 
     if (encontrado_arvore != NULL)
-        cout << "\n\nValor " << alvo << " encontrado na árvore.";
+        cout << "\n\nValor " << alvo << " encontrado na árvore. ✅";
     else
-        cout << "\n\nValor " << alvo << " não encontrado na árvore.";
+        cout << "\n\nValor " << alvo << " não encontrado na árvore. ❌";
 
     cout << endl;
     system("PAUSE");

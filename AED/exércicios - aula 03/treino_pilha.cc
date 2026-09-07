@@ -19,7 +19,8 @@ No* desempilhar(No* topo_pilha, int valor)
 {
     if (!topo_pilha)
     {
-        return NULL;
+        cout << "\n\t Pilha Vazia❌ \n";
+        return;
     }
 
     No* lugar_temporario = topo_pilha;
@@ -44,9 +45,9 @@ void inverterPalavra(char palavra[])
     while (pilha)
     {
         pilha = desempilhar(pilha, palavra_invertida);
-        cout << palavra_invertida;
+        cout << palavra;
     }
-    cout << "\n";
+    cout << " ";
 }
 
 int main() 

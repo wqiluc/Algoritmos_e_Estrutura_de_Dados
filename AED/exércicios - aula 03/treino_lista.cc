@@ -19,6 +19,7 @@ Lista* criarLista()
     lista->inicio_lista = NULL;
     return lista;
 }
+
 void inserirInicio(Lista* lista, int valor)
 {
     No* novo_lista = new No;
@@ -26,6 +27,7 @@ void inserirInicio(Lista* lista, int valor)
     novo_lista->proximo_lista = lista->inicio_lista;
     lista->inicio_lista = novo_lista;
 }
+
 void inserirFim(Lista* lista, int valor)
 {
     No* novo_lista = new No;
@@ -35,7 +37,6 @@ void inserirFim(Lista* lista, int valor)
     if (!lista->inicio_lista)
     {
         lista->inicio_lista = novo_lista;
-        return;
     }
 
     No* lugar_temporario = lista->inicio_lista;
@@ -46,6 +47,7 @@ void inserirFim(Lista* lista, int valor)
     }
     lugar_temporario->proximo_lista = novo_lista;
 }
+
 void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
 {
     No* novo_lista = new No;
@@ -58,20 +60,20 @@ void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
     {
         lugar_temporario = lugar_temporario->proximo_lista;
     }
-
     lugar_temporario->proximo_lista = novo_lista->proximo_lista;
     lugar_temporario->proximo_lista = novo_lista;
 }
+
 void imprimirLista(Lista* lista)
 {
-    No* lugar_temporario = new No;
+    No* lugar_temporario = lista->inicio_lista;
 
     while (lugar_temporario)
     {
-        cout << lugar_temporario->valor << " \n";
+        cout << lugar_temporario->valor << " <== \n";
         lugar_temporario = lugar_temporario->proximo_lista;
     }
-    cout << "\n";
+    cout << " ";
 }
 
 int main()
