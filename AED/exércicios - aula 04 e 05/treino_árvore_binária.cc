@@ -5,29 +5,29 @@ using namespace std;
 typedef struct No 
 {
     int valor;
+    No* esquerda_avore;
     No* direita_arvore;
-    No* esquerda_arvore;
 } No;
 
 No* criarNo(int valor)
 {
     No* novo_no_arvore = new No;
     novo_no_arvore->valor = valor;
+    novo_no_arvore->esquerda_avore = NULL;
     novo_no_arvore->direita_arvore = NULL;
-    novo_no_arvore->esquerda_arvore = NULL;
     return novo_no_arvore;
 }
 No* inserirNo(No* raiz_arvore, int valor)
 {
     if (!raiz_arvore)
     {
-        cout << "\n\t Árvore Vazia ❌ \n";
+        cout << "\n\t Árvore Vazia";
         return;
     }
 
     if (valor < raiz_arvore->valor)
     {
-        raiz_arvore->esquerda_arvore = inserirNo(raiz_arvore->esquerda_arvore, valor);
+        raiz_arvore->esquerda_avore = inserirNo(raiz_arvore->esquerda_avore, valor);
     }
 
     else if (valor > raiz_arvore->valor)
@@ -44,7 +44,7 @@ No* buscarNo(No* raiz_arvore, int valor)
 
     if (valor < raiz_arvore->valor)
     {
-        return buscarNo(raiz_arvore->esquerda_arvore, valor);
+        return buscarNo(raiz_arvore->esquerda_avore, valor);
     }
 
     else if (valor > raiz_arvore->valor)
@@ -56,23 +56,23 @@ void preOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
     {
-        cout << "\n\t Árvore Vazia ❌\n";
+        cout << "\n\t Árvore Vazia";
         return;
     }
 
-    cout << raiz_arvore->valor << " ";
-    preOrdem(raiz_arvore->esquerda_arvore);
-    preOrdem(raiz_arvore->esquerda_arvore);
+    cout << raiz_arvore->valor << "";
+    preOrdem(raiz_arvore->esquerda_avore);
+    preOrdem(raiz_arvore->esquerda_avore);
 }
 void emOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
     {
-        cout << "\n\t Árvore Vazia ❌\n";
+        cout << "\n\t Árvore Vazia";
         return;
     }
 
-    emOrdem(raiz_arvore->esquerda_arvore);
+    emOrdem(raiz_arvore->esquerda_avore);
     cout << raiz_arvore->valor << " ";
     emOrdem(raiz_arvore->direita_arvore);
 }
@@ -80,11 +80,11 @@ void posOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
     {
-        cout << "\n\t Árvore Vazia ❌\n";
+        cout << "\n\t Árvore Vazia";
         return;
     }
 
-    posOrdem(raiz_arvore->esquerda_arvore);
+    posOrdem(raiz_arvore->esquerda_avore);
     posOrdem(raiz_arvore->direita_arvore);
     cout << raiz_arvore->valor << " ";
 }
