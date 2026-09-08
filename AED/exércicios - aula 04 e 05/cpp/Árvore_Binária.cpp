@@ -119,10 +119,14 @@ int main()
     int alvo = 40;
     No* encontrado_arvore = buscar(raiz_arvore, alvo);
 
-    if (encontrado_arvore != NULL)
+    if (encontrado_arvore != NULL) 
+    {
         cout << "\n\nValor " << alvo << " encontrado na árvore. ✅";
-    else
+    }
+    else 
+    {
         cout << "\n\nValor " << alvo << " não encontrado na árvore. ❌";
+    }
 
     cout << endl;
     system("PAUSE");
