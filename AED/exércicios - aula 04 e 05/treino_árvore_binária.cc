@@ -2,19 +2,19 @@
 #include <stdlib.h>
 using namespace std;
 
-typedef struct No
+typedef struct No 
 {
     int valor;
-    No* esquerda_arvore;
     No* direita_arvore;
+    No* esquerda_arvore;
 } No;
 
 No* criarNo(int valor)
 {
     No* novo_no_arvore = new No;
     novo_no_arvore->valor = valor;
-    novo_no_arvore->esquerda_arvore = NULL;
-    novo_no_arvore->direita_arvore = NULL;
+    novo_no_arvore->direita_arvore = nullptr;
+    novo_no_arvore->esquerda_arvore = nullptr;
     return novo_no_arvore;
 }
 
@@ -34,8 +34,6 @@ No* inserirNo(No* raiz_arvore, int valor)
     {
         raiz_arvore->direita_arvore = inserirNo(raiz_arvore->direita_arvore, valor);
     }
-
-    return raiz_arvore;
 }
 
 No* buscarNo(No* raiz_arvore, int valor)
@@ -56,7 +54,6 @@ No* buscarNo(No* raiz_arvore, int valor)
     }
 }
 
-
 void preOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
@@ -69,7 +66,6 @@ void preOrdem(No* raiz_arvore)
     preOrdem(raiz_arvore->esquerda_arvore);
     preOrdem(raiz_arvore->direita_arvore);
 }
-
 
 void emOrdem(No* raiz_arvore)
 {
@@ -84,7 +80,6 @@ void emOrdem(No* raiz_arvore)
     emOrdem(raiz_arvore->direita_arvore);
 }
 
-
 void posOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
@@ -98,10 +93,9 @@ void posOrdem(No* raiz_arvore)
     cout << raiz_arvore->valor << " ";
 }
 
-
 int main()
 {
-    No* raiz_arvore = NULL;
+    No* raiz_arvore = nullptr;
 
     raiz_arvore = inserirNo(raiz_arvore, 50);
     raiz_arvore = inserirNo(raiz_arvore, 30);
@@ -121,12 +115,17 @@ int main()
     posOrdem(raiz_arvore);
 
     int alvo = 40;
-    No* encontrado_arvore = buscarNo(raiz_arvore, alvo);
+    No* valor_encontrado_arvore = buscarNo(raiz_arvore, alvo);
 
-    if (encontrado_arvore != NULL)
-        cout << "\n\nValor " << alvo << " encontrado na árvore. ✅";
-    else
-        cout << "\n\nValor " << alvo << " não encontrado na árvore. ❌";
+    if (valor_encontrado_arvore != NULL) 
+    {
+        cout << "\n\tValor " << alvo << " encontrado na árvore. ✅";
+    }
+
+    else 
+    {
+        cout << "\n\tValor " << alvo << " não encontrado na árvore. ❌";
+    }
 
     cout << endl;
     system("PAUSE");
