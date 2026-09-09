@@ -58,8 +58,10 @@ No* buscarNo(No* raiz_arvore, int valor)
 
 No* encontrarNoMinimo(No* raiz_arvore)
 {
-    while (raiz_arvore->esquerda_arvore != NULL)
+    while (raiz_arvore->esquerda_arvore != NULL) 
+    {
         raiz_arvore = raiz_arvore->esquerda_arvore;
+    }
     return raiz_arvore;
 }
 

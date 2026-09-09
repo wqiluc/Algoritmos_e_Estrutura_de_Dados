@@ -9,6 +9,7 @@ typedef struct No
     No* esquerda_arvore;
 } No;
 
+
 No* criarNo(int valor)
 {
     No* novo_no_arvore = new No;
@@ -54,11 +55,59 @@ No* buscarNo(No* raiz_arvore, int valor)
     }
 }
 
+No* encontrarNoMinimo(No* raiz_arvore)
+{
+    while (raiz_arvore->esquerda_arvore != NULL)
+    {
+        raiz_arvore = raiz_arvore->esquerda_arvore;
+    }
+    return raiz_arvore;
+}
+
+No* removerNo(No* raiz_arvore, int valor)
+{
+    if (!raiz_arvore)
+    {
+        return raiz_arvore;
+    }
+
+    if (valor < raiz_arvore->valor)
+    {
+        raiz_arvore->esquerda_arvore = removerNo(raiz_arvore->esquerda_arvore, valor);
+    }
+
+    else if (valor > raiz_arvore->valor)
+    {
+        raiz_arvore->direita_arvore = removerNo(raiz_arvore->direita_arvore, valor);
+    }
+
+    else
+    {
+        if (!raiz_arvore->esquerda_arvore)
+        {
+            No* filho_direita = raiz_arvore->direita_arvore;
+            delete raiz_arvore;
+            return filho_direita;
+        }
+
+        else if (!raiz_arvore->direita_arvore)
+        {
+            No* filho_esquerda = raiz_arvore->esquerda_arvore;
+            delete raiz_arvore;
+            return filho_esquerda;
+        }
+
+        No* sucessor = encontrarNoMinimo(raiz_arvore->direita_arvore);
+        raiz_arvore->valor = sucessor->valor;
+        raiz_arvore->direita_arvore = removerNo(raiz_arvore->direita_arvore, sucessor->valor);
+    } 
+    return raiz_arvore;
+}
+
 void preOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
     {
-        cout << "[Pré-Ordem] Ramo esgotado: nó nulo, nada a visitar aqui." << endl;
         return;
     }
 
@@ -71,7 +120,6 @@ void emOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
     {
-        cout << "[Em-Ordem] Ramo esgotado: nó nulo, nada a visitar aqui." << endl;
         return;
     }
 
@@ -84,7 +132,6 @@ void posOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
     {
-        cout << "[Pós-Ordem] Ramo esgotado: nó nulo, nada a visitar aqui." << endl;
         return;
     }
 
@@ -95,7 +142,7 @@ void posOrdem(No* raiz_arvore)
 
 int main()
 {
-    No* raiz_arvore = nullptr;
+    No* raiz_arvore = NULL;
 
     raiz_arvore = inserirNo(raiz_arvore, 50);
     raiz_arvore = inserirNo(raiz_arvore, 30);
@@ -119,13 +166,20 @@ int main()
 
     if (valor_encontrado_arvore != NULL) 
     {
-        cout << "\n\tValor " << alvo << " encontrado na árvore. ✅";
+        cout << "\n\nValor " << alvo << " encontrado na árvore. ✅";
     }
 
     else 
     {
-        cout << "\n\tValor " << alvo << " não encontrado na árvore. ❌";
+        cout << "\n\nValor " << alvo << " não encontrado na árvore. ❌";
     }
+
+    raiz_arvore = removerNo(raiz_arvore, 20); // Nó sem filhos
+    raiz_arvore = removerNo(raiz_arvore, 30); // Nó com um filho
+    raiz_arvore = removerNo(raiz_arvore, 50); // Nó com dois filhos
+
+    cout << "\n\tÁrvore após remoções: ";
+    emOrdem(raiz_arvore);
 
     cout << endl;
     system("PAUSE");
