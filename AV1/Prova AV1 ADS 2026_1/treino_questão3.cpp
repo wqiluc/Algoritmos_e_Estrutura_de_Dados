@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <climits>
-
+using namespace std;
 typedef struct No 
 {
     int valor;
@@ -100,12 +100,39 @@ No* removerNo(No* raiz_arvore, int valor)
     }
 }
 
-bool ehABBvalida(No* raiz_arvore, long long valor_minimo = LLONG_MIN, long long valor_maximo = LLONG_MAX)
+bool ehABBValida(No* raiz_arvore, long long minimo = LLONG_MIN, long long maximo = LLONG_MAX)
 {
-    if (raiz_arvore == nullptr)
+    if (raiz_arvore == NULL)
     {
         return true;
     }
+
+    if (raiz_arvore->valor <= minimo || raiz_arvore->valor >= maximo)
+    {
+        return false;
+    }
+
+    return ehABBValida(raiz_arvore->esquerda_arvore, minimo, raiz_arvore->valor) &&
+           ehABBValida(raiz_arvore->direita_arvore, raiz_arvore->valor, maximo);
 }
 
-int main(){}
+int main()
+{
+    No* arvore_valida = nullptr;
+    arvore_valida = inserirNo(arvore_valida, 50);
+    arvore_valida = inserirNo(arvore_valida, 30);
+    arvore_valida = inserirNo(arvore_valida, 70);
+    arvore_valida = inserirNo(arvore_valida, 20);
+    arvore_valida = inserirNo(arvore_valida, 40);
+
+    cout << "Árvore válida é ABB? " << (ehABBValida(arvore_valida) ? "Sim" : "Não") << endl;
+
+    No* arvore_invalida = criarNo(50);
+    arvore_invalida->esquerda_arvore = criarNo(30);
+    arvore_invalida->direita_arvore = criarNo(70);
+    arvore_invalida->direita_arvore->esquerda_arvore = criarNo(40); // inválido: 40 < 50
+
+    cout << "Árvore inválida é ABB? " << (ehABBValida(arvore_invalida) ? "Sim" : "Não") << endl;
+
+    return 0;
+}

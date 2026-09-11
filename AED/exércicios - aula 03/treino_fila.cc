@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string.h>
 #include <stdlib.h>
 using namespace std;
 
@@ -14,7 +13,6 @@ typedef struct Fila
     No* atras_fila;
     No* frente_fila;
 } Fila;
-
 
 Fila* criarFila()
 {
@@ -32,6 +30,7 @@ void enfileirar(Fila* fila, char nome[])
     if (!fila->atras_fila)
     {
         fila->atras_fila = fila->frente_fila = novo_fila;
+        return;
     }
     else
     {
@@ -39,11 +38,11 @@ void enfileirar(Fila* fila, char nome[])
         fila->atras_fila = novo_fila;
     }
 }
+
 void desenfileirar(Fila* fila)
 {
     if (!fila->frente_fila)
-    {  
-        cout << "\n\t Fila Vazia \n";
+    {
         return;
     }
 
@@ -52,23 +51,25 @@ void desenfileirar(Fila* fila)
 
     if (!fila->frente_fila)
     {
-        fila->atras_fila = NULL;
+        fila->atras_fila = nullptr;
     }
+
     delete lugar_temporario;
 }
+
 void imprimirFila(Fila* fila)
 {
     No* lugar_temporario = fila->frente_fila;
 
-    while(lugar_temporario)
+    while (lugar_temporario)
     {
-        cout << lugar_temporario->nome << " <==\n";
+        cout << lugar_temporario->nome << " \n";
         lugar_temporario = lugar_temporario->proximo_fila;
     }
-    cout << "\n ";
+    cout << " NULL \n";
 }
 
-int main()
+int main() 
 {
     Fila* fila = criarFila();
     enfileirar(fila, "Ana");
@@ -79,6 +80,6 @@ int main()
     desenfileirar(fila);
     imprimirFila(fila);
 
-    return 0;
+    //return 0;
     system("PAUSE");
 }

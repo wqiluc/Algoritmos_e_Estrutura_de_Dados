@@ -23,7 +23,7 @@ No* criarNo(int valor)
     return novo_no_lista;
 }
 
-void inserirFinal(No*& lista, int valor)
+void inserirFinal(No* lista, int valor)
 {
     No* novo_no_lista = criarNo(valor);
 
@@ -43,13 +43,11 @@ void inserirFinal(No*& lista, int valor)
 
 No* concatenarListas(No* L1, No* L2)
 {
-    // Tratamento 1: as duas listas estão vazias -> resultado vazio.
     if (L1 == NULL && L2 == NULL)
     {
         return NULL;
     }
 
-    // Tratamento 2: L1 vazia -> a lista concatenada é a própria L2.
     if (L1 == NULL)
     {
         return L2;
