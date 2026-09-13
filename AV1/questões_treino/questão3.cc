@@ -1,17 +1,15 @@
-// QUESTÃO 3 (2.0 pontos)
-// Um mercado organiza o estoque em uma Árvore Binária de Busca (ABB), na
-// qual cada nó guarda o código de barras de um produto.
+// QUESTÃO 3 – Listas (1.5 pontos)
+// Uma playlist guarda as músicas em uma lista encadeada simples, na ordem
+// em que serão tocadas. Toda música nova entra no final da fila de
+// reprodução.
 //
-// a) Construa a ABB inserindo, nesta ordem, os códigos:
-//    500, 300, 800, 200, 400, 700, 900
+// Struct: No { char musica[50]; No* proximo; }
 //
-// b) Implemente `buscarProduto`, que informa (true/false) se um
-//    determinado código existe no estoque.
-//
-// c) Implemente `listarEmOrdemCrescente` (percurso em-ordem), que imprime
-//    os códigos do menor para o maior — útil para gerar um relatório de
-//    inventário.
-//
-// d) O produto de código 300 saiu de linha. Implemente a remoção desse
-//    nó da ABB, tratando os três casos possíveis (nó folha, nó com um
-//    filho, nó com dois filhos).
+// a) Implemente `adicionarMusica`, que insere uma nova música no fim da
+//    lista.
+// b) Implemente `removerMusica`, que remove a primeira ocorrência de uma
+//    música pelo nome, tratando os casos: lista vazia, música é o
+//    primeiro nó, música está no meio/fim, e música não encontrada.
+// c) Implemente `contarMusicas`, uma função RECURSIVA que conta quantas
+//    músicas restam na playlist.
+
