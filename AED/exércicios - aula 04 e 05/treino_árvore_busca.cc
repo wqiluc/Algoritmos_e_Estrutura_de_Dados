@@ -140,6 +140,19 @@ void posOrdem(No* raiz_arvore)
     cout << raiz_arvore->valor << " ";
 }
 
+int contagemDeNos(No* raiz_arvore, int cont)
+{
+    if (!raiz_arvore)
+    {
+        return cont;
+    }
+
+    cont++;
+    cont = contagemDeNos(raiz_arvore->esquerda_arvore, cont);
+    cont = contagemDeNos(raiz_arvore->direita_arvore, cont);
+    return cont;
+}
+
 int main()
 {
     No* raiz_arvore = NULL;
@@ -180,6 +193,8 @@ int main()
 
     cout << "\n\tÁrvore após remoções: ";
     emOrdem(raiz_arvore);
+
+    cout << "\n\nQuantidade de nós: " << contagemDeNos(raiz_arvore, 0);
 
     cout << endl;
     system("PAUSE");
