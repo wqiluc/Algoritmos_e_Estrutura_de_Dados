@@ -5,7 +5,7 @@ using namespace std;
 typedef struct No 
 {
     int valor;
-    No* proximo_lista;
+    No* proxino_lista;
 } No;
 
 typedef struct Lista 
@@ -24,7 +24,7 @@ void inserirInicio(Lista* lista, int valor)
 {
     No* novo_lista = new No;
     novo_lista->valor = valor;
-    novo_lista->proximo_lista = lista->inicio_lista;
+    novo_lista->proxino_lista = lista->inicio_lista;
     lista->inicio_lista = novo_lista;
 }
 
@@ -32,7 +32,7 @@ void inserirFim(Lista* lista, int valor)
 {
     No* novo_lista = new No;
     novo_lista->valor = valor;
-    novo_lista->proximo_lista = NULL;
+    novo_lista->proxino_lista = NULL;
 
     if (!lista->inicio_lista)
     {
@@ -41,27 +41,27 @@ void inserirFim(Lista* lista, int valor)
 
     No* lugar_temporario = lista->inicio_lista;
 
-    while (lugar_temporario->proximo_lista)
+    while (lugar_temporario->proxino_lista)
     {
-        lugar_temporario = lugar_temporario->proximo_lista;
+        lugar_temporario = lugar_temporario->proxino_lista;
     }
-    lugar_temporario->proximo_lista = novo_lista;
+    lugar_temporario->proxino_lista = novo_lista;
 }
 
 void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
 {
     No* novo_lista = new No;
     novo_lista->valor = valorNovo;
-    novo_lista->proximo_lista = NULL;
-
+    novo_lista->proxino_lista = NULL;
+    
     No* lugar_temporario = lista->inicio_lista;
 
-    while (lugar_temporario->proximo_lista && lugar_temporario->proximo_lista->valor != valorBusca)
+    while (lugar_temporario->proxino_lista && lugar_temporario->proxino_lista->valor != valorBusca)
     {
-        lugar_temporario = lugar_temporario->proximo_lista;
+        lugar_temporario = lugar_temporario->proxino_lista;
     }
-    lugar_temporario->proximo_lista = novo_lista->proximo_lista;
-    lugar_temporario->proximo_lista = novo_lista;
+    lugar_temporario->proxino_lista = novo_lista->proxino_lista;
+    lugar_temporario->proxino_lista = novo_lista;
 }
 
 void imprimirLista(Lista* lista)
@@ -70,10 +70,10 @@ void imprimirLista(Lista* lista)
 
     while (lugar_temporario)
     {
-        cout << lugar_temporario->valor << " <== \n";
-        lugar_temporario = lugar_temporario->proximo_lista;
+        cout << lugar_temporario->valor << " -> ";
+        lugar_temporario = lugar_temporario->proxino_lista;
     }
-    cout << " ";
+    cout << "NULL \n";
 }
 
 int main()

@@ -1,29 +1,28 @@
 #include <iostream>
 #include <stdlib.h>
-#include <climits>
 using namespace std;
 
 typedef struct No 
 {
     int valor;
-    No* direita_arvore;
     No* esquerda_arvore;
+    No* direita_arvore;
 } No;
 
 No* criarNo(int valor)
 {
-    No* novo_no_arvore = new No;
-    novo_no_arvore->valor = valor;
-    novo_no_arvore->direita_arvore = NULL;
-    novo_no_arvore->esquerda_arvore = NULL;
-    return novo_no_arvore;
+    No* raiz_arvore = new No;
+    raiz_arvore->valor = valor;
+    raiz_arvore->direita_arvore = nullptr;
+    raiz_arvore->esquerda_arvore = nullptr;
+    return raiz_arvore;
 }
 
 No* inserirNo(No* raiz_arvore, int valor)
 {
     if (!raiz_arvore)
     {
-        criarNo(valor);
+        return criarNo(valor);
     }
 
     if (valor < raiz_arvore->valor)
@@ -35,12 +34,13 @@ No* inserirNo(No* raiz_arvore, int valor)
     {
         raiz_arvore->direita_arvore = inserirNo(raiz_arvore->direita_arvore, valor);
     }
+
     return raiz_arvore;
 }
 
 No* buscarNo(No* raiz_arvore, int valor)
 {
-    if (!raiz_arvore)
+    if (!raiz_arvore || raiz_arvore->valor == valor)
     {
         return raiz_arvore;
     }
@@ -50,7 +50,7 @@ No* buscarNo(No* raiz_arvore, int valor)
         return buscarNo(raiz_arvore->esquerda_arvore, valor);
     }
 
-    else if (valor > raiz_arvore->valor)
+    else if (valor < raiz_arvore->valor)
     {
         return buscarNo(raiz_arvore->direita_arvore, valor);
     }
@@ -58,7 +58,7 @@ No* buscarNo(No* raiz_arvore, int valor)
 
 No* encontrarNoMinimo(No* raiz_arvore)
 {
-    while (raiz_arvore->esquerda_arvore != NULL)
+    while(raiz_arvore->esquerda_arvore != nullptr)
     {
         raiz_arvore = raiz_arvore->esquerda_arvore;
     }
@@ -99,21 +99,22 @@ No* removerNo(No* raiz_arvore, int valor)
         }
 
         No* sucessor = encontrarNoMinimo(raiz_arvore->direita_arvore);
-        raiz_arvore->valor = sucessor->valor;
+        sucessor->valor = raiz_arvore->valor;
         raiz_arvore->direita_arvore = removerNo(raiz_arvore->direita_arvore, sucessor->valor);
     }
 }
 
-void preOrdem(No* raiz_arvore)
+int contagemDeNos(No* raiz_arvore, int contador)
 {
     if (!raiz_arvore)
     {
-        return;
+        return contador;
     }
 
-    cout << raiz_arvore->valor << " ";
-    preOrdem(raiz_arvore->esquerda_arvore);
-    preOrdem(raiz_arvore->direita_arvore);
+    contador++;
+    contador = contagemDeNos(raiz_arvore->esquerda_arvore, contador);
+    contador = contagemDeNos(raiz_arvore->direita_arvore, contador);
+    return contador;
 }
 
 void emOrdem(No* raiz_arvore)
@@ -128,6 +129,18 @@ void emOrdem(No* raiz_arvore)
     emOrdem(raiz_arvore->direita_arvore);
 }
 
+void preOrdem(No* raiz_arvore)
+{
+    if (!raiz_arvore)
+    {
+        return;
+    }
+
+    cout << raiz_arvore->valor << " ";
+    preOrdem(raiz_arvore->esquerda_arvore);
+    preOrdem(raiz_arvore->direita_arvore);
+}
+
 void posOrdem(No* raiz_arvore)
 {
     if (!raiz_arvore)
@@ -140,63 +153,29 @@ void posOrdem(No* raiz_arvore)
     cout << raiz_arvore->valor << " ";
 }
 
-int contagemDeNos(No* raiz_arvore, int cont)
-{
-    if (!raiz_arvore)
-    {
-        return cont;
-    }
-
-    cont++;
-    cont = contagemDeNos(raiz_arvore->esquerda_arvore, cont);
-    cont = contagemDeNos(raiz_arvore->direita_arvore, cont);
-    return cont;
-}
-
 int main()
 {
-    No* raiz_arvore = NULL;
+    No* raiz_arvore = nullptr;
+    int valores[] = {50, 30, 70, 20, 40, 60, 80};
 
-    raiz_arvore = inserirNo(raiz_arvore, 50);
-    raiz_arvore = inserirNo(raiz_arvore, 30);
-    raiz_arvore = inserirNo(raiz_arvore, 70);
-    raiz_arvore = inserirNo(raiz_arvore, 20);
-    raiz_arvore = inserirNo(raiz_arvore, 40);
-    raiz_arvore = inserirNo(raiz_arvore, 60);
-    raiz_arvore = inserirNo(raiz_arvore, 80);
-
-    cout << "Pré-Ordem: ";
-    preOrdem(raiz_arvore);
-
-    cout << "\nEm-Ordem: ";
-    emOrdem(raiz_arvore);
-
-    cout << "\nPós-Ordem: ";
-    posOrdem(raiz_arvore);
-
-    int alvo = 40;
-    No* valor_encontrado_arvore = buscarNo(raiz_arvore, alvo);
-
-    if (valor_encontrado_arvore != NULL) 
+    for (int valor : valores)
     {
-        cout << "\n\nValor " << alvo << " encontrado na árvore. ✅";
+        raiz_arvore = inserirNo(raiz_arvore, valor);
     }
 
-    else 
-    {
-        cout << "\n\nValor " << alvo << " não encontrado na árvore. ❌";
-    }
+    cout << "Quantidade de nos: " << contagemDeNos(raiz_arvore, 0) << endl;
 
-    raiz_arvore = removerNo(raiz_arvore, 20); // Nó sem filhos
-    raiz_arvore = removerNo(raiz_arvore, 30); // Nó com um filho
-    raiz_arvore = removerNo(raiz_arvore, 50); // Nó com dois filhos
-
-    cout << "\n\tÁrvore após remoções: ";
+    cout << "Em ordem: ";
     emOrdem(raiz_arvore);
-
-    cout << "\n\nQuantidade de nós: " << contagemDeNos(raiz_arvore, 0);
-
     cout << endl;
-    system("PAUSE");
+
+    cout << "Pre ordem: ";
+    preOrdem(raiz_arvore);
+    cout << endl;
+
+    cout << "Pos ordem: ";
+    posOrdem(raiz_arvore);
+    cout << endl;
+
     return 0;
 }
