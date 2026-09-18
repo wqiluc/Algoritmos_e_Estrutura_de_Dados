@@ -3,23 +3,23 @@
 #include <string.h>
 using namespace std;
 
-typedef struct No 
+typedef struct No
 {
-    char nome[30];
+    char nome[50];
     No* proximo_fila;
 } No;
 
-typedef struct Fila 
+typedef struct Fila
 {
-    No* frente_fila;
     No* atras_fila;
+    No* frente_fila;
 } Fila;
 
 Fila* criarFila()
 {
     Fila* fila = new Fila;
-    fila->atras_fila = nullptr;
     fila->frente_fila = nullptr;
+    fila->atras_fila = nullptr;
     return fila;
 }
 
@@ -29,7 +29,7 @@ void enfileirar(Fila* fila, char nome[])
     strcpy(novo_fila->nome, nome);
     novo_fila->proximo_fila = nullptr;
 
-    if (!fila->atras_fila)
+    if(!fila->atras_fila)
     {
         fila->atras_fila = fila->frente_fila = novo_fila;
     }
@@ -39,7 +39,7 @@ void enfileirar(Fila* fila, char nome[])
 
 void desenfileirar(Fila* fila)
 {
-    if (!fila->frente_fila)
+    if(!fila->frente_fila)
     {
         return;
     }
@@ -47,23 +47,22 @@ void desenfileirar(Fila* fila)
     No* lugar_temporario = fila->frente_fila;
     fila->frente_fila = fila->frente_fila->proximo_fila;
 
-    if (!fila->frente_fila)
+    if(!fila->frente_fila)
     {
         fila->atras_fila = NULL;
     }
     delete lugar_temporario;
 }
 
-void imprimirFila(Fila* fila)
+void imprimirFila(Fila* fila) 
 {
     No* lugar_temporario = fila->frente_fila;
-
-    while (lugar_temporario)
+    while (lugar_temporario) 
     {
-        cout << lugar_temporario->nome << endl;
+        cout << lugar_temporario->nome << " <- ";
         lugar_temporario = lugar_temporario->proximo_fila;
     }
-    cout << " \n";
+    cout << "NULL \n";
 }
 
 int main() 
