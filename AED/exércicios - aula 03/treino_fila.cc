@@ -3,13 +3,13 @@
 #include <string.h>
 using namespace std;
 
-typedef struct No
+typedef struct No 
 {
-    char nome[50];
+    char nome[40];
     No* proximo_fila;
 } No;
 
-typedef struct Fila
+typedef struct Fila 
 {
     No* atras_fila;
     No* frente_fila;
@@ -18,8 +18,7 @@ typedef struct Fila
 Fila* criarFila()
 {
     Fila* fila = new Fila;
-    fila->frente_fila = nullptr;
-    fila->atras_fila = nullptr;
+    fila->atras_fila = fila->frente_fila = nullptr;
     return fila;
 }
 
@@ -28,8 +27,8 @@ void enfileirar(Fila* fila, char nome[])
     No* novo_fila = new No;
     strcpy(novo_fila->nome, nome);
     novo_fila->proximo_fila = nullptr;
-
-    if(!fila->atras_fila)
+    
+    if (!fila->atras_fila)
     {
         fila->atras_fila = fila->frente_fila = novo_fila;
     }
@@ -54,15 +53,16 @@ void desenfileirar(Fila* fila)
     delete lugar_temporario;
 }
 
-void imprimirFila(Fila* fila) 
+void imprimirFila(Fila* fila)
 {
     No* lugar_temporario = fila->frente_fila;
-    while (lugar_temporario) 
+
+    while (lugar_temporario)
     {
-        cout << lugar_temporario->nome << " <- ";
+        cout << lugar_temporario->nome << " <== \n";
         lugar_temporario = lugar_temporario->proximo_fila;
     }
-    cout << "NULL \n";
+    cout << " NULL \n";
 }
 
 int main() 

@@ -4,28 +4,27 @@ using namespace std;
 
 typedef struct No 
 {
-    int valor;
+    char nome;
     No* proximo_pilha;
-} No;
+} No; 
 
-No* empilhar(No* topo_pilha, int valor)
+No* empilhar(No* topo_pilha, char nome)
 {
     No* novo_pilha = new No;
-    novo_pilha->valor = valor;
+    novo_pilha->nome = nome;
     novo_pilha->proximo_pilha = topo_pilha;
     return novo_pilha;
 }
-No* desempilhar(No* topo_pilha, int valor)
+No* desempilhar(No* topo_pilha, char nome)
 {
     if(!topo_pilha)
     {
-        cout << "\n\t Topo Vazio❌ \n" << endl;
         return NULL;
     }
 
     No* lugar_temporario = topo_pilha;
+    nome = topo_pilha->nome;
     topo_pilha = topo_pilha->proximo_pilha;
-    valor = topo_pilha->valor;
     delete lugar_temporario;
     return topo_pilha;
 }
@@ -38,16 +37,15 @@ void inverterPalavra(char palavra[])
     {
         pilha = empilhar(pilha, palavra[indice_pilha]);
     }
+    cout << "\n\t Palavra invertida: ";
+    char palavra_invetida;
 
-    cout << "\n\t Palavra Invertida: ";
-    char palavra_invertida;
-
-    while(pilha)
+    while (pilha)
     {
-        pilha = desempilhar(pilha, palavra_invertida);
-        cout << palavra_invertida;
+        pilha = desempilhar(pilha, palavra_invetida);
+        cout << palavra_invetida;
     }
-    cout << " \n";
+    cout << " <== \n";
 }
 
 int main() 
