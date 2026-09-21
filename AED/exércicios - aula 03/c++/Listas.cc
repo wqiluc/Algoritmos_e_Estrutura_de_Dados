@@ -1,11 +1,10 @@
 #include <iostream>
 //#include <stdlib.h>
-
 using namespace std;
 
 typedef struct No
 {
-    int dado;
+    int valor;
     No* prox;
 } No;
 
@@ -24,7 +23,7 @@ Lista* criarLista()
 void inserirInicio(Lista* lista, int valor)
 {
     No* novo = new No;
-    novo->dado = valor;
+    novo->valor = valor;
     novo->prox = lista->inicio;
     lista->inicio = novo;
 }
@@ -33,7 +32,7 @@ void inserirInicio(Lista* lista, int valor)
 void inserirFim(Lista* lista, int valor)
 {
     No* novo = new No;
-    novo->dado = valor;
+    novo->valor = valor;
     novo->prox = NULL;
 
     if (!lista->inicio)
@@ -52,11 +51,11 @@ void inserirFim(Lista* lista, int valor)
 void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
 {
     No* novo = new No;
-    novo->dado = valorNovo;
+    novo->valor = valorNovo;
 
     No* temp = lista->inicio;
 
-    while (temp->prox && temp->prox->dado != valorBusca)
+    while (temp->prox && temp->prox->valor != valorBusca)
     {
         temp = temp->prox;
     }
@@ -71,7 +70,7 @@ void imprimirLista(Lista* lista)
 
     while (temp)
     {
-        cout << temp->dado << " -> ";
+        cout << temp->valor << " -> ";
         temp = temp->prox;
     }
     cout << "NULL \n";

@@ -8,10 +8,11 @@ typedef struct No
     No* proximo_lista;
 } No;
 
-typedef struct Lista 
+typedef struct Lista
 {
     No* inicio_lista;
 } Lista;
+
 
 Lista* criarLista()
 {
@@ -20,6 +21,7 @@ Lista* criarLista()
     return lista;
 }
 
+
 void inserirInicio(Lista* lista, int valor)
 {
     No* novo_lista = new No;
@@ -27,6 +29,8 @@ void inserirInicio(Lista* lista, int valor)
     novo_lista->proximo_lista = lista->inicio_lista;
     lista->inicio_lista = novo_lista;
 }
+
+
 void inserirFinal(Lista* lista, int valor)
 {
     No* novo_lista = new No;
@@ -46,13 +50,14 @@ void inserirFinal(Lista* lista, int valor)
         lugar_temporario = lugar_temporario->proximo_lista;
     }
     lugar_temporario->proximo_lista = novo_lista;
-    
 }
+
+
 void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
 {
     No* novo_lista = new No;
     novo_lista->valor = valorNovo;
-    novo_lista->proximo_lista = nullptr;
+    novo_lista->proximo_lista = NULL;
 
     No* lugar_temporario = lista->inicio_lista;
 
@@ -65,15 +70,16 @@ void inserirMeio(Lista* lista, int valorNovo, int valorBusca)
 }
 void imprimirLista(Lista* lista)
 {
-    No* temp = lista->inicio_lista;
+    No* lugar_temporario = lista->inicio_lista;
 
-    while (temp)
+    while (lugar_temporario)
     {
-        cout << temp->valor << " -> ";
-        temp = temp->proximo_lista;
+        cout << lugar_temporario->valor << " <== \n";
+        lugar_temporario = lugar_temporario->proximo_lista;
     }
-    cout << "NULL \n";
+    cout << " \n";
 }
+
 
 int main()
 {
