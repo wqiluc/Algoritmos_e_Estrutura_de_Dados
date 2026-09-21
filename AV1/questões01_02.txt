@@ -23,6 +23,8 @@ As tarefas que estão na pilha (exibir).
 
 As tarefas que estão na fila (exibir).
 
+✅
+
 ////////////////////////////////////////////////
 
 02)
@@ -30,8 +32,10 @@ Lista Encadeada
 
 Implemente uma lista simplesmente encadeada de inteiros.
 
-a) Crie uma função para inserir no final.
-b) Crie uma função que receba um número informado pelo usuário e conte quantos valores iguais existem na lista. Retorne essa quantidade e informe na tela.
+a) Crie uma função para inserir no final. ✅
+b) Crie uma função que receba um número informado pelo usuário e conte quantos valores 
+iguais existem na lista. 
+Retorne essa quantidade e informe na tela.
 c) Teste com os valores: 5, 8, 5, 10, 8, 12, 5.
 
 Insira os valores contidos na letra C
