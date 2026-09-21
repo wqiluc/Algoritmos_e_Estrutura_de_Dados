@@ -1,0 +1,39 @@
+//////////////////////////////
+01) Pilha, Fila e Struct
+
+Considere a struct abaixo que representa uma tarefa:
+typedef struct
+{
+    int id;
+    char descricao[50];
+    int prioridade; // 1 = alta, 2 = média, 3 = baixa
+} Tarefa;
+
+a) Implemente uma pilha de tarefas.
+b) Implemente também uma fila de tarefas.
+c) Crie um programa que leia 5 tarefas e insira:
+
+As de prioridade alta (1) na pilha.
+
+As de prioridade média ou baixa (2 ou 3) na fila.
+
+Mostre ao final:
+
+As tarefas que estão na pilha (exibir).
+
+As tarefas que estão na fila (exibir).
+
+////////////////////////////////////////////////
+
+02)
+Lista Encadeada
+
+Implemente uma lista simplesmente encadeada de inteiros.
+
+a) Crie uma função para inserir no final.
+b) Crie uma função que receba um número informado pelo usuário e conte quantos valores iguais existem na lista. Retorne essa quantidade e informe na tela.
+c) Teste com os valores: 5, 8, 5, 10, 8, 12, 5.
+
+Insira os valores contidos na letra C
+Mostre a lista após a inserção
+Chame a função contar_valores para contar
