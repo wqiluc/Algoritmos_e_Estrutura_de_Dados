@@ -29,7 +29,7 @@
 
 ---
 
-<h2 align="center" id="padrao">📐 0. Padrão dos códigos</h2>
+<h2 align="center" id="padrao">📐 0. Padrão dos códigos: </h2>
 
 Todos os códigos deste arquivo seguem o padrão da AV1 e consideram este cabeçalho:
 
@@ -65,17 +65,19 @@ Olha **elemento por elemento**, do índice 0 até achar a chave.
 - Retorna o **índice** da chave ou **-1** se não achar.
 
 ```cpp
-int buscaSequencial(int vetor[], int tamanho, int valor)
+int buscaSequencial(int vetor[], int tamanho_vetor, int valor)
 {
-    for (int i = 0; i < tamanho; i++)
+    int indice_vetor;
+    for (indice_vetor; = 0; indice_vetor < tamanho_vetor; indice_vetor++)
     {
-        if (vetor[i] == valor)
+        if (vetor[indice_vetor] == valor)
         {
-            return i; // retorna índice se encontrado
+            return indice_vetor; 
+            // retorna índice se encontrado
         }
     }
-
-    return -1; // não encontrado
+    return -1; 
+    // não encontrado
 }
 ```
 
@@ -93,6 +95,7 @@ int main()
     {
         cout << "Valor " << valor << " encontrado na posição " << pos << endl;
     }
+
     else
     {
         cout << "Valor não encontrado." << endl;
@@ -116,9 +119,7 @@ Valor 15 encontrado na posição 2
 | **Pior**   | chave é a última **ou não existe**     | N               |
 | **Médio**  | chave existe, todas com mesma chance   | **(N + 1) / 2** |
 
----
-
-<h2 align="center" id="binaria">✂️ 2. Busca Binária</h2>
+<h2 align="center" id="binaria">✂️ 2. Busca Binária: </h2>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Complexidade-O%28log_n%29-22c55e?style=flat-square" alt="O(log n)"/>
@@ -138,7 +139,9 @@ Passo a passo:
 ```cpp
 int buscaBinaria(int vetor[], int tamanho, int valor)
 {
-    int inicio = 0, fim = tamanho - 1, meio;
+    int inicio = 0; 
+    int fim = tamanho - 1;
+    int meio;
 
     while (inicio <= fim)
     {
@@ -146,15 +149,20 @@ int buscaBinaria(int vetor[], int tamanho, int valor)
 
         if (vetor[meio] == valor)
         {
-            return meio; // valor encontrado
+            return meio; 
+            // valor encontrado
         }
+
         else if (vetor[meio] < valor)
         {
-            inicio = meio + 1; // busca na metade superior (direita)
+            inicio = meio + 1; 
+            // busca na metade superior (direita)
         }
+
         else
         {
-            fim = meio - 1; // busca na metade inferior (esquerda)
+            fim = meio - 1; 
+            // busca na metade inferior (esquerda)
         }
     }
 
@@ -176,6 +184,7 @@ int main()
     {
         cout << "Valor " << valor << " encontrado na posição " << pos << endl;
     }
+
     else
     {
         cout << "Valor não encontrado." << endl;
@@ -212,9 +221,7 @@ Valor   3   6   9   12   15   18   21
 
 > 💡 O slide escreve a média como "(log n) - 1" e "log 10⁶ ≈ 1 ~ 19". O log ali é na **base 2**: log₂(10⁶) ≈ 20. Ou seja, num vetor de 1 milhão a binária faz **entre 1 e uns 20 acessos**.
 
----
-
-<h2 align="center" id="comparacao">⚖️ 3. Sequencial x Binária</h2>
+<h2 align="center" id="comparacao">⚖️ 3. Sequencial x Binária: </h2>
 
 Vetor com **1 milhão** de itens (10⁶):
 
@@ -225,9 +232,7 @@ Vetor com **1 milhão** de itens (10⁶):
 
 O preço da binária: o vetor **precisa estar ordenado**. Se os dados chegam bagunçados, só a sequencial serve.
 
----
-
-<h2 align="center" id="hash">🗂️ 4. Busca por Espalhamento (Hash)</h2>
+<h2 align="center" id="hash">🗂️ 4. Busca por Espalhamento (Hash): </h2>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Caso_ideal-O%281%29-16a34a?style=flat-square" alt="O(1)"/>
@@ -251,16 +256,14 @@ int funcaoHash(int chave)
 
 > 💡 **Chave negativa:** em C++, `-3 % 10` dá **-3**, e `tabelaHash[-3]` acessa memória fora da tabela. Os códigos do slide só funcionam com chave **≥ 0** (Questão 11).
 
-Duas formas de tratar colisão:
+Duas formas de tratar colisão 💥:
 
 | Forma                              | Tipo        | Onde guarda quem colidiu                   |
 |------------------------------------|-------------|--------------------------------------------|
 | **Sondagem linear** (espaço vago)  | **interno** | na próxima posição livre da própria tabela |
 | **Lista encadeada** (encadeamento) | **externo** | numa lista pendurada em cada posição       |
 
----
-
-<h2 align="center" id="hash-simples">🧱 4.1 Hash simples (sem tratar colisão)</h2>
+<h2 align="center" id="hash-simples">🧱 4.1 Hash simples (sem tratar colisão): </h2>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Colis%C3%A3o-Sobrescreve-ef4444?style=flat-square" alt="Sobrescreve"/>
@@ -285,18 +288,18 @@ int buscar(int chave)
 
     if (tabelaHash[indice] == chave)
     {
-        return indice; // encontrado
+        return indice; 
+        // encontrado
     }
 
-    return -1; // não encontrado
+    return -1; 
+    // não encontrado
 }
 ```
 
 O `main` do slide é exatamente a [Questão 3](#q3).
 
----
-
-<h2 align="center" id="sondagem">🔁 4.2 Sondagem linear (endereçamento aberto)</h2>
+<h2 align="center" id="sondagem">🔁 4.2 Sondagem linear (endereçamento aberto): </h2>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Tratamento-Interno-0ea5e9?style=flat-square" alt="Interno"/>
@@ -340,11 +343,13 @@ int inserir(int chave)
         if (tabelaHash[tentativa] == VAZIO || tabelaHash[tentativa] == REMOVIDO)
         {
             tabelaHash[tentativa] = chave;
-            return tentativa; // inserido com sucesso
+            return tentativa; 
+            // inserido com sucesso
         }
     }
 
-    return -1; // tabela cheia
+    return -1; 
+    // tabela cheia
 }
 
 int buscar(int chave)
@@ -357,16 +362,19 @@ int buscar(int chave)
 
         if (tabelaHash[tentativa] == VAZIO)
         {
-            return -1; // posição vazia: a chave nunca foi inserida
+            return -1; 
+            // posição vazia: a chave nunca foi inserida
         }
 
         if (tabelaHash[tentativa] == chave)
         {
-            return tentativa; // encontrado
+            return tentativa; 
+            // encontrado
         }
     }
 
-    return -1; // percorreu a tabela toda e não achou
+    return -1; 
+    // percorreu a tabela toda e não achou
 }
 
 int remover(int chave)
@@ -375,11 +383,14 @@ int remover(int chave)
 
     if (pos != -1)
     {
-        tabelaHash[pos] = REMOVIDO; // marca, não apaga
-        return 1; // removido com sucesso
+        tabelaHash[pos] = REMOVIDO; 
+        // marca, não apaga
+        return 1; 
+        // removido com sucesso
     }
 
-    return 0; // não encontrado
+    return 0; 
+    // não encontrado
 }
 
 void imprimirTabela()
@@ -394,10 +405,12 @@ void imprimirTabela()
         {
             cout << "VAZIO" << endl;
         }
+
         else if (tabelaHash[i] == REMOVIDO)
         {
             cout << "REMOVIDO" << endl;
         }
+
         else
         {
             cout << tabelaHash[i] << endl;
@@ -431,6 +444,7 @@ int main()
     {
         cout << endl << "Elemento " << busca << " encontrado na posição " << pos << endl;
     }
+
     else
     {
         cout << endl << "Elemento " << busca << " não encontrado" << endl;
@@ -503,7 +517,7 @@ Valor    -  -  -  -  -  15  25  35  7  17
 
 ---
 
-<h2 align="center" id="encadeamento">🔗 4.3 Encadeamento (lista encadeada)</h2>
+<h2 align="center" id="encadeamento">🔗 4.3 Encadeamento (lista encadeada): </h2>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Tratamento-Externo-0ea5e9?style=flat-square" alt="Externo"/>
@@ -537,8 +551,10 @@ void inserir(int chave)
 
     No* novo = new No;
     novo->chave = chave;
-    novo->proximo = tabelaHash[indice]; // aponta para o antigo primeiro
-    tabelaHash[indice] = novo;          // e vira o novo primeiro
+    novo->proximo = tabelaHash[indice]; 
+    // aponta para o antigo primeiro
+    tabelaHash[indice] = novo;          
+    // e vira o novo primeiro
 }
 
 No* buscar(int chave)
@@ -550,12 +566,14 @@ No* buscar(int chave)
     {
         if (atual->chave == chave)
         {
-            return atual; // encontrado
+            return atual; 
+            // encontrado
         }
         atual = atual->proximo;
     }
 
-    return nullptr; // não encontrado
+    return nullptr; 
+    // não encontrado
 }
 
 void imprimirTabela()
@@ -601,6 +619,7 @@ int main()
     {
         cout << endl << "Elemento " << resultado->chave << " encontrado na tabela hash." << endl;
     }
+
     else
     {
         cout << endl << "Elemento não encontrado na tabela hash." << endl;
@@ -652,7 +671,7 @@ Elemento 22 encontrado na tabela hash.
 
 ---
 
-<h2 align="center" id="qual-usar">🤔 4.4 Qual tratamento usar? "Depende!"</h2>
+<h2 align="center" id="qual-usar">🤔 4.4 Qual tratamento usar? "Depende!": </h2>
 
 | Cenário                                  | Encadeamento (listas) | Sondagem linear          |
 |------------------------------------------|-----------------------|--------------------------|
@@ -669,9 +688,7 @@ Elemento 22 encontrado na tabela hash.
 - **Encadeamento**: melhor quando a tabela vai ser muito usada (muitas colisões ou muitos elementos) e memória não é problema. No mundo real costuma ser o **mais robusto**.
 - **Sondagem linear**: melhor quando precisa **economizar memória**, o fator de carga é baixo/moderado (até ~70%) e a escala é pequena.
 
----
-
-<h2 align="center" id="resumo">📊 5. Resumo comparativo das buscas</h2>
+<h2 align="center" id="resumo">📊 5. Resumo comparativo das buscas: </h2>
 
 | Algoritmo        | Complexidade | Precisa ordenar? | Vantagem             | Desvantagem                     |
 |------------------|--------------|------------------|----------------------|---------------------------------|
@@ -681,17 +698,17 @@ Elemento 22 encontrado na tabela hash.
 
 ---
 
-<h2 align="center" id="exercicios">🏋️ 6. Exercícios</h2>
+<h2 align="center" id="exercicios">🏋️ 6. Exercícios: </h2>
 
 Resolva **antes** de abrir as respostas.
 
 | Questão         | Assunto                          | Parte     |
 |-----------------|----------------------------------|-----------|
-| [1](#q1)        | Busca sequencial                 | ✏️ Papel  |
-| [2](#q2)        | Busca binária                    | ✏️ Papel  |
-| [3](#q3)        | Hash simples                     | ✏️ Papel  |
-| [4](#q4)        | Sondagem linear                  | ✏️ Papel  |
-| [5](#q5)        | Encadeamento                     | ✏️ Papel  |
+| [1](#q1)        | Busca sequencial                 | ✏️ Papel✅ |
+| [2](#q2)        | Busca binária                    | ✏️ Papel✅ |
+| [3](#q3)        | Hash simples                     | ✏️ Papel✅ |
+| [4](#q4)        | Sondagem linear                  | ✏️ Papel✅ |
+| [5](#q5)        | Encadeamento                     | ✏️ Papel✅ |
 | [6](#q6)        | Qual busca usar?                 | ✏️ Papel  |
 | [7](#q7)        | Última ocorrência                | 💻 Código |
 | [8](#q8)        | Busca binária recursiva          | 💻 Código |
@@ -699,15 +716,11 @@ Resolva **antes** de abrir as respostas.
 | [10](#q10)      | Remover do hash com encadeamento | 💻 Código |
 | [11](#q11)      | Sondagem sem chave repetida      | 💻 Código |
 
----
-
 <h2 align="center" id="parte-a">✏️ Parte A: no papel</h2>
 
 Monte as tabelas do jeito das seções [2](#binaria) e [4.2](#sondagem): uma linha por passo, com a **decisão** escrita.
 
----
-
-<h2 align="center" id="q1">✏️ Questão 1: Busca Sequencial</h2>
+<h2 align="center" id="q1">✏️ Questão 1: Busca Sequencial: </h2>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Parte_A-No_papel-0ea5e9?style=flat-square" alt="Parte A"/>
@@ -750,9 +763,7 @@ Retornou **-1 (não encontrado)**, mas o 8 **está** no índice 4! A binária "j
 
 </details>
 
----
-
-<h2 align="center" id="q2">✏️ Questão 2: Busca Binária</h2>
+<h2 align="center" id="q2">✏️ Questão 2: Busca Binária: </h2>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Parte_A-No_papel-0ea5e9?style=flat-square" alt="Parte A"/>
@@ -813,9 +824,7 @@ Faça a tabela (inicio, fim, meio, vetor[meio], decisão) para:
 
 </details>
 
----
-
-<h2 align="center" id="q3">✏️ Questão 3: A pegadinha do hash simples</h2>
+<h2 align="center" id="q3">✏️ Questão 3: A pegadinha do hash simples: </h2>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Parte_A-No_papel-0ea5e9?style=flat-square" alt="Parte A"/>
@@ -880,9 +889,7 @@ Mesmo o 25 tendo sido inserido. É por isso que **precisa** tratar colisão (son
 
 </details>
 
----
-
-<h2 align="center" id="q4">✏️ Questão 4: Sondagem Linear</h2>
+<h2 align="center" id="q4">✏️ Questão 4: Sondagem Linear: </h2>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Parte_A-No_papel-0ea5e9?style=flat-square" alt="Parte A"/>
@@ -951,9 +958,7 @@ Valor    19  -  -  23  REMOVIDO  13  -  27  37  9
 
 </details>
 
----
-
-<h2 align="center" id="q5">✏️ Questão 5: Encadeamento</h2>
+<h2 align="center" id="q5">✏️ Questão 5: Encadeamento: </h2>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Parte_A-No_papel-0ea5e9?style=flat-square" alt="Parte A"/>
@@ -1007,8 +1012,6 @@ Lembrando que quem chega depois entra **na frente**:
 **c)** Todas as chaves caírem na **mesma posição** (ex.: 0, 7, 14, 21, 28...). A tabela vira uma lista encadeada comum e a busca vira **O(n)**.
 
 </details>
-
----
 
 <h2 align="center" id="q6">✏️ Questão 6: Qual busca usar?</h2>
 

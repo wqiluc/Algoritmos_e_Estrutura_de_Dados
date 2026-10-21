@@ -5,14 +5,14 @@ using namespace std;
 int buscaBinaria(int vetor[], int tamanho_vetor, int valor)
 {
     int inicio = 0;
-    int fim = tamanho_vetor - 1;
+    int final = tamanho_vetor - 1; 
     int meio;
 
-    while (inicio <= fim)
+    while (inicio <= final)
     {
-        meio = (inicio + fim) / 2;
+        meio = (inicio + final) / 2;
 
-        if(vetor[meio] == valor)
+        if (vetor[meio] == valor)
         {
             return meio;
         }
@@ -21,10 +21,10 @@ int buscaBinaria(int vetor[], int tamanho_vetor, int valor)
         {
             inicio = meio + 1;
         }
-
+        
         else
         {
-            fim = meio - 1;
+            final = meio - 1;
         }
     }
     return -1;

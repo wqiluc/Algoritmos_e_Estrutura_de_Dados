@@ -46,19 +46,18 @@ int main()
     int tamanho_vetor = sizeof(vetor) / sizeof(vetor[0]);
     int valor;
 
-    cout << "Digite o valor a ser buscado: ";
+    cout << "\n\t Digite um valor para buscar no vetor: ";
     cin >> valor;
 
-    int resultado = buscaSequencial(vetor, tamanho_vetor, valor);
+    int resultado_vetor = buscaSequencial(vetor, tamanho_vetor, valor);
 
-    if (resultado != -1)
+    if (resultado_vetor != -1)
     {
-        cout << "Valor encontrado no índice: " << resultado << endl;
+        cout << "\n\t Valor " << valor << " encontrado no índice: " << resultado_vetor << endl;
     }
     else
     {
-        cout << "Valor não encontrado." << endl;
+        cout << "\n\t Valor " << valor << " não encontrado no vetor." << endl;
     }
-
     return 0;
 }
