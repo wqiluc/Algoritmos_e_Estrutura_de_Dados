@@ -4,58 +4,38 @@
 // ex: [4,8,2,8,5,8,1] = valor 8;
 
 // Compilar e rodar (a partir da raiz do repositório):
-// g++ -std=c++17 "AV2/exércicios sala de aula/vetor.cpp" -o "AV2/exércicios sala de aula/q1.out" && "./AV2/exércicios sala de aula/vetor.out"
+// g++ -std=c++17 "AV2/exércicios sala de aula/vetor.cpp" -o "AV2/exércicios sala de aula/vetor.out" && "./AV2/exércicios sala de aula/vetor.out"
 
 #include <iostream>
 using namespace std;
 
 #define TAM_VETOR 7
 
-int posicoesValorVetor(int vetor[], int tamanho_vetor, int valor, int posicoes[])
+void buscaSequencial(int vetor[], int tamanho_vetor, int valor)
 {
     int indice_vetor;
-    int quantidade = 0;
+    int encontrou = 0;
 
-    for(indice_vetor = 0; indice_vetor < tamanho_vetor; indice_vetor++)
+    for (indice_vetor = 0; indice_vetor < tamanho_vetor; indice_vetor++)
     {
         if(vetor[indice_vetor] == valor)
         {
-            posicoes[quantidade] = indice_vetor;
-            quantidade++;
+            cout << "\n Valor encontrado na posição: " << indice_vetor << " "  << endl;
+            encontrou = 1;
         }
     }
-    return quantidade;
+    if (!encontrou)
+    {
+        cout << "Valor não encontrado!" << endl;
+    }
 }
-
 
 int main()
 {
-    int vetor[TAM_VETOR] = {4, 8, 2, 8, 5, 8, 1};
-    int posicoes[TAM_VETOR];
-    int valor;
+    int vetor[] = {4, 8, 2, 8, 5, 8, 1};
+    int valor = 8;
 
-    cout << "\n\t Digite o valor a ser buscado no vetor: ";
-    cin >> valor;
-
-    int quantidade = posicoesValorVetor(vetor, TAM_VETOR, valor, posicoes);
-
-    if(quantidade > 0)
-    {
-        cout << "\n Valor encontrado " << quantidade << " vez(es), nos índices: ";
-
-        int indice_posicoes;
-
-        for(indice_posicoes = 0; indice_posicoes < quantidade; indice_posicoes++)
-        {
-            cout << posicoes[indice_posicoes] << " ";
-        }
-        cout << endl;
-    }
-
-    else
-    {
-        cout << "\n Valor não encontrado no vetor." << endl;
-    }
+    buscaSequencial(vetor, TAM_VETOR, valor);
 
     return 0;
 }

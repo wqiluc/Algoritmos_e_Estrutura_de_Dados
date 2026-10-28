@@ -1,4 +1,4 @@
-// QUESTÃO 5 – Busca Sequencial Auto-organizável: Transposição (💻 código + ✏️ papel)
+// QUESTÃO 5 – Busca Sequencial Auto-organizável: Transposição
 //
 // Valor   10  20  30  40  50
 // Índice  0   1   2   3   4
@@ -32,3 +32,62 @@
 //
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 AV2/exércicios_buscas/Questao_05_Sequencial_Transposicao.cpp -o AV2/exércicios_buscas/q5.out && ./AV2/exércicios_buscas/q5.out
+
+#include <iostream>
+using namespace std;
+
+#define TAM_VETOR 5
+
+int buscaTransposicao(int vetor[], int tamanho_vetor, int valor)
+{
+    int indice_vetor;
+
+    for (indice_vetor = 0; indice_vetor < tamanho_vetor; indice_vetor++)
+    {
+        if(vetor[indice_vetor] == valor)
+        {
+            if (indice_vetor > 0)
+            {
+                int auxiliar = vetor[indice_vetor];
+                vetor[indice_vetor] = vetor[indice_vetor - 1];
+                vetor[indice_vetor - 1] = auxiliar;
+
+                return indice_vetor - 1;
+            }
+            return indice_vetor;
+        }
+    }
+    return -1;
+}
+
+void imprimirVetor(int vetor[], int tamanho_vetor)
+{
+    int indice_vetor;
+
+    for (indice_vetor = 0; indice_vetor < tamanho_vetor; indice_vetor++)
+    {
+        cout << vetor[indice_vetor] << " " << endl;
+    }
+    cout << endl;
+}
+
+int main()
+{
+    int vetor[TAM_VETOR] = {10,  20, 30,  40, 50};
+    int buscas[] = {40, 40, 40, 50, 10, 25};
+    int quantidade_buscas = sizeof(buscas) / sizeof(buscas[0]);
+    int indice_busca;
+
+    cout << "\n Vetor inicial: ";
+    imprimirVetor(vetor, TAM_VETOR);
+
+    for (indice_busca = 0; indice_busca < quantidade_buscas; indice_busca++)
+    {
+        int indice = buscaTransposicao(vetor, TAM_VETOR, buscas[indice_busca]);
+
+        cout << "\n Busca " << buscas[indice_busca] << " → índice: " << indice << " | Vetor: ";
+        imprimirVetor(vetor, TAM_VETOR);
+    }
+
+    return 0;
+}
