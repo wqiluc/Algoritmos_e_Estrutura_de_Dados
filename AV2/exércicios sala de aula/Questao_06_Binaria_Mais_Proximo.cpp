@@ -1,3 +1,5 @@
+// QUESTÃO 6 – Busca Binária: Elemento Mais Próximo
+//
 // Modifique a busca binária para, caso o valor NÃO exista no vetor,
 // retornar a posição do elemento MAIS PRÓXIMO dele.
 // Se existir, retorne a posição dele mesmo.
@@ -5,7 +7,7 @@
 
 // ex: {2, 5, 9, 14, 20, 27, 35}; (procurando o 12) → posição 3 (valor 14)
 
-// Dica: quanto valem inicio e fim quando o while termina? (lembre do vetordois.cpp)
+// Dica: quanto valem inicio e fim quando o while termina? (lembre da Questão 2)
 // Cuidado com as bordas: valor menor que todos ou maior que todos.
 
 // int buscaBinariaMaisProximo(int vetor[], int tamanho, int valor);
@@ -19,4 +21,4 @@
 // valor 100 → posição 6 (valor 35)
 
 // Compilar e rodar (a partir da raiz do repositório):
-// g++ -std=c++17 "AV2/exércicios sala de aula/vetorseis.cpp" -o "AV2/exércicios sala de aula/vetorseis.out" && "./AV2/exércicios sala de aula/vetorseis.out"
+// g++ -std=c++17 "AV2/exércicios sala de aula/Questao_06_Binaria_Mais_Proximo.cpp" -o "AV2/exércicios sala de aula/q6.out" && "./AV2/exércicios sala de aula/q6.out"

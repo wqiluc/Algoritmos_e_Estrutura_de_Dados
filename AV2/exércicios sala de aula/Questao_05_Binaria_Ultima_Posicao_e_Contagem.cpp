@@ -1,6 +1,8 @@
+// QUESTÃO 5 – Busca Binária: Última Posição e Contagem
+//
 // Modifique a busca binária para retornar a ÚLTIMA posição em que
 // determinado elemento aparece.
-// Depois, use ela junto com a primeira posição (vetortres.cpp) para
+// Depois, use ela junto com a primeira posição (Questão 3) para
 // dizer QUANTAS VEZES o elemento aparece no vetor, sem percorrer ele todo.
 
 // ex: {1, 3, 3, 5, 5, 5, 5, 8, 10}; (procurando o 5) → primeira 3, última 6, aparece 4 vezes
@@ -16,4 +18,4 @@
 // valor 6  → valor não encontrado no vetor.
 
 // Compilar e rodar (a partir da raiz do repositório):
-// g++ -std=c++17 "AV2/exércicios sala de aula/vetorcinco.cpp" -o "AV2/exércicios sala de aula/vetorcinco.out" && "./AV2/exércicios sala de aula/vetorcinco.out"
+// g++ -std=c++17 "AV2/exércicios sala de aula/Questao_05_Binaria_Ultima_Posicao_e_Contagem.cpp" -o "AV2/exércicios sala de aula/q5.out" && "./AV2/exércicios sala de aula/q5.out"

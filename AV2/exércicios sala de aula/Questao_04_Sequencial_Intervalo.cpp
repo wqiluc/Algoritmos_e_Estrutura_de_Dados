@@ -1,3 +1,5 @@
+// QUESTÃO 4 – Busca Sequencial: Valores em um Intervalo
+//
 // Modifique a busca sequencial p/ retornar todas as posições em que
 // aparecem valores DENTRO de um intervalo [minimo, maximo] (incluindo
 // os extremos).
@@ -16,4 +18,4 @@
 // intervalo [6, 3]  → 2 valor(es), nos índices: 0 4   (trocou os extremos)
 
 // Compilar e rodar (a partir da raiz do repositório):
-// g++ -std=c++17 "AV2/exércicios sala de aula/vetorquatro.cpp" -o "AV2/exércicios sala de aula/vetorquatro.out" && "./AV2/exércicios sala de aula/vetorquatro.out"
+// g++ -std=c++17 "AV2/exércicios sala de aula/Questao_04_Sequencial_Intervalo.cpp" -o "AV2/exércicios sala de aula/q4.out" && "./AV2/exércicios sala de aula/q4.out"
