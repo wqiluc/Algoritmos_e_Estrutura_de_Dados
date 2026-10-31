@@ -18,6 +18,7 @@
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/exércicios sala de aula/Questao_02_Binaria_Posicao_Insercao.cpp" -o "AV2/exércicios sala de aula/q2.out" && "./AV2/exércicios sala de aula/q2.out"
 
+
 #include <iostream>
 using namespace std;
 
@@ -56,20 +57,20 @@ int main()
     int vetor[TAM_VETOR] = {1, 3, 5, 7, 9, 11, 13};
     int valor;
 
-    cout << "\n\t Digite um valor no vetor: ";
+    cout << "\n\t Digite um valor para ser inserido no vetor: ";
     cin >> valor;
 
     int resultado = buscaBinaria(vetor, TAM_VETOR, valor);
 
     if (resultado == -1)
     {
-        cout << "\n\t O valor " << valor << " ja existe no vetor, nao precisa ser inserido." << endl;
+        cout << "\n\t O valor " << valor << " já existe no vetor, não precisa ser inserido." << endl;
     }
+
     else
     {
-        cout << "\n\t O valor " << valor << " deve ser inserido na posicao: " << resultado << endl;
+        cout << "\n\t O valor " << valor << " deve ser inserido na posição: " << resultado << endl;
     }
 
     return 0;
-
 }
