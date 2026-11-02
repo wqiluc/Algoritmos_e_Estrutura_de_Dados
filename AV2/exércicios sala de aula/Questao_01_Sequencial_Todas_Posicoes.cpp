@@ -22,23 +22,23 @@ using namespace std;
 
 #define TAM_VETOR 7
 
-int buscaSequencial(int vetor[], int tamanho_vetor, int valor)
-{  
-    int indice_vetor;
+int buscaSequencial(int vetor[], int tamanho_vetor, int valor) 
+{
+    int indice_vetor = 0;
 
-    for (indice_vetor = 0; indice_vetor < tamanho_vetor; indice_vetor++)
+    for (indice_vetor = 0; indice_vetor < tamanho_vetor; indice_vetor++) 
     {
-        if(vetor[indice_vetor] == valor)
+        if (vetor[indice_vetor] == valor) 
         {
-            cout << "\n\t O valor: " << vetor[indice_vetor] << " encontra-se nos índices: " << indice_vetor << endl;
+            cout << "\n\t Valor: " << valor << " encontrado na posição: " << indice_vetor << endl;
         }
     }
-    return -1;
+    return 0;
 }
 
-int main()
+int main() 
 {
-    int vetor[TAM_VETOR] = {4,8,2,8,5,8,1};
+    int vetor[TAM_VETOR] = {4, 8, 2, 8, 5, 8, 1};
     int valor = 8;
 
     buscaSequencial(vetor, TAM_VETOR, valor);

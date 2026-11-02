@@ -65,6 +65,7 @@ int main()
     {
         cout << "\n\t Valor não encontrado no vetor.\n";
     }
+    
     else
     {
         cout << "\n\t A primeira posição do valor " << valor << " é " << posicao << ".\n";

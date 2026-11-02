@@ -18,11 +18,10 @@
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/exércicios sala de aula/Questao_02_Binaria_Posicao_Insercao.cpp" -o "AV2/exércicios sala de aula/q2.out" && "./AV2/exércicios sala de aula/q2.out"
 
-
 #include <iostream>
 using namespace std;
 
-#define TAM_VETOR 7
+#define TAMANHO_VETOR 7
 
 int buscaBinaria(int vetor[], int tamanho_vetor, int valor)
 {
@@ -36,7 +35,7 @@ int buscaBinaria(int vetor[], int tamanho_vetor, int valor)
 
         if (vetor[meio] == valor)
         {
-            return -1;
+            return -1; 
         }
 
         else if (vetor[meio] < valor)
@@ -49,28 +48,26 @@ int buscaBinaria(int vetor[], int tamanho_vetor, int valor)
             final = meio - 1;
         }
     }
-    return inicio;
+    return inicio; 
 }
 
 int main()
 {
-    int vetor[TAM_VETOR] = {1, 3, 5, 7, 9, 11, 13};
-    int valor;
+    int vetor[TAMANHO_VETOR] = {1, 3, 5, 7, 9, 11, 13};
 
-    cout << "\n\t Digite um valor para ser inserido no vetor: ";
+    int valor;
+    cout << "\n\t Digite o valor a ser inserido: ";
     cin >> valor;
 
-    int resultado = buscaBinaria(vetor, TAM_VETOR, valor);
+    int posicao = buscaBinaria(vetor, TAMANHO_VETOR, valor);
 
-    if (resultado == -1)
+    if (posicao == -1)
     {
-        cout << "\n\t O valor " << valor << " já existe no vetor, não precisa ser inserido." << endl;
+        cout << "\n O valor " << valor << " já existe no vetor." << endl;
     }
-
     else
     {
-        cout << "\n\t O valor " << valor << " deve ser inserido na posição: " << resultado << endl;
+        cout << "\n O valor " << valor << " deve ser inserido na posição: " << posicao << endl;
     }
-
     return 0;
 }
