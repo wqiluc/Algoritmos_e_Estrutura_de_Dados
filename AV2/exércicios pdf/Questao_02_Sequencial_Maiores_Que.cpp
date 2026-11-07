@@ -1,6 +1,6 @@
 // QUESTÃO 2 – Busca Sequencial: Elementos Maiores que um Valor
 //
-// Crie uma busca sequencial modificada que encontre apenas elementos
+// Crie uma busca sequencial modificada que encontre APENAS elementos
 // MAIORES que um dado valor informado e retorne todos esses elementos.
 //
 // Valor   14  3   27  9   41  6   18
@@ -16,9 +16,58 @@
 // Testes:
 // valor 10 → 4 elemento(s): 14 27 41 18
 // valor 30 → 1 elemento(s): 41
-// valor 27 → 1 elemento(s): 41          (o 27 não entra: é igual, não maior)
+// valor 27 → 1 elemento(s): 41  (o 27 não entra: é igual, não maior)
 // valor 0  → 7 elemento(s): 14 3 27 9 41 6 18
 // valor 41 → nenhum elemento maior que 41.
 //
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/exércicios pdf/Questao_02_Sequencial_Maiores_Que.cpp" -o "AV2/exércicios pdf/q2.out" && "./AV2/exércicios pdf/q2.out"
+
+#include <iostream>
+using namespace std;
+
+#define TAM_VETOR 7
+
+int buscaMaiores(int vetor[], int tamanho_vetor, int valor, int maiores[])
+{
+    int indice_maiores;
+
+    for (indice_maiores = 0; indice_maiores < tamanho_vetor; indice_maiores++)
+    {
+        if(vetor[indice_maiores] > valor)
+        {
+            maiores[indice_maiores] = vetor[indice_maiores];
+        }
+
+        else
+        {
+            maiores[indice_maiores] = 0;
+        }
+    }
+    return indice_maiores;
+}
+
+int main()
+{
+    int vetor[TAM_VETOR] = {14, 3, 27, 9, 41, 6, 18};
+    int maiores[TAM_VETOR];
+    int valor;
+
+    cout << "\n\t Digite um valor para buscar: ";
+    cin >> valor;
+
+    int quantidade = buscaMaiores(vetor, TAM_VETOR, valor, maiores);
+
+    cout << "Quantidade de elementos maiores que " << valor << ": " << quantidade << endl;
+    cout << "Elementos maiores que " << valor << ": ";
+
+    int indice_maiores;
+
+    for (indice_maiores = 0; indice_maiores < quantidade; indice_maiores++)
+    {
+        cout << maiores[indice_maiores] << " ";
+    }
+
+    cout << endl;
+    return 0;
+}

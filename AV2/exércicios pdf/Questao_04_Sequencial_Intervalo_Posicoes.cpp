@@ -25,3 +25,60 @@
 //
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/exércicios pdf/Questao_04_Sequencial_Intervalo_Posicoes.cpp" -o "AV2/exércicios pdf/q4.out" && "./AV2/exércicios pdf/q4.out"
+
+#include <iostream>
+using namespace std;
+
+#define TAM_VETOR 8
+
+int buscaSequencialIntervalo(int vetor[], int inicio, int fim, int valor)
+{
+    int indice_busca_intervalo;
+
+    for (indice_busca_intervalo = inicio; indice_busca_intervalo <= fim; indice_busca_intervalo++)
+    {
+        if (vetor[indice_busca_intervalo] == valor)
+        {
+            return indice_busca_intervalo;
+        }
+        
+        else if(indice_busca_intervalo == fim)
+        {
+            return -1;
+        }
+    }
+    return indice_busca_intervalo;
+}
+
+int main()
+{
+    int vetor[TAM_VETOR] = {11, 24, 7, 36, 15, 24, 50, 3};
+    int valor, inicio, fim, resultado;
+
+    cout << "\n\t Digite o valor a ser buscado: ";
+    cin >> valor;
+    cout << "\n\t Digite a posição inicial do intervalo: ";
+    cin >> inicio;
+    cout << "\n\t Digite a posição final do intervalo: ";
+    cin >> fim;
+
+    if (inicio < 0 || fim >= TAM_VETOR || inicio > fim)
+    {
+        cout << "\n\t Intervalo inválido!" << endl;
+    }
+
+    else
+    {
+        resultado = buscaSequencialIntervalo(vetor, inicio, fim, valor);
+
+        if (resultado != -1)
+        {
+            cout << "\n\t O valor " << valor << " foi encontrado na posição: " << resultado << endl;
+        }
+
+        else
+        {
+            cout << "\n\t O valor " << valor << " não foi encontrado no intervalo!" << endl;
+        }
+    }
+}

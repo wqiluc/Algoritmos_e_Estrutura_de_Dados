@@ -22,3 +22,44 @@
 //
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/exércicios pdf/Questao_05_Sequencial_Ultima_Ocorrencia.cpp" -o "AV2/exércicios pdf/q5.out" && "./AV2/exércicios pdf/q5.out"
+
+#include <iostream>
+using namespace std;
+
+#define TAM_VETOR 7
+
+int buscaSequencialUltima(int vetor[], int tamanho_vetor, int valor)
+{
+    int indiceUltimaOcorrencia = -1;
+
+    for (int indice_busca = 0; indice_busca < tamanho_vetor; indice_busca++)
+    {
+        if (vetor[indice_busca] == valor)
+        {
+            indiceUltimaOcorrencia = indice_busca;
+        }
+    }
+    return indiceUltimaOcorrencia;
+}
+
+int main()
+{
+    int vetor[TAM_VETOR] = {6, 13, 6, 21, 13, 6, 30};
+    int valor;
+
+    cout << "Digite o valor a ser buscado: ";
+    cin >> valor;
+
+    int posicao = buscaSequencialUltima(vetor, TAM_VETOR, valor);
+
+    if (posicao != -1)
+    {
+        cout << "Última ocorrência do valor " << valor << " está na posição: " << posicao << endl;
+    }
+    else
+    {
+        cout << "Valor " << valor << " não encontrado no vetor." << endl;
+    }
+
+    return 0;
+}
