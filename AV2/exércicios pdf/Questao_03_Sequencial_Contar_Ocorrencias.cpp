@@ -24,34 +24,33 @@
 #include <iostream>
 using namespace std;
 
-#define TAM_VETOR 8
+#define TAMANHO_VETOR 8
 
 int contarOcorrencias(int vetor[], int tamanho_vetor, int valor)
 {
-    int indice_contador = 0;
-    int contador = 0;
+    int indice_ocorrencias;
 
-    for (indice_contador = 0; indice_contador < tamanho_vetor; indice_contador++)
+    for (indice_ocorrencias = 0; indice_ocorrencias < tamanho_vetor; indice_ocorrencias++)
     {
-        if (vetor[indice_contador] == valor)
+        if (vetor[indice_ocorrencias] == valor)
         {
-            contador++;
-            cout << "O valor: " << valor << " foi encontrado na posição: " << indice_contador << " (" << contador << " Vez(es))" << endl;
+            indice_ocorrencias++;
         }
     }
-    return contador;
+    return indice_ocorrencias;
 }
 
 int main()
 {
-    int vetor[TAM_VETOR] = {5, 2, 7, 2, 9, 2, 5, 1};
+    int vetor[TAMANHO_VETOR] = {5, 2, 7, 2, 9, 2, 5, 1};
     int valor;
 
-    cout << "Digite o valor a ser procurado: ";
+    cout << "Digite o valor a ser buscado: ";
     cin >> valor;
 
-    int ocorrencias = contarOcorrencias(vetor, TAM_VETOR, valor);
-    cout << "O valor " << valor << " aparece " << ocorrencias << " vez(es) no vetor." << endl;
+    int ocorrencias = contarOcorrencias(vetor, TAMANHO_VETOR, valor);
+
+    cout << "O valor " << valor << " aparece " << ocorrencias << " vezes no vetor." << endl;
 
     return 0;
 }

@@ -23,25 +23,22 @@
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/exércicios pdf/Questao_02_Sequencial_Maiores_Que.cpp" -o "AV2/exércicios pdf/q2.out" && "./AV2/exércicios pdf/q2.out"
 
+
 #include <iostream>
 using namespace std;
 
-#define TAM_VETOR 7
+#define TAMANHO_VETOR 7
 
 int buscaMaiores(int vetor[], int tamanho_vetor, int valor, int maiores[])
 {
     int indice_maiores;
 
-    for (indice_maiores = 0; indice_maiores < tamanho_vetor; indice_maiores++)
+    for (int i = 0; i < tamanho_vetor; i++)
     {
-        if(vetor[indice_maiores] > valor)
+        if (vetor[i] > valor)
         {
-            maiores[indice_maiores] = vetor[indice_maiores];
-        }
-
-        else
-        {
-            maiores[indice_maiores] = 0;
+            maiores[indice_maiores] = vetor[i];
+            indice_maiores++;
         }
     }
     return indice_maiores;
@@ -49,25 +46,30 @@ int buscaMaiores(int vetor[], int tamanho_vetor, int valor, int maiores[])
 
 int main()
 {
-    int vetor[TAM_VETOR] = {14, 3, 27, 9, 41, 6, 18};
-    int maiores[TAM_VETOR];
+    int vetor[TAMANHO_VETOR] = {14, 3, 27, 9, 41, 6, 18};
     int valor;
+    int maiores[TAMANHO_VETOR];
+    int quantidade_maiores;
 
-    cout << "\n\t Digite um valor para buscar: ";
+    cout << "Digite um valor: ";
     cin >> valor;
 
-    int quantidade = buscaMaiores(vetor, TAM_VETOR, valor, maiores);
+    quantidade_maiores = buscaMaiores(vetor, TAMANHO_VETOR, valor, maiores);
 
-    cout << "Quantidade de elementos maiores que " << valor << ": " << quantidade << endl;
-    cout << "Elementos maiores que " << valor << ": ";
-
-    int indice_maiores;
-
-    for (indice_maiores = 0; indice_maiores < quantidade; indice_maiores++)
+    if (quantidade_maiores > 0)
     {
-        cout << maiores[indice_maiores] << " ";
+        cout << quantidade_maiores << " elemento(s): ";
+
+        for (int i = 0; i < quantidade_maiores; i++)
+        {
+            cout << maiores[i] << " ";
+        }
+        cout << endl;
     }
 
-    cout << endl;
+    else
+    {
+        cout << "Nenhum elemento maior que " << valor << "." << endl;
+    }
     return 0;
 }
