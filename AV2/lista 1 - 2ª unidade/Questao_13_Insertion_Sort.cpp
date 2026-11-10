@@ -12,8 +12,8 @@
 // Vetor original → 22 11 99 88 9 7 42 65 33 10
 // Vetor ordenado → 7 9 10 11 22 33 42 65 88 99
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_13_Insertion_Sort.cpp -o q13.out && ./q13.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_13_Insertion_Sort.cpp" -o "AV2/lista 1 - 2ª unidade/q13.out" && "./AV2/lista 1 - 2ª unidade/q13.out"
 
 #include <iostream>
 using namespace std;

@@ -19,8 +19,8 @@
 // Passada 8 → 3 6 7 9 11 12 18 25 31 45
 // Passada 9 → 3 6 7 9 11 12 18 25 31 45
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_21_Bubble_Iteracoes.cpp -o q21.out && ./q21.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_21_Bubble_Iteracoes.cpp" -o "AV2/lista 1 - 2ª unidade/q21.out" && "./AV2/lista 1 - 2ª unidade/q21.out"
 
 #include <iostream>
 #include <utility>

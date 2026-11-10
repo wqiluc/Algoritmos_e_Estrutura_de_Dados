@@ -15,8 +15,8 @@
 // Pivô 8  → posição 6: 2 3 5 5 6 7 8 9 11
 // Pivô 11 → posição 8: 2 3 5 5 6 7 8 9 11
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_04_Quick_Sort_Recursivo.cpp -o q4.out && ./q4.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista extra - 2ª unidade/Questao_04_Quick_Sort_Recursivo.cpp" -o "AV2/lista extra - 2ª unidade/q4.out" && "./AV2/lista extra - 2ª unidade/q4.out"
 
 #include <iostream>
 #include <utility>

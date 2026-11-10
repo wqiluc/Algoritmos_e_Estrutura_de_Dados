@@ -22,8 +22,8 @@
 // Tabela → só [5] = 15, o resto vazio
 // Buscar 15 → posição 5 | Buscar 25, 35, 45, 55 → -1
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_07_Hash_Sem_Colisao.cpp -o q7.out && ./q7.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_07_Hash_Sem_Colisao.cpp" -o "AV2/lista 1 - 2ª unidade/q7.out" && "./AV2/lista 1 - 2ª unidade/q7.out"
 
 #include <iostream>
 using namespace std;

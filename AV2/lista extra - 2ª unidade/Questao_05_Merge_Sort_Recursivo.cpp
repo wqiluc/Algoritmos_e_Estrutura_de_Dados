@@ -16,8 +16,8 @@
 // 2 5 8 9
 // 2 3 5 6 8 9 11 14
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_05_Merge_Sort_Recursivo.cpp -o q5.out && ./q5.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista extra - 2ª unidade/Questao_05_Merge_Sort_Recursivo.cpp" -o "AV2/lista extra - 2ª unidade/q5.out" && "./AV2/lista extra - 2ª unidade/q5.out"
 
 #include <iostream>
 using namespace std;

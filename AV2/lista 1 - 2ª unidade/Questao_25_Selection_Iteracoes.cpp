@@ -19,8 +19,8 @@
 // Iteração 8 (troca 40 ↔ 29) → 2 5 7 10 13 14 18 29 37 40
 // Iteração 9 (sem troca)     → 2 5 7 10 13 14 18 29 37 40
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_25_Selection_Iteracoes.cpp -o q25.out && ./q25.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_25_Selection_Iteracoes.cpp" -o "AV2/lista 1 - 2ª unidade/q25.out" && "./AV2/lista 1 - 2ª unidade/q25.out"
 
 #include <iostream>
 #include <utility>

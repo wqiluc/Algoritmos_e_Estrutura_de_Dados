@@ -10,8 +10,8 @@
 // Testes:
 // valor 55 → -1 (percorreu os 10 elementos e não achou)
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_03_Sequencial_Indice_Ou_Menos_Um.cpp -o q3.out && ./q3.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_03_Sequencial_Indice_Ou_Menos_Um.cpp" -o "AV2/lista 1 - 2ª unidade/q3.out" && "./AV2/lista 1 - 2ª unidade/q3.out"
 
 #include <iostream>
 using namespace std;

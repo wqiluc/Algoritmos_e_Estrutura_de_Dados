@@ -19,8 +19,8 @@
 // Iteração 8 (insere 5) → 1 2 3 4 5 6 7 8 9 0
 // Iteração 9 (insere 0) → 0 1 2 3 4 5 6 7 8 9
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_23_Insertion_Iteracoes.cpp -o q23.out && ./q23.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_23_Insertion_Iteracoes.cpp" -o "AV2/lista 1 - 2ª unidade/q23.out" && "./AV2/lista 1 - 2ª unidade/q23.out"
 
 #include <iostream>
 using namespace std;

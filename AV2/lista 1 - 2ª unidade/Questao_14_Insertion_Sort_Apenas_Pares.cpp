@@ -14,8 +14,8 @@
 // Pares ordenados                   → 0 2 4 6 8
 // Vetor final → 9 0 3 2 7 4 1 6 5 8 (ímpares 9 3 7 1 5 não mudaram de lugar)
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_14_Insertion_Sort_Apenas_Pares.cpp -o q14.out && ./q14.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_14_Insertion_Sort_Apenas_Pares.cpp" -o "AV2/lista 1 - 2ª unidade/q14.out" && "./AV2/lista 1 - 2ª unidade/q14.out"
 
 #include <iostream>
 using namespace std;

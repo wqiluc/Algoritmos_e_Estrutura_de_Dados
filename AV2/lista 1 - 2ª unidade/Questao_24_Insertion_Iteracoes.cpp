@@ -20,8 +20,8 @@
 // Iteração 9 (insere 100) → 10 20 30 40 50 60 70 80 90 100
 // (vetor quase ordenado → a maioria das inserções nem mexe em nada)
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_24_Insertion_Iteracoes.cpp -o q24.out && ./q24.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_24_Insertion_Iteracoes.cpp" -o "AV2/lista 1 - 2ª unidade/q24.out" && "./AV2/lista 1 - 2ª unidade/q24.out"
 
 #include <iostream>
 using namespace std;

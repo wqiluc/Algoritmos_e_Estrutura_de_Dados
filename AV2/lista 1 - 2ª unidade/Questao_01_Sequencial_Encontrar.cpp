@@ -10,8 +10,8 @@
 // Testes:
 // valor 25 → encontrado na posição 2 (3 comparações: 15, 8, 25)
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_01_Sequencial_Encontrar.cpp -o q1.out && ./q1.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_01_Sequencial_Encontrar.cpp" -o "AV2/lista 1 - 2ª unidade/q1.out" && "./AV2/lista 1 - 2ª unidade/q1.out"
 
 #include <iostream>
 using namespace std;

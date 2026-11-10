@@ -18,8 +18,8 @@
 // Passada 7 → 1 1 2 5 7 8 10 11
 // (8 elementos → 7 passadas; o 1 repetido não é trocado com o outro 1)
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_20_Bubble_Iteracoes.cpp -o q20.out && ./q20.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_20_Bubble_Iteracoes.cpp" -o "AV2/lista 1 - 2ª unidade/q20.out" && "./AV2/lista 1 - 2ª unidade/q20.out"
 
 #include <iostream>
 #include <utility>

@@ -19,8 +19,8 @@
 // parou com inicio 5 → posição de inserção 5
 // Vetor depois de inserir → 5 10 15 20 25 27 30 35 40 45 50
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_06_Binaria_Posicao_Insercao.cpp -o q6.out && ./q6.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_06_Binaria_Posicao_Insercao.cpp" -o "AV2/lista 1 - 2ª unidade/q6.out" && "./AV2/lista 1 - 2ª unidade/q6.out"
 
 #include <iostream>
 using namespace std;

@@ -10,8 +10,8 @@
 // Testes:
 // valor 7 → aparece 3 vezes (posições 0, 3 e 6)
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_02_Sequencial_Contar_Ocorrencias.cpp -o q2.out && ./q2.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_02_Sequencial_Contar_Ocorrencias.cpp" -o "AV2/lista 1 - 2ª unidade/q2.out" && "./AV2/lista 1 - 2ª unidade/q2.out"
 
 #include <iostream>
 using namespace std;

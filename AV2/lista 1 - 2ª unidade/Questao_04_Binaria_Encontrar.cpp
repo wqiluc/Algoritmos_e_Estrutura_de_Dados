@@ -18,8 +18,8 @@
 // inicio 6, final 6 → meio 6 (13) → achou!
 // valor 13 → posição 6
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_04_Binaria_Encontrar.cpp -o q4.out && ./q4.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_04_Binaria_Encontrar.cpp" -o "AV2/lista 1 - 2ª unidade/q4.out" && "./AV2/lista 1 - 2ª unidade/q4.out"
 
 #include <iostream>
 using namespace std;

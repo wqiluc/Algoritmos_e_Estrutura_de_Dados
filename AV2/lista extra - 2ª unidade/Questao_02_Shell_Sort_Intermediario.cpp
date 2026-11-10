@@ -11,8 +11,8 @@
 // Após gap 2 → 9 2 11 3 14 5 16 7 19
 // Após gap 1 → 2 3 5 7 9 11 14 16 19
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_02_Shell_Sort_Intermediario.cpp -o q2.out && ./q2.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista extra - 2ª unidade/Questao_02_Shell_Sort_Intermediario.cpp" -o "AV2/lista extra - 2ª unidade/q2.out" && "./AV2/lista extra - 2ª unidade/q2.out"
 
 #include <iostream>
 using namespace std;

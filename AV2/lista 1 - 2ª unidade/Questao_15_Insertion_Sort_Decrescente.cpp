@@ -11,8 +11,8 @@
 // Vetor original → 30 20 10 40 50 70 60 90 80 100
 // Vetor ordenado → 100 90 80 70 60 50 40 30 20 10
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_15_Insertion_Sort_Decrescente.cpp -o q15.out && ./q15.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_15_Insertion_Sort_Decrescente.cpp" -o "AV2/lista 1 - 2ª unidade/q15.out" && "./AV2/lista 1 - 2ª unidade/q15.out"
 
 #include <iostream>
 using namespace std;

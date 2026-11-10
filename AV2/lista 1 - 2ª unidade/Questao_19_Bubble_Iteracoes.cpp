@@ -20,8 +20,8 @@
 // Passada 9 → 0 1 2 3 4 5 6 7 8 9
 // (o 0 começa no fim e só anda 1 casa pra esquerda por passada)
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_19_Bubble_Iteracoes.cpp -o q19.out && ./q19.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_19_Bubble_Iteracoes.cpp" -o "AV2/lista 1 - 2ª unidade/q19.out" && "./AV2/lista 1 - 2ª unidade/q19.out"
 
 #include <iostream>
 #include <utility>

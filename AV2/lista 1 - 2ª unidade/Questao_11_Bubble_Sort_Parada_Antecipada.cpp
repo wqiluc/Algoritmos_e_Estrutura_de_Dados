@@ -12,8 +12,8 @@
 // Passada 1 → 1 2 3 4 5 6 7 8 9 10 (nenhuma troca → já ordenado, parou)
 // Comparações → 9 (o Bubble Sort normal faria 9+8+...+1 = 45)
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_11_Bubble_Sort_Parada_Antecipada.cpp -o q11.out && ./q11.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_11_Bubble_Sort_Parada_Antecipada.cpp" -o "AV2/lista 1 - 2ª unidade/q11.out" && "./AV2/lista 1 - 2ª unidade/q11.out"
 
 #include <iostream>
 #include <utility>

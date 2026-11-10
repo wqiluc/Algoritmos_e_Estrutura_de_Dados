@@ -20,8 +20,8 @@
 // Iteração 9 (sem troca)   → 1 2 3 4 5 6 7 8 9 10
 // (já fica ordenado na 2ª, mas o Selection Sort sempre faz todas as iterações)
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_26_Selection_Iteracoes.cpp -o q26.out && ./q26.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_26_Selection_Iteracoes.cpp" -o "AV2/lista 1 - 2ª unidade/q26.out" && "./AV2/lista 1 - 2ª unidade/q26.out"
 
 #include <iostream>
 #include <utility>

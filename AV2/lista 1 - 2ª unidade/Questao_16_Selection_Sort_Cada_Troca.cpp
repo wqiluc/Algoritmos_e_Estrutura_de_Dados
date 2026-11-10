@@ -18,8 +18,8 @@
 // Troca 6 (29 ↔ 18) → 2 5 7 10 13 14 18 40 37 29
 // Troca 7 (40 ↔ 29) → 2 5 7 10 13 14 18 29 37 40
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_16_Selection_Sort_Cada_Troca.cpp -o q16.out && ./q16.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_16_Selection_Sort_Cada_Troca.cpp" -o "AV2/lista 1 - 2ª unidade/q16.out" && "./AV2/lista 1 - 2ª unidade/q16.out"
 
 #include <iostream>
 #include <utility>

@@ -12,8 +12,8 @@
 // Vetor original → 9 7 5 3 1 2 4 6 8 0
 // Vetor ordenado → 0 1 2 3 4 5 6 7 8 9
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_10_Bubble_Sort.cpp -o q10.out && ./q10.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_10_Bubble_Sort.cpp" -o "AV2/lista 1 - 2ª unidade/q10.out" && "./AV2/lista 1 - 2ª unidade/q10.out"
 
 #include <iostream>
 #include <utility>

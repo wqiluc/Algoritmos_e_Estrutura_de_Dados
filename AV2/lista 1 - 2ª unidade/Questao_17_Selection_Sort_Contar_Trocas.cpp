@@ -14,8 +14,8 @@
 // i = 2 até 8 → cada um já está no lugar → sem troca
 // Total de trocas → 2
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_17_Selection_Sort_Contar_Trocas.cpp -o q17.out && ./q17.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_17_Selection_Sort_Contar_Trocas.cpp" -o "AV2/lista 1 - 2ª unidade/q17.out" && "./AV2/lista 1 - 2ª unidade/q17.out"
 
 #include <iostream>
 #include <utility>

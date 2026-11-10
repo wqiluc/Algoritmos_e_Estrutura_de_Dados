@@ -18,8 +18,8 @@
 // Comparação 4 → meio 9 (100) → achou
 // valor 100 → posição 9, 4 comparações
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_05_Binaria_Contando_Comparacoes.cpp -o q5.out && ./q5.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_05_Binaria_Contando_Comparacoes.cpp" -o "AV2/lista 1 - 2ª unidade/q5.out" && "./AV2/lista 1 - 2ª unidade/q5.out"
 
 #include <iostream>
 using namespace std;

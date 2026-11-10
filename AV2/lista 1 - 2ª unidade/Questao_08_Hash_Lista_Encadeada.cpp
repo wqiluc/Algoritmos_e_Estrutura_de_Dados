@@ -15,8 +15,8 @@
 // Tabela → [2] → 12 → 22 → 32 → 42 → NULL (o resto vazio)
 // Buscar 22 → posição 2 da tabela → olhou 12, olhou 22 → achou no 2º nó
 
-// Compilar e rodar (com o terminal aberto dentro desta pasta):
-// g++ -std=c++17 Questao_08_Hash_Lista_Encadeada.cpp -o q8.out && ./q8.out
+// Compilar e rodar (a partir da raiz do repositório):
+// g++ -std=c++17 "AV2/lista 1 - 2ª unidade/Questao_08_Hash_Lista_Encadeada.cpp" -o "AV2/lista 1 - 2ª unidade/q8.out" && "./AV2/lista 1 - 2ª unidade/q8.out"
 
 #include <iostream>
 using namespace std;
