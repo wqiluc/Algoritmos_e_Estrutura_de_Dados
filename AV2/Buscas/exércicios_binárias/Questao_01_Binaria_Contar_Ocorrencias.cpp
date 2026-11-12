@@ -36,3 +36,118 @@
 //
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/Buscas/exércicios_binárias/Questao_01_Binaria_Contar_Ocorrencias.cpp" -o "AV2/Buscas/exércicios_binárias/q1.out" && "./AV2/Buscas/exércicios_binárias/q1.out"
+
+#include <iostream>
+using namespace std;
+
+#define TAMANHO_VETOR 11
+
+int primeiraOcorrencia(int vetor[], int tamanho_vetor, int valor) 
+{
+    int inicio = 0;
+    int fim = tamanho_vetor - 1;
+    int meio;
+    int posicao = -1;
+
+    while (inicio <= fim)
+    {
+        meio = (inicio + fim) / 2;
+
+        if (vetor[meio] == valor) 
+        {
+            posicao = meio;
+            fim = meio - 1; 
+        } 
+
+        else if (vetor[meio] < valor) 
+        {
+            inicio = meio + 1;
+        } 
+
+        else 
+        {
+            fim = meio - 1;
+        }
+    }
+    return posicao;
+}
+
+
+int ultimaOcorrencia(int vetor[], int tamanho_vetor, int valor) 
+{
+    int inicio = 0;
+    int fim = tamanho_vetor - 1;
+    int meio;
+    int posicao = -1;
+
+    while (inicio <= fim)
+    {
+        meio = (inicio + fim) / 2;
+
+        if (vetor[meio] == valor) 
+        {
+            posicao = meio;
+            inicio = meio + 1; 
+        } 
+
+        else if (vetor[meio] < valor) 
+        {
+            inicio = meio + 1;
+        } 
+
+        else 
+        {
+            fim = meio - 1;
+        }
+    }
+    return posicao;
+}
+
+int contarOcorrencias(int vetor[], int tamanho_vetor, int valor) 
+{
+    int primeira = primeiraOcorrencia(vetor, tamanho_vetor, valor);
+
+    if (primeira == -1) 
+    {
+        return 0; 
+    }
+
+    int ultima = ultimaOcorrencia(vetor, tamanho_vetor, valor);
+    return ultima - primeira + 1;
+}
+
+int main()
+{
+    int vetor[TAMANHO_VETOR] = {1, 2, 2, 2, 5, 5, 7, 9, 9, 9, 9};
+    int valor;
+
+    cout << "Digite o valor a ser buscado: ";
+    cin >> valor;
+
+    int buscainicial = primeiraOcorrencia(vetor, TAMANHO_VETOR, valor);
+    int buscafinal = ultimaOcorrencia(vetor, TAMANHO_VETOR, valor);
+    int ocorrencias = contarOcorrencias(vetor, TAMANHO_VETOR, valor);
+
+    if (buscainicial != -1 && buscafinal != -1) 
+    {
+        cout << "Primeira ocorrência do valor " << valor << ": posição " << buscainicial << endl;
+        cout << "Última ocorrência do valor " << valor << ": posição " << buscafinal << endl;
+    } 
+
+    else 
+    {
+        cout << "O valor " << valor << " não foi encontrado." << endl;
+    }
+
+    if (ocorrencias > 0) 
+    {
+        cout << "O valor " << valor << " aparece " << ocorrencias << " vezes." << endl;
+    } 
+
+    else 
+    {
+        cout << "O valor " << valor << " não foi encontrado." << endl;
+    }
+
+    return 0;
+}

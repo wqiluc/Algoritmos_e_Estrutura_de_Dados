@@ -93,7 +93,7 @@ int main()
 
     cout << "\n\t Digite a matrícula do aluno: ";
     cin >> matricula;
-    cin.ignore(); // Limpa o buffer do teclado
+    cin.ignore(); 
 
     cout << "\n\t Digite o nome do aluno: ";
     getline(cin, nome);

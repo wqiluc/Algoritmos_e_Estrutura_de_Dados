@@ -38,7 +38,7 @@ using namespace std;
 #define LINHAS 3
 #define COLUNAS 4
 
-bool buscarNaMatriz(int matriz[LINHAS][COLUNAS], int valor, int &linha, int &coluna)
+bool buscarNaMatriz(int matriz[][COLUNAS], int valor, int &linha, int &coluna)
 {
     int i, j;
 
@@ -84,24 +84,34 @@ int main()
     };
 
     int valor;
+
     cout << "Digite o valor a ser buscado: ";
     cin >> valor;
 
     int linha, coluna;
 
-    bool encontrado = buscarNaMatriz(matriz, valor, linha, coluna);
-    int quantidade = contarNaMatriz(matriz, valor);
+    bool resultado = buscarNaMatriz(matriz, valor, linha, coluna);
+    int contagem = contarNaMatriz(matriz, valor);
 
-    if (encontrado)
+    if (resultado)
     {
-        cout << "Valor " << valor << " encontrado na linha " << linha << ", coluna " << coluna << endl;
-        cout << "Quantidade de ocorrencias: " << quantidade << endl;
+        cout << "Valor encontrado na linha " << linha << ", coluna " << coluna << endl;
     }
 
     else
     {
-        cout << "Valor " << valor << " nao encontrado." << endl;
-        cout << "Quantidade de ocorrencias: " << quantidade << endl;
+        cout << "Valor não encontrado" << endl;
     }
+
+    if (contagem > 0)
+    {
+        cout << "O valor aparece " << contagem << " vez(es) na matriz." << endl;
+    }
+    
+    else
+    {
+        cout << "O valor não aparece na matriz." << endl;
+    }
+
     return 0;
 }

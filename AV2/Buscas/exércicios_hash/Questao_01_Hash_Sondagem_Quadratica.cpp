@@ -34,3 +34,103 @@
 //
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/Buscas/exércicios_hash/Questao_01_Hash_Sondagem_Quadratica.cpp" -o "AV2/Buscas/exércicios_hash/q1.out" && "./AV2/Buscas/exércicios_hash/q1.out"
+
+#include <iostream>
+using namespace std;
+
+#define TAM_TABELA 11
+
+int tabela[TAM_TABELA];
+
+bool inserir(int tabela[], int chave) 
+{
+    for (int i = 0; i < TAM_TABELA; i++) 
+    {
+        int posicao = (chave % TAM_TABELA + i * i) % TAM_TABELA;
+
+        cout << "Tentativa " << i + 1 << ": posição " << posicao << endl;
+
+        if (tabela[posicao] == -1) 
+        { 
+            tabela[posicao] = chave;
+            return true;
+        }
+    }
+    return false;
+}
+
+int buscar(int tabela[], int chave, int &tentativas) 
+{
+    tentativas = 0;
+
+    for (int i = 0; i < TAM_TABELA; i++) 
+    {
+        tentativas++;
+
+        int posicao = (chave % TAM_TABELA + i * i) % TAM_TABELA;
+
+        cout << "Tentativa " << tentativas << ": posição " << posicao << endl;
+
+        if (tabela[posicao] == chave) 
+        {
+            return posicao;
+        }
+
+        if (tabela[posicao] == -1) 
+        {
+            return -1; 
+        }
+    }
+    return -1;
+}
+
+int main() 
+{
+    int indice, tentativas;
+
+    for (indice = 0; indice < TAM_TABELA; indice++) 
+    {
+        tabela[indice] = -1; 
+    }
+
+    cout << "Inserindo 15..." << endl;
+    inserir(tabela, 15);
+
+    cout << "Inserindo 26..." << endl;
+    inserir(tabela, 26);
+
+    cout << "Inserindo 37..." << endl;
+    inserir(tabela, 37);
+
+    cout << "Inserindo 4..." << endl;
+    inserir(tabela, 4);
+
+    cout << "Inserindo 48..." << endl;
+    inserir(tabela, 48);
+
+    cout << "\nBuscando 4..." << endl;
+    indice = buscar(tabela, 4, tentativas);
+
+    if (indice != -1) 
+    {
+        cout << "Encontrado na posição " << indice << " em " << tentativas << " tentativas." << endl;
+    } 
+
+    else 
+    {
+        cout << "Não encontrado em " << tentativas << " tentativas." << endl;
+    }
+
+    cout << "\nBuscando 26..." << endl;
+    indice = buscar(tabela, 26, tentativas);
+
+    if (indice != -1) 
+    {
+        cout << "Encontrado na posição " << indice << " em " << tentativas << " tentativas." << endl;
+    } 
+
+    else 
+    {
+        cout << "Não encontrado em " << tentativas << " tentativas." << endl;
+    }
+}

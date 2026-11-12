@@ -36,3 +36,53 @@
 //
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/Buscas/exércicios_binárias/Questao_02_Binaria_Raiz_Quadrada.cpp" -o "AV2/Buscas/exércicios_binárias/q2.out" && "./AV2/Buscas/exércicios_binárias/q2.out"
+
+#include <iostream>
+using namespace std;
+
+int raizInteira(int n) 
+{
+    int inicio = 0;
+    int fim = n;
+    int meio;
+    int resposta = -1;
+
+    while (inicio <= fim) 
+    {
+        meio = inicio + (fim - inicio) / 2; 
+        long long quadrado = static_cast<long long>(meio) * meio;
+
+        cout << "inicio=" << inicio << " fim=" << fim << " meio=" << meio << endl;
+
+        if (quadrado <= n) 
+        {
+            resposta = meio; 
+            inicio = meio + 1; 
+        }
+
+        else 
+        {
+            fim = meio - 1; 
+        }
+    }
+
+    return resposta;
+}
+
+int main() 
+{
+    int n;
+    cout << "Digite um número inteiro não negativo: ";
+    cin >> n;
+
+    if (n < 0) 
+    {
+        cout << "Número inválido. Por favor, insira um número não negativo." << endl;
+        return 1; 
+    }
+
+    int resultado = raizInteira(n);
+    cout << "A raiz quadrada inteira de " << n << " é: " << resultado << endl;
+
+    return 0;
+}

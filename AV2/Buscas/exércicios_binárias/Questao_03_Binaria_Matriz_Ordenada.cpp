@@ -36,3 +36,72 @@
 //
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/Buscas/exércicios_binárias/Questao_03_Binaria_Matriz_Ordenada.cpp" -o "AV2/Buscas/exércicios_binárias/q3.out" && "./AV2/Buscas/exércicios_binárias/q3.out"
+
+#include <iostream>
+using namespace std;
+
+#define LINHAS 3
+#define COLUNAS 4
+
+int buscaBinariaMatriz(int matriz[LINHAS][COLUNAS], int valor, int &linha, int &coluna) 
+{
+   int inicio = 0;
+   int fim = LINHAS * COLUNAS - 1;
+   int meio;
+
+   while (inicio <= fim)
+   {
+        meio = (inicio + fim) / 2;
+
+        linha = meio / COLUNAS;
+        coluna = meio % COLUNAS;
+    
+        cout << "inicio=" << inicio << " fim=" << fim << " meio=" << meio
+             << " → [" << linha << "][" << coluna << "] = " << matriz[linha][coluna] << endl;
+    
+        if (matriz[linha][coluna] == valor)
+        {
+             return true;
+        }
+
+        else if (matriz[linha][coluna] < valor)
+        {
+             inicio = meio + 1; // remove a metade esquerda
+        }
+
+        else 
+        {
+             fim = meio - 1; // remove a metade direita
+        }
+   }
+   return false;
+}
+
+int main() 
+{
+   int matriz[LINHAS][COLUNAS] = 
+   {
+       {2, 4, 7, 10},
+       {13, 15, 18, 21},
+       {25, 29, 33, 40}
+   };
+
+   int valor;
+   cout << "Digite o valor a ser buscado: ";
+   cin >> valor;
+
+   int linha, coluna;
+
+   if (buscaBinariaMatriz(matriz, valor, linha, coluna)) 
+   {
+       cout << "Valor " << valor << " encontrado na linha " << linha
+            << ", coluna " << coluna << "." << endl;
+   } 
+   
+   else 
+   {
+       cout << "Valor " << valor << " não encontrado." << endl;
+   }
+
+   return 0;
+}
