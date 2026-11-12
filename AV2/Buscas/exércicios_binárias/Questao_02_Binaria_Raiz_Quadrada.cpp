@@ -40,10 +40,10 @@
 #include <iostream>
 using namespace std;
 
-int raizInteira(int n) 
+int raizInteira(int numero) 
 {
     int inicio = 0;
-    int fim = n;
+    int fim = numero;
     int meio;
     int resposta = -1;
 
@@ -54,7 +54,7 @@ int raizInteira(int n)
 
         cout << "inicio=" << inicio << " fim=" << fim << " meio=" << meio << endl;
 
-        if (quadrado <= n) 
+        if (quadrado <= numero) 
         {
             resposta = meio; 
             inicio = meio + 1; 
@@ -71,18 +71,18 @@ int raizInteira(int n)
 
 int main() 
 {
-    int n;
+    int numero;
     cout << "Digite um número inteiro não negativo: ";
-    cin >> n;
+    cin >> numero;
 
-    if (n < 0) 
+    if (numero < 0) 
     {
         cout << "Número inválido. Por favor, insira um número não negativo." << endl;
         return 1; 
     }
 
-    int resultado = raizInteira(n);
-    cout << "A raiz quadrada inteira de " << n << " é: " << resultado << endl;
+    int resultado = raizInteira(numero);
+    cout << "A raiz quadrada inteira de " << numero << " é: " << resultado << endl;
 
     return 0;
 }

@@ -42,77 +42,80 @@ using namespace std;
 
 #define TAMANHO_VETOR 11
 
-int primeiraOcorrencia(int vetor[], int tamanho_vetor, int valor) 
+int primeiraOcorrencia(int vetor[], int tamanho_vetor, int valor)
 {
     int inicio = 0;
-    int fim = tamanho_vetor - 1;
+    int final = tamanho_vetor - 1;
     int meio;
+
     int posicao = -1;
 
-    while (inicio <= fim)
+    while (inicio <= final)
     {
-        meio = (inicio + fim) / 2;
+        meio = (inicio + final) / 2;
 
-        if (vetor[meio] == valor) 
+        if (vetor[meio] == valor)
         {
-            posicao = meio;
-            fim = meio - 1; 
-        } 
+            posicao = meio;     
+            final = meio - 1; 
+        }
 
-        else if (vetor[meio] < valor) 
+        else if (vetor[meio] < valor)
         {
             inicio = meio + 1;
-        } 
+        }
 
-        else 
+        else
         {
-            fim = meio - 1;
+            final = meio - 1;
         }
     }
     return posicao;
 }
 
 
-int ultimaOcorrencia(int vetor[], int tamanho_vetor, int valor) 
+int ultimaOcorrencia(int vetor[], int tamanho_vetor, int valor)
 {
     int inicio = 0;
-    int fim = tamanho_vetor - 1;
+    int final = tamanho_vetor - 1;
     int meio;
+
     int posicao = -1;
 
-    while (inicio <= fim)
+    while (inicio <= final)
     {
-        meio = (inicio + fim) / 2;
+        meio = inicio + (final - inicio) / 2;
 
-        if (vetor[meio] == valor) 
+        if (vetor[meio] == valor)
         {
-            posicao = meio;
-            inicio = meio + 1; 
-        } 
+            posicao = meio; 
+            inicio = meio + 1;  
+        }
 
-        else if (vetor[meio] < valor) 
+        else if (vetor[meio] < valor)
         {
             inicio = meio + 1;
-        } 
+        }
 
-        else 
+        else
         {
-            fim = meio - 1;
+            final = meio - 1;
         }
     }
     return posicao;
 }
 
-int contarOcorrencias(int vetor[], int tamanho_vetor, int valor) 
+int contarOcorrencias(int vetor[], int tamanho_vetor, int valor)
 {
     int primeira = primeiraOcorrencia(vetor, tamanho_vetor, valor);
 
-    if (primeira == -1) 
+    if (primeira == -1)
     {
-        return 0; 
+        return 0;
     }
 
     int ultima = ultimaOcorrencia(vetor, tamanho_vetor, valor);
+
     return ultima - primeira + 1;
 }
 
@@ -121,33 +124,32 @@ int main()
     int vetor[TAMANHO_VETOR] = {1, 2, 2, 2, 5, 5, 7, 9, 9, 9, 9};
     int valor;
 
-    cout << "Digite o valor a ser buscado: ";
+    cout << "Vetor: ";
+
+    for (int i = 0; i < TAMANHO_VETOR; i++)
+    {
+        cout << vetor[i] << " ";
+    }
+    cout << endl;
+
+    cout << "Digite o valor a ser procurado: ";
     cin >> valor;
 
-    int buscainicial = primeiraOcorrencia(vetor, TAMANHO_VETOR, valor);
-    int buscafinal = ultimaOcorrencia(vetor, TAMANHO_VETOR, valor);
-    int ocorrencias = contarOcorrencias(vetor, TAMANHO_VETOR, valor);
+    int primeira = primeiraOcorrencia(vetor, TAMANHO_VETOR, valor);
+    int ultima = ultimaOcorrencia(vetor, TAMANHO_VETOR, valor);
+    int quantidade = contarOcorrencias(vetor, TAMANHO_VETOR, valor);
 
-    if (buscainicial != -1 && buscafinal != -1) 
+    if (quantidade == 0)
     {
-        cout << "Primeira ocorrência do valor " << valor << ": posição " << buscainicial << endl;
-        cout << "Última ocorrência do valor " << valor << ": posição " << buscafinal << endl;
-    } 
-
-    else 
-    {
-        cout << "O valor " << valor << " não foi encontrado." << endl;
+        cout << "Valor " << valor << " nao encontrado -> aparece 0 vezes" << endl;
     }
 
-    if (ocorrencias > 0) 
+    else
     {
-        cout << "O valor " << valor << " aparece " << ocorrencias << " vezes." << endl;
-    } 
-
-    else 
-    {
-        cout << "O valor " << valor << " não foi encontrado." << endl;
+        cout << "Valor " << valor << " -> primeira " << primeira
+             << ", ultima " << ultima
+             << " -> aparece " << quantidade
+             << (quantidade == 1 ? " vez" : " vezes") << endl;
     }
-
     return 0;
 }

@@ -66,12 +66,12 @@ int buscaBinariaMatriz(int matriz[LINHAS][COLUNAS], int valor, int &linha, int &
 
         else if (matriz[linha][coluna] < valor)
         {
-             inicio = meio + 1; // remove a metade esquerda
+             inicio = meio + 1; 
         }
 
         else 
         {
-             fim = meio - 1; // remove a metade direita
+             fim = meio - 1;
         }
    }
    return false;
