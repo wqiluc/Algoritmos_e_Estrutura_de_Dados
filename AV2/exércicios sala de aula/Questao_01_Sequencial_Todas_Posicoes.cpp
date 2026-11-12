@@ -20,28 +20,41 @@
 #include <iostream>
 using namespace std;
 
-#define TAM_VETOR 7
+#define TAMANHO_VETOR 7
 
-int buscaSequencial(int vetor[], int tamanho_vetor, int valor) 
+int buscaSequencial(int vetor[], int tamanho_vetor, int valor)
 {
-    int indice_vetor = 0;
+    bool encontrado = false;
 
-    for (indice_vetor = 0; indice_vetor < tamanho_vetor; indice_vetor++) 
+    int indice;
+
+    for (indice = 0; indice < tamanho_vetor; indice++)
     {
-        if (vetor[indice_vetor] == valor) 
+        if (vetor[indice] == valor)
         {
-            cout << "\n\t Valor: " << valor << " encontrado na posição: " << indice_vetor << endl;
+            cout << "Valor encontrado na posição: " << indice << endl;
+            encontrado = true;
         }
     }
-    return 0;
+    return encontrado;
 }
 
-int main() 
+int main()
 {
-    int vetor[TAM_VETOR] = {4, 8, 2, 8, 5, 8, 1};
-    int valor = 8;
+    int vetor[TAMANHO_VETOR] = {4, 8, 2, 8, 5, 8, 1};
+    int valor;
 
-    buscaSequencial(vetor, TAM_VETOR, valor);
+    cout << "Digite o valor a ser buscado: ";
+    cin >> valor;
+
+    if (!buscaSequencial(vetor, TAMANHO_VETOR, valor))
+    {
+        cout << "Valor não encontrado!" << endl;
+    }
+    else
+    {
+        cout << "Valor" << valor << " encontrado!" << endl;
+    }
 
     return 0;
 }

@@ -35,3 +35,128 @@
 //
 // Compilar e rodar (a partir da raiz do repositório):
 // g++ -std=c++17 "AV2/Buscas/exércicios_hash/Questao_02_Hash_Duplo.cpp" -o "AV2/Buscas/exércicios_hash/q2.out" && "./AV2/Buscas/exércicios_hash/q2.out"
+
+#include <iostream>
+using namespace std;
+
+#define TAM_TABELA 11
+
+int hash1(int chave) 
+{
+    return chave % TAM_TABELA;
+}
+
+int insertir(int tabela[], int chave) 
+{
+    int h1 = hash1(chave);
+    int h2 = 7 - (chave % 7);
+    int i = 0;
+    int posicao;
+
+    cout << "Inserindo " << chave << " → h1=" << h1 << ", h2=" << h2;
+
+    do 
+    {
+        posicao = (h1 + i * h2) % TAM_TABELA;
+        cout << " → " << posicao;
+
+        if (tabela[posicao] == -1) 
+        {
+            tabela[posicao] = chave;
+            cout << " (livre)" << endl;
+            return posicao;
+        } 
+
+        else 
+        {
+            cout << " (ocupada)";
+        }
+        i++;
+    } 
+    while (i < TAM_TABELA);
+
+    cout << " → Tabela cheia!" << endl;
+    return -1; // Tabela cheia
+}
+
+int buscar(int tabela[], int chave, int &tentativas) 
+{
+    int h1 = hash1(chave);
+    int h2 = 7 - (chave % 7);
+    int i = 0;
+    int posicao;
+
+    tentativas = 0;
+
+    do 
+    {
+        posicao = (h1 + i * h2) % TAM_TABELA;
+        tentativas++;
+
+        if (tabela[posicao] == chave) 
+        {
+            return posicao; // Achou a chave
+        } 
+
+        else if (tabela[posicao] == -1) 
+        {
+            return -1; // Não achou a chave
+        }
+        i++;
+    } 
+    while (i < TAM_TABELA);
+
+    return -1; // Não achou a chave
+}
+
+int main() 
+{
+    int tabela[TAM_TABELA];
+
+    for (int i = 0; i < TAM_TABELA; i++) 
+    {
+        tabela[i] = -1; // Inicializa a tabela com -1 (vazia)
+    }
+
+    // Inserir chaves
+    insertir(tabela, 14);
+    insertir(tabela, 25);
+    insertir(tabela, 36);
+    insertir(tabela, 47);
+    insertir(tabela, 9);
+
+    // Buscar chaves
+    int tentativas;
+    int pos;
+
+    pos = buscar(tabela, 9, tentativas);
+    if (pos != -1) 
+    {
+        cout << "Buscar 9 → achou na posição " << pos << ", " << tentativas << " tentativas" << endl;
+    }
+    else 
+    {
+        cout << "Buscar 9 → não achou, " << tentativas << " tentativas" << endl;
+    }
+
+    pos = buscar(tabela, 47, tentativas);
+    if (pos != -1) 
+    {
+        cout << "Buscar 47 → achou na posição " << pos << ", " << tentativas << " tentativas" << endl;
+    }
+    else 
+    {
+        cout << "Buscar 47 → não achou, " << tentativas << " tentativas" << endl;
+    }
+
+    pos = buscar(tabela, 58, tentativas);
+    if (pos != -1) 
+    {
+        cout << "Buscar 58 → achou na posição " << pos << ", " << tentativas << " tentativas" << endl;
+    }
+    else 
+    {
+        cout << "Buscar 58 → não achou, " << tentativas << " tentativas" << endl;
+    }
+    return 0;
+}

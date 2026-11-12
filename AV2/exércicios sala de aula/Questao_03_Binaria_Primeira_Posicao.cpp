@@ -21,20 +21,21 @@ using namespace std;
 
 #define TAM_VETOR 7
 
-int buscaBinariaPrimeiraPosicao(int vetor[], int tamanho_vetor, int valor)
+int buscaBinariaPrimeiraPosicao(int vetor[], int tamanho, int valor)
 {
     int inicio = 0;
-    int final = tamanho_vetor - 1;
+    int final = tamanho - 1;
     int meio;
-    int posicao = - 1;
+
+    int posicao = -1; // Variável para armazenar a posição da primeira ocorrência
 
     while (inicio <= final)
     {
-        meio = (inicio+final) / 2;
+        meio = inicio + (final - inicio) / 2;
 
         if (vetor[meio] == valor)
         {
-            posicao = meio;
+            posicao = meio; 
             final = meio - 1;
         }
 
@@ -54,21 +55,20 @@ int buscaBinariaPrimeiraPosicao(int vetor[], int tamanho_vetor, int valor)
 int main()
 {
     int vetor[TAM_VETOR] = {2, 4, 4, 4, 7, 9, 11};
-    int valor;
 
-    cout << "\n\t Digite um valor do vetor: ";
+    int valor;
+    cout << "Digite o valor a ser buscado: ";
     cin >> valor;
 
     int posicao = buscaBinariaPrimeiraPosicao(vetor, TAM_VETOR, valor);
 
-    if(posicao == -1)
+    if (posicao != -1)
     {
-        cout << "\n\t Valor não encontrado no vetor.\n";
+        cout << "O valor " << valor << " foi encontrado na posição: " << posicao << endl;
     }
-    
     else
     {
-        cout << "\n\t A primeira posição do valor " << valor << " é " << posicao << ".\n";
+        cout << "O valor " << valor << " não foi encontrado no vetor." << endl;
     }
 
     return 0;

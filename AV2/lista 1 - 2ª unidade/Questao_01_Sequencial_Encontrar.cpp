@@ -16,48 +16,40 @@
 #include <iostream>
 using namespace std;
 
-#define TAM_VETOR 10
-#define VALOR_BUSCADO 25
+#define TAMANHO_VETOR 10
 
-void imprimirVetor(int vetor[], int tamanho_vetor)
+int buscaSequencial(int vetor[], int tamanho_vetor, int valor_buscado) 
 {
-    for (int indice_vetor = 0; indice_vetor < tamanho_vetor; indice_vetor++)
-    {
-        cout << vetor[indice_vetor] << " ";
-    }
-    cout << endl;
+   int indice;
+
+   for (indice = 0; indice < tamanho_vetor; indice++) 
+   {
+      if (vetor[indice] == valor_buscado) 
+      {
+         return indice;
+      }
+   }
+    return -1; // Valor não encontrado
 }
 
-int buscaSequencial(int vetor[], int tamanho_vetor, int valor_buscado)
+int main() 
 {
-    for (int indice_vetor = 0; indice_vetor < tamanho_vetor; indice_vetor++)
-    {
-        if (vetor[indice_vetor] == valor_buscado)
-        {
-            return indice_vetor;
-        }
-    }
-    return -1;
-}
+   int vetor[TAMANHO_VETOR] = {15, 8, 25, 7, 12, 18, 5, 9, 30, 3};
+   int valor_buscado;
 
-int main()
-{
-    int vetor[TAM_VETOR] = {15, 8, 25, 7, 12, 18, 5, 9, 30, 3};
+   cout << "Digite o valor a ser buscado: ";
+    cin >> valor_buscado;
 
-    cout << "\n\t Vetor: ";
-    imprimirVetor(vetor, TAM_VETOR);
+   int posicao = buscaSequencial(vetor, TAMANHO_VETOR, valor_buscado);
 
-    int posicao = buscaSequencial(vetor, TAM_VETOR, VALOR_BUSCADO);
+   if (posicao != -1) 
+   {
+      cout << "Valor " << valor_buscado << " encontrado na posição: " << posicao << endl;
+   } 
+   else 
+   {
+      cout << "Valor " << valor_buscado << " não encontrado no vetor." << endl;
+   }
 
-    if (posicao == -1)
-    {
-        cout << "\n\t O valor " << VALOR_BUSCADO << " não foi encontrado." << endl;
-    }
-
-    else
-    {
-        cout << "\n\t O valor " << VALOR_BUSCADO << " foi encontrado na posição " << posicao << endl;
-    }
-
-    return 0;
+   return 0;
 }

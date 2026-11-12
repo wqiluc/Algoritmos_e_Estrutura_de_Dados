@@ -21,7 +21,7 @@
 #include <iostream>
 using namespace std;
 
-#define TAMANHO_VETOR 7
+#define TAM_VETOR 7
 
 int buscaBinaria(int vetor[], int tamanho_vetor, int valor)
 {
@@ -48,26 +48,28 @@ int buscaBinaria(int vetor[], int tamanho_vetor, int valor)
             final = meio - 1;
         }
     }
-    return inicio; 
+    return inicio;
 }
 
 int main()
 {
-    int vetor[TAMANHO_VETOR] = {1, 3, 5, 7, 9, 11, 13};
+    int vetor[TAM_VETOR] = {1, 3, 5, 7, 9, 11, 13};
 
     int valor;
-    cout << "\n\t Digite o valor a ser inserido: ";
+    cout << "Digite o valor a ser inserido: ";
     cin >> valor;
 
-    int posicao = buscaBinaria(vetor, TAMANHO_VETOR, valor);
+    int posicao = buscaBinaria(vetor, TAM_VETOR, valor);
 
     if (posicao == -1)
     {
-        cout << "\n O valor " << valor << " já existe no vetor." << endl;
+        cout << "O valor " << valor << " já existe no vetor." << endl;
     }
+    
     else
     {
-        cout << "\n O valor " << valor << " deve ser inserido na posição: " << posicao << endl;
+        cout << "O valor " << valor << " deve ser inserido na posição: " << posicao << endl;
     }
+
     return 0;
 }

@@ -26,55 +26,59 @@ using namespace std;
 
 #define TAM_VETOR 7
 
-int posicoesNoIntervalo(int vetor[], int tamanho_vetor, int minimo, int maximo, int posicoes[])
+int posicoesNoIntervalo(int vetor[], int tamanho_vetor, int minimo, int maximo, 
+int posicoes[]) 
 {
-    int indice_vetor;
-    int quantidade = 0;
+    int indice;
 
-    if (minimo > maximo)
+    if (minimo > maximo) 
     {
-        int auxiliar = minimo;
+        int temp = minimo;
         minimo = maximo;
-        maximo = auxiliar;
+        maximo = temp;
     }
 
-    for (indice_vetor = 0; indice_vetor < tamanho_vetor; indice_vetor++)
+    int quantidade = 0;
+
+    for (indice = 0; indice < tamanho_vetor; indice++) 
     {
-        if (vetor[indice_vetor] >= minimo && vetor[indice_vetor] <= maximo)
+        if (vetor[indice] >= minimo && vetor[indice] <= maximo) 
         {
-            posicoes[quantidade] = indice_vetor;
+            posicoes[quantidade] = indice;
             quantidade++;
         }
     }
     return quantidade;
 }
 
-int main()
+int main() 
 {
-    int vetor[TAM_VETOR] = {4,8,2,8,5,8,1};
+    int vetor[TAM_VETOR] = {4, 8, 2, 8, 5, 8, 1};
     int posicoes[TAM_VETOR];
     int minimo, maximo;
 
-    cout << "\n\t Digite o mínimo do intervalo: ";
+    cout << "Digite o valor minimo do intervalo: ";
     cin >> minimo;
-    cout << "\t Digite o máximo do intervalo: ";
+    cout << "Digite o valor maximo do intervalo: ";
     cin >> maximo;
 
     int quantidade = posicoesNoIntervalo(vetor, TAM_VETOR, minimo, maximo, posicoes);
 
-    if (quantidade == 0)
+    if (quantidade > 0) 
     {
-        cout << "\n\t Nenhum valor no intervalo.\n";
-    }
-    else
-    {
-        cout << "\n\t " << quantidade << " valor(es), nos índices: ";
-        
-        for (int i = 0; i < quantidade; i++)
+        cout << "intervalo [" << minimo << ", " << maximo << "] → " 
+             << quantidade << " valor(es), nos índices: ";
+
+        for (int i = 0; i < quantidade; i++) 
         {
             cout << posicoes[i] << " ";
         }
         cout << endl;
+    } 
+    
+    else 
+    {
+        cout << "intervalo [" << minimo << ", " << maximo << "] → nenhum valor no intervalo." << endl;
     }
 
     return 0;
