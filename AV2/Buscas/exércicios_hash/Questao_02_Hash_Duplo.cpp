@@ -6,7 +6,7 @@
 // segunda função hash:
 //
 //   h1(chave) = chave % 11
-//   h2(chave) = 7 - (chave % 7)                → nunca dá 0 (fica entre 1 e 7)
+//   h2(chave) = 7 - (chave % 7) → nunca dá 0 (fica entre 1 e 7)
 //   posicao(chave, i) = (h1 + i * h2) % 11,    i = 0, 1, 2, ...
 //
 // Use TAM_TABELA 11. Insira 14, 25, 36, 47 e 9. Depois faça as buscas.
