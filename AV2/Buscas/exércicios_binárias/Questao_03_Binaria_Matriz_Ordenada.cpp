@@ -43,43 +43,43 @@ using namespace std;
 #define LINHAS 3
 #define COLUNAS 4
 
-int buscaBinariaMatriz(int matriz[LINHAS][COLUNAS], int valor, int &linha, int &coluna) 
+bool buscaBinariaMatriz(int matriz[LINHAS][COLUNAS], int valor, int &linha, int &coluna) 
 {
    int inicio = 0;
-   int fim = LINHAS * COLUNAS - 1;
+   int final = (LINHAS * COLUNAS) - 1;
    int meio;
 
-   while (inicio <= fim)
+   while (inicio <= final)
    {
-        meio = (inicio + fim) / 2;
+          meio = (inicio + final) / 2;
 
-        linha = meio / COLUNAS;
-        coluna = meio % COLUNAS;
-    
-        cout << "inicio=" << inicio << " fim=" << fim << " meio=" << meio
+          linha = meio / COLUNAS;
+          coluna = meio % COLUNAS;
+
+          cout << "inicio=" << inicio << " fim=" << final << " meio=" << meio
              << " → [" << linha << "][" << coluna << "] = " << matriz[linha][coluna] << endl;
-    
-        if (matriz[linha][coluna] == valor)
-        {
-             return true;
-        }
 
-        else if (matriz[linha][coluna] < valor)
-        {
-             inicio = meio + 1; 
-        }
+          if (matriz[linha][coluna] == valor)
+          {
+               return true;
+          }
 
-        else 
-        {
-             fim = meio - 1;
-        }
+          else if (matriz[linha][coluna] > valor)
+          {
+               final = meio - 1;
+          }
+
+          else
+          {
+               inicio = meio + 1;
+          }
    }
-   return false;
+   return false;  
 }
 
 int main() 
 {
-   int matriz[LINHAS][COLUNAS] = 
+     int matriz[LINHAS][COLUNAS] = 
    {
        {2, 4, 7, 10},
        {13, 15, 18, 21},
@@ -87,21 +87,20 @@ int main()
    };
 
    int valor;
+   int linha, coluna;
    cout << "Digite o valor a ser buscado: ";
    cin >> valor;
 
-   int linha, coluna;
-
-   if (buscaBinariaMatriz(matriz, valor, linha, coluna)) 
+   if (buscaBinariaMatriz(matriz, valor, linha, coluna))
    {
-       cout << "Valor " << valor << " encontrado na linha " << linha
-            << ", coluna " << coluna << "." << endl;
-   } 
-   
-   else 
-   {
-       cout << "Valor " << valor << " não encontrado." << endl;
+     cout << "Valor " << valor << " encontrado na linha " << linha
+            << ", coluna " << coluna << "." << endl; 
    }
-
+   
+   else
+   {
+     cout << "Valor " << valor << " não encontrado." << endl;
+   }
+   
    return 0;
 }
