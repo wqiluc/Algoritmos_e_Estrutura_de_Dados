@@ -11,18 +11,17 @@
 // Valor   17  4   21  8   2   13  19  5   11  7
 // Índice  0   1   2   3   4   5   6   7   8   9
 //
-// Passada 1 → 2 17 4 21 8 13 19 5 11 7
-// Passada 2 → 2 4 17 21 8 13 19 5 11 7
-// Passada 3 → 2 4 5 17 21 8 13 19 11 7
-// Passada 4 → 2 4 5 7 17 21 8 13 19 11
-// Passada 5 → 2 4 5 7 8 17 21 13 19 11
-// Passada 6 → 2 4 5 7 8 11 17 21 13 19
-// Passada 7 → 2 4 5 7 8 11 13 17 21 19
-// Passada 8 → 2 4 5 7 8 11 13 17 19 21
-// Passada 9 → -
-//
-// Vetor final → 2 4 5 7 8 11 13 17 19 21
-//
+// Passada 1 → 4 17 8 2 13 19 5 11 7 21 - (8 trocas)
+// Passada 2 → 4 8 2 13 17 5 11 7 19 21 - (6 trocas)
+// Passada 3 → 4 2 8 13 5 11 7 17 19 21 - (4 trocas)
+// Passada 4 → 2 4 8 5 11 7 13 17 19 21 - (4 trocas)
+// Passada 5 → 2 4 5 8 7 11 13 17 19 21 - (2 trocas)
+// Passada 6 → 2 4 5 7 8 11 13 17 19 21 - (1 troca)
+// Passada 7 → - (0)
+// Passada 8 → - (0)
+// Passada 9 → - (0)
+
+// Vetor final → [2 4 5 7 8 11 13 17 19 21]
 // Pergunta: em qual passada o vetor já ficou ordenado? Com a flag `trocou`,
 // em qual passada o algoritmo pararia? 
 // Total: 9+8+7+6+5+4+3+2+1 = 45 comparações (n(n-1)/2) e 25 trocas.
