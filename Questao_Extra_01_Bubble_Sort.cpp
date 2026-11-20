@@ -16,17 +16,19 @@
 // Passada 3 → 6 3 10 14 8 18 12 21 25 30 - (3 trocas)
 // Passada 4 → 3 6 10 8 14 12 18 21 25 30 - (3 trocas)
 // Passada 5 → 3 6 8 10 12 14 18 21 25 30 - (2 trocas)
-// Passada 6 → - (0)
-// Passada 7 → - (0)
-// Passada 8 → - (0)
-// Passada 9 → - (0)
+// Passada 6 → 3 6 8 10 12 14 18 21 25 30 - (0 trocas)
+// Passada 7 → 3 6 8 10 12 14 18 21 25 30 - (0 trocas)
+// Passada 8 → 3 6 8 10 12 14 18 21 25 30 - (0 trocas)
+// Passada 9 → 3 6 8 10 12 14 18 21 25 30 - (0 trocas)
 //
 // Vetor final → [3, 6, 8, 10, 12, 14, 18, 21, 25, 30]
 //
 // Perguntas:
 // a) Em qual passada o vetor já ficou ordenado? 5
 // b) Com a flag `trocou`, em qual passada o algoritmo pararia? 6
-// c) Quantas comparações e quantas trocas o código do slide faz no total? 20
+// c) Quantas comparações e quantas trocas o código do slide faz no total?
+// 45 comparações (9+8+...+1) e 20 trocas (7+5+3+3+2)
+//
 // ============================================================================
 // GABARITO (só olhe depois de fazer!)
 // ============================================================================

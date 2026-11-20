@@ -26,11 +26,12 @@
 // Perguntas:
 // a) Em qual passada o vetor já ficou ordenado? 9
 // b) Com a flag `trocou`, o algoritmo economizaria alguma passada? Por quê? não,
-// ele gasta pelo menos 1 passada em todas
+// toda passada faz pelo menos 1 troca, então a flag nunca fica falsa
 // c) Quantas posições o 1 anda para a esquerda em cada passada? E o 31,
 //    quantas posições ele anda para a direita na passada 1?
-// 1 = 4 / 31 = 5
-// d) Quantas comparações e quantas trocas o código do slide faz no total? 26
+// 1 = só 1 posição por passada (índice 9 → 8 → ... → 0) / 31 = 5 (índice 4 → 9)
+// d) Quantas comparações e quantas trocas o código do slide faz no total?
+// 45 comparações (9+8+...+1) e 26 trocas (8+5+5+2+2+1+1+1+1)
 //
 // ============================================================================
 // GABARITO (só olhe depois de fazer!)
