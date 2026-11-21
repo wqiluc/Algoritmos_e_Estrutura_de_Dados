@@ -21,9 +21,62 @@
 // A | separa o pivô (último) do resto do subvetor.
 // No fim de cada partição fica: menores | pivô | maiores
 //
+// Árvore das partições — (x) = pivô, { } = vazio
+//
+//              [8 3 5 1 9 2 7 0 4 (6)]                  ← Partição 1 (raiz)
+//                /                 \
+//         [3 5 1 2 0 (4)]          [9 8 (7)]            ← P2 (esq) · P6 (dir)
+//          /          \            /       \
+//     [3 1 2 (0)]     [5]        { }     [8 (9)]        ← P3 · P7
+//      /       \                         /     \
+//    { }   [1 2 (3)]                   [8]      { }     ← P4
+//            /     \
+//      [1 (2)]      { }                                 ← P5
+//        /   \
+//     [1]     { }
+//
+//   LADO ESQUERDO  = partições 2, 3, 4, 5  (resolve PRIMEIRO, inteiro)
+//   LADO DIREITO   = partições 6, 7        (só depois que a esquerda acaba)
+//
+
+// -----------------------------------------------------------------------------
+// RAIZ → [8 3 5 1 9 2 7 0 4 6]
+// -----------------------------------------------------------------------------
+// Partição 1 (pivô 6) → 3 5 1 2 0 4 6 9 8 7 - [esq = 3, 5, 1, 2, 0, 4], [dir = 9, 8, 7] · 9 comp, 7 trocas
+//
+// -----------------------------------------------------------------------------
+// LADO ESQUERDO → [3 5 1 2 0 4]
+// -----------------------------------------------------------------------------
+// Partição 2 (pivô 4) → 3 1 2 0 4 5 6 9 8 7 - [esq = 3, 1, 2, 0], [dir = 5]  · 5 comp, 4 trocas
+// Partição 3 (pivô 0) → 0 1 2 3 4 5 6 9 8 7 - [esq = vazia], [dir = 1, 2, 3] · 3 comp, 1 troca
+// Partição 4 (pivô 3) → 0 1 2 3 4 5 6 9 8 7 - [esq = 1, 2], [dir = vazia]    · 2 comp, 0 trocas
+// Partição 5 (pivô 2) → 0 1 2 3 4 5 6 9 8 7 - [esq = 1], [dir = vazia]       · 1 comp, 0 trocas
+// Subtotal esquerdo: 11 comp, 5 trocas
+//
+// -----------------------------------------------------------------------------
+// LADO DIREITO → [9 8 7]
+// -----------------------------------------------------------------------------
+// Partição 6 (pivô 7) → 0 1 2 3 4 5 6 7 8 9 - [esq = vazia], [dir = 8, 9]    · 2 comp, 1 troca
+// Partição 7 (pivô 9) → 0 1 2 3 4 5 6 7 8 9 - [esq = 8], [dir = vazia]       · 1 comp, 0 trocas
+// Subtotal direito: 3 comp, 1 troca
+//
+// Vetor final → 0 1 2 3 4 5 6 7 8 9
+// Total: 9 (raiz) + 11 (esq) + 3 (dir) = 23 comparações
+//        7 (raiz) +  5 (esq) + 1 (dir) = 13 trocas
+
+
+
+// =============================================================================
+// GABARITO (só olha depois de fazer!)
+// =============================================================================
+
+
+// -----------------------------------------------------------------------------
+// RAIZ → [8 3 5 1 9 2 7 0 4 6] (idx 0..9)
+// -----------------------------------------------------------------------------
+
 // Partição 1 (idx 0..9, pivô 6)
 //   início → 8 3 5 1 9 2 7 0 4 | 6
-
 //   j=1 (3<6) troca 8↔3 → 3 8 5 1 9 2 7 0 4 | 6
 //   j=2 (5<6) troca 8↔5 → 3 5 8 1 9 2 7 0 4 | 6
 //   j=3 (1<6) troca 8↔1 → 3 5 1 8 9 2 7 0 4 | 6
@@ -33,6 +86,15 @@
 //   pivô: troca 7↔6     → 3 5 1 2 0 4 | 6 | 9 8 7
 //   9 comparações (8, 9 e 7 não são < 6), 7 trocas
 //   vetor → 3 5 1 2 0 4 6 9 8 7 · esq [3,5,1,2,0,4] · dir [9,8,7]
+//
+// O 6 já está no lugar final (idx 6). Agora cada lado é resolvido separado:
+//   ESQUERDA → idx 0..5 = [3 5 1 2 0 4]
+//   DIREITA  → idx 7..9 = [9 8 7]
+
+
+// =============================================================================
+// LADO ESQUERDO → [3 5 1 2 0 4] (idx 0..5)
+// =============================================================================
 
 // Partição 2 (idx 0..5, pivô 4)
 //   início              → 3 5 1 2 0 | 4
@@ -67,6 +129,14 @@
 //   vetor → 0 1 2 3 4 5 6 9 8 7 · esq [1] · dir (vazia)
 //   ([1] e o [5] da partição 2 têm 1 elemento só → não particiona)
 
+// Subtotal esquerdo: 4 partições, 11 comparações, 5 trocas
+// Lado esquerdo pronto → 0 1 2 3 4 5 (idx 0..5)
+
+
+// =============================================================================
+// LADO DIREITO → [9 8 7] (idx 7..9)
+// =============================================================================
+
 // Partição 6 (idx 7..9, pivô 7)
 //   início              → 9 8 | 7
 //   ninguém é < 7, nada troca
@@ -81,6 +151,14 @@
 //   1 comparação, 0 trocas
 //   vetor → 0 1 2 3 4 5 6 7 8 9 · esq [8] · dir (vazia)
 
+// Subtotal direito: 2 partições, 3 comparações, 1 troca
+// Lado direito pronto → 7 8 9 (idx 7..9)
 
+
+// =============================================================================
 // Vetor final → 0 1 2 3 4 5 6 7 8 9
 // Total: 7 partições, 23 comparações, 13 trocas (sem contar troca consigo mesmo)
+//   raiz      → 9 comp, 7 trocas
+//   esquerda  → 11 comp, 5 trocas
+//   direita   → 3 comp, 1 troca
+// =============================================================================
