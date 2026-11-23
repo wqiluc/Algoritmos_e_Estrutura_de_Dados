@@ -16,7 +16,7 @@
 // Passada 3 → 4 2 8 13 5 11 7 17 19 21
 // Passada 4 → 2 4 8 5 11 7 13 17 19 21
 // Passada 5 → 2 4 5 8 11 7 13 17 19 21
-// Passada 6 → 2 4 5 8 7 11 13 17 19 21
+// Passada 6 → 2 4 5 7 8 11 13 17 19 21
 // Passada 7 → -
 // Passada 8 → -
 // Passada 9 → -
