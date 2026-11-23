@@ -48,3 +48,38 @@
 // O vetor já ficou ordenado na passada 6.
 // O código do slide não sabe disso e faz as passadas 7, 8 e 9 mesmo assim.
 // Com a flag trocou, ele pararia depois da passada 7 (a primeira sem nenhuma troca).
+
+#include <iostream>
+#include <utility>
+
+using namespace std;
+
+int bubbleSort(int vetor[], int tamanho_vetor)
+{
+    for (int i = 0; i < tamanho_vetor - 1; i++)
+    {
+        for (int j = 0; j < tamanho_vetor - 1 - i; j++)
+        {
+            if (vetor[j] > vetor[j+1])
+            {
+                swap(vetor[j], vetor[j+1]);
+            }
+        }
+    }
+}
+
+int main()
+{
+    int vetor[] = {17, 4, 21, 8, 2, 13, 19, 5, 11, 7};
+    int tamanho_vetor = sizeof(vetor) / sizeof(vetor[0]);
+
+    bubbleSort(vetor, tamanho_vetor);
+
+    for (int i = 0; i < tamanho_vetor; i++)
+    {
+        cout << vetor[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}

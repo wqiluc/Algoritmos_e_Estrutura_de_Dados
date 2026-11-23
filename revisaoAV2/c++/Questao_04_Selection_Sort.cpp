@@ -37,3 +37,45 @@
 // Iteração 9 (i = 8) → 2 4 5 7 9 12 14 18 20 23
 //
 // Vetor final → [2, 4, 5, 7, 9, 12, 14, 18, 20, 23]
+
+#include <iostream>
+#include <utility>
+using namespace std;
+
+#define TAM_VETOR 10
+
+void selectionSort(int vetor[], int tamanho_vetor)
+{
+    for (int i = 0; i < tamanho_vetor - 1; i++)
+    {
+        int indice_menor = i;
+
+        for (int j = i + 1; j < tamanho_vetor; j++)
+        {
+            if (vetor[j] < vetor[indice_menor])
+            {
+                indice_menor = j;
+            }
+        }
+
+        swap(vetor[i], vetor[indice_menor]);
+    }
+}
+
+
+
+int main()
+{
+    int vetor[TAM_VETOR] = {23, 9, 14, 5, 18, 2, 20, 7, 12, 4};
+    int tamanho_vetor = sizeof(vetor) / sizeof(vetor[0]);
+
+    selectionSort(vetor, tamanho_vetor);
+
+    for (int i = 0; i < tamanho_vetor; i++)
+    {
+        cout << vetor[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
